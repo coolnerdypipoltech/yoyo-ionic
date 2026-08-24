@@ -1,0 +1,71 @@
+.rewards-page {
+  --background: #000000;
+  --padding-bottom: 100px;
+}
+
+.rewards-page__header {
+  --background: transparent;
+}
+
+.rewards-page__header ion-toolbar {
+  --background: transparent;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+.rewards-page__logo {
+  font-family: var(--yoyo-font-logo);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.rewards-page__menu-button {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--yoyo-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rewards-page__heading {
+  padding: 4px 16px 4px;
+  margin: 0;
+}
+
+.rewards-page__heading-line {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.rewards-page__heading-display {
+  display: block;
+  font-family: var(--yoyo-font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.rewards-page__credits {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--yoyo-muted);
+  margin: 6px 16px 4px;
+}
+
+.rewards-page__section {
+  margin-bottom: 8px;
+}
+
+.rewards-page__section-header {
+  margin: 16px 16px 8px;
+}

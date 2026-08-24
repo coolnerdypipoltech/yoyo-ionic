@@ -1,0 +1,45 @@
+.edit-taste-page {
+  --background: #000000;
+}
+
+.edit-taste-page__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(20, 110, 80, 0.5) 0%, transparent 70%);
+}
+
+.edit-taste-page__close {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0 16px;
+}
+
+.edit-taste-page__content {
+  position: relative;
+  z-index: 1;
+  padding: 20px 20px 0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.edit-taste-page__title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.edit-taste-page__subtitle {
+  font-size: 13px;
+  color: var(--yoyo-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.edit-taste-page__content .yoyo-divider {
+  margin: 20px 0 24px;
+}

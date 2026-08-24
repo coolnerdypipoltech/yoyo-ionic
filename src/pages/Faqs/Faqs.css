@@ -1,0 +1,60 @@
+.faqs-page {
+  --background: #000000;
+}
+
+.faqs-page__glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(117, 21, 24, 0.45) 0%, transparent 70%);
+}
+
+.faqs-page__close {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0 16px;
+}
+
+.faqs-page__title {
+  position: relative;
+  z-index: 1;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 16px 20px 8px;
+  margin: 0;
+}
+
+.faqs-page__group {
+  position: relative;
+  z-index: 1;
+  padding: 8px 4px 40px;
+  background: transparent;
+}
+
+.faqs-page__question {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  white-space: normal;
+}
+
+.faqs-page__answer {
+  padding: 0 20px 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--yoyo-muted);
+}
+
+ion-accordion ion-item {
+  --background: transparent;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --padding-start: 20px;
+  --inner-padding-end: 20px;
+}

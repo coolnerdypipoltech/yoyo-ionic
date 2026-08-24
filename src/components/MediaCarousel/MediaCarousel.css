@@ -1,0 +1,51 @@
+.media-carousel {
+  position: relative;
+}
+
+.media-carousel--empty {
+  height: 240px;
+  background: var(--ion-color-light-shade);
+}
+
+.media-carousel__scroller {
+  scroll-snap-type: x mandatory;
+  height: 320px;
+}
+
+.media-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+.media-carousel__slide img,
+.media-carousel__slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-carousel__dots {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.media-carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.media-carousel__dot--active {
+  background: #ffffff;
+  width: 18px;
+  border-radius: 999px;
+}

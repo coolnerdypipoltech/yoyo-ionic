@@ -1,0 +1,242 @@
+.profile-page {
+  --background: #000000;
+}
+
+.profile-page__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(130, 130, 135, 0.3) 0%, transparent 70%);
+}
+
+.profile-page__header {
+  position: relative;
+  z-index: 1;
+  --background: transparent;
+}
+
+.profile-page__header ion-toolbar {
+  --background: transparent;
+}
+
+.profile-page__title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 4px 0 20px;
+}
+
+.profile-page__avatar-block {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.profile-page__avatar {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: var(--yoyo-card-bg);
+  border: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: var(--yoyo-muted);
+}
+
+.profile-page__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-page__avatar-edit {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--yoyo-teal);
+  color: #04231c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.profile-page__id {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.profile-page__section-header {
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  gap: 6px;
+}
+
+.profile-page__section-spacing {
+  margin-top: 28px;
+}
+
+.profile-page__info-icon {
+  font-size: 14px;
+  color: var(--yoyo-muted);
+  text-transform: none;
+}
+
+.profile-page__points-box {
+  position: relative;
+  z-index: 1;
+  margin: 0 16px;
+  background: var(--yoyo-card-bg);
+  border-radius: var(--yoyo-radius-pill);
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.profile-page__taste-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--yoyo-divider);
+}
+
+.profile-page__taste-row--last {
+  border-bottom: none;
+}
+
+.profile-page__taste-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-page__taste-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.profile-page__taste-value {
+  font-size: 13px;
+  color: var(--yoyo-muted);
+}
+
+.profile-page__edit-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--yoyo-card-bg);
+  border: none;
+  color: var(--yoyo-teal);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-page__info-card {
+  position: relative;
+  z-index: 1;
+  margin: 0 16px;
+  background: var(--yoyo-card-bg-2);
+  border-radius: var(--yoyo-radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-page__info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-page__info-label {
+  font-size: 12px;
+  color: var(--yoyo-muted);
+}
+
+.profile-page__info-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.yoyo-divider {
+  position: relative;
+  z-index: 1;
+  margin: 24px 16px;
+}
+
+.profile-page__danger-card {
+  position: relative;
+  z-index: 1;
+  margin: 0 16px 20px;
+  background: var(--yoyo-card-bg);
+  border-radius: var(--yoyo-radius-lg);
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-page__danger-title {
+  color: var(--yoyo-teal);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.profile-page__tombstone {
+  width: 100px;
+  margin: 0 auto 12px;
+  display: block;
+}
+
+.profile-page__danger-text {
+  font-size: 13px;
+  color: var(--yoyo-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.profile-page__delete-button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px calc(32px + env(safe-area-inset-bottom));
+  background: var(--yoyo-teal);
+  border: none;
+  color: #04231c;
+  border-radius: var(--yoyo-radius-pill);
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+}

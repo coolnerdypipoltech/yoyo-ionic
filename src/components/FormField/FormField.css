@@ -1,0 +1,38 @@
+.form-field {
+  margin-bottom: 14px;
+}
+
+.form-field__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.form-field__input {
+  --background: var(--yoyo-card-bg);
+  --color: #ffffff;
+  --placeholder-color: var(--yoyo-muted);
+  --placeholder-opacity: 1;
+  --border-radius: var(--yoyo-radius-md);
+  --border-width: 0;
+  --border-color: transparent;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-size: 15px;
+}
+
+.form-field__input--invalid {
+  --border-width: 1px;
+  --border-color: var(--ion-color-danger);
+  --border-style: solid;
+}
+
+.form-field__error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--ion-color-danger);
+}

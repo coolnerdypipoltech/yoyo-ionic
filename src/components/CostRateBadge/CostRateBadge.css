@@ -1,0 +1,10 @@
+.cost-rate-badge {
+  display: inline-flex;
+  font-weight: 700;
+  color: var(--ion-color-secondary);
+  font-size: 14px;
+}
+
+.cost-rate-badge__symbol {
+  line-height: 1;
+}

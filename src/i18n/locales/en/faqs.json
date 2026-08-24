@@ -1,0 +1,16 @@
+{
+  "title": "Frequently Asked Questions",
+  "placeholderAnswer": "We're still writing this answer — check back soon.",
+  "items": [
+    { "q": "What is YoYo, really?", "a": "Let's just say it's where your nights start paying back. YOYO is a nightlife rewards app that connects you with curated bars, events, and exclusive experiences across Mexico City. Every visit earns you perks." },
+    { "q": "How do I earn points", "a": "" },
+    { "q": "What can I unlock with my points?", "a": "" },
+    { "q": "Why the rabbit?", "a": "" },
+    { "q": "Where can I use YoYo?", "a": "" },
+    { "q": "What happens if I lose my password", "a": "" },
+    { "q": "Can I invite friends?", "a": "" },
+    { "q": "Who's behind YoYo?", "a": "" },
+    { "q": "Do I need an invitation?", "a": "" },
+    { "q": "Can I lose my points?", "a": "" }
+  ]
+}

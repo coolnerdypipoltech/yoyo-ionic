@@ -1,0 +1,177 @@
+.loyalty-card__scene {
+  padding: 12px 16px 20px;
+  perspective: 1400px;
+}
+
+.loyalty-card__flipper {
+  --loyalty-card-thickness: 9px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.34, 1.15, 0.64, 1);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.loyalty-card__flipper--dragging {
+  /* No transition while a finger is down — the tilt must track the touch
+     point 1:1, not lag behind an animation. It snaps back on release via
+     the base rule above. */
+  transition: none;
+  cursor: grabbing;
+}
+
+.loyalty-card__flipper--dragging .loyalty-card__face {
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.55);
+}
+
+.loyalty-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--yoyo-radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 140% 100% at 15% 110%, rgba(255, 255, 255, 0.12) 0%, transparent 55%),
+    linear-gradient(150deg, #0c2b22 0%, #0f4436 45%, #1c8066 100%);
+}
+
+/* Pushing the two faces apart along Z (instead of stacking them exactly on
+   top of each other) is what gives the card real thickness — the edge
+   strips below fill in the gap between them so it reads as a solid slab
+   rather than two coincident sheets of paper. */
+.loyalty-card__face--front {
+  transform: translateZ(calc(var(--loyalty-card-thickness) / 2));
+}
+
+.loyalty-card__face--back {
+  transform: rotateY(180deg) translateZ(calc(var(--loyalty-card-thickness) / 2));
+}
+
+.loyalty-card__edge {
+  position: absolute;
+  background: linear-gradient(180deg, #06140f 0%, #0a2119 50%, #06140f 100%);
+  border-radius: 3px;
+}
+
+.loyalty-card__edge--left,
+.loyalty-card__edge--right {
+  top: 0;
+  width: var(--loyalty-card-thickness);
+  height: 100%;
+}
+
+.loyalty-card__edge--left {
+  left: calc(var(--loyalty-card-thickness) / -2);
+  transform: rotateY(-90deg);
+}
+
+.loyalty-card__edge--right {
+  right: calc(var(--loyalty-card-thickness) / -2);
+  transform: rotateY(90deg);
+}
+
+.loyalty-card__edge--top,
+.loyalty-card__edge--bottom {
+  left: 0;
+  width: 100%;
+  height: var(--loyalty-card-thickness);
+}
+
+.loyalty-card__edge--top {
+  top: calc(var(--loyalty-card-thickness) / -2);
+  transform: rotateX(90deg);
+}
+
+.loyalty-card__edge--bottom {
+  bottom: calc(var(--loyalty-card-thickness) / -2);
+  transform: rotateX(-90deg);
+}
+
+.loyalty-card__badge {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loyalty-card__badge img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.loyalty-card__front-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loyalty-card__id {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.loyalty-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+.loyalty-card__shine {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+}
+
+.loyalty-card__points-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loyalty-card__points-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loyalty-card__points-label {
+  font-size: 11px;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.loyalty-card__points-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.loyalty-card__add-button {
+  align-self: flex-start;
+  --background: #ffffff;
+  --color: #0a0a0a;
+  --border-radius: var(--yoyo-radius-pill);
+  font-weight: 700;
+}

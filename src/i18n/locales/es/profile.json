@@ -1,0 +1,49 @@
+{
+  "profile": {
+    "title": "Configuración de cuenta",
+    "idLabel": "ID",
+    "points": "{{points}} puntos",
+    "totalPoints": "/Puntos totales",
+    "yourTaste": "/Tus gustos",
+    "yourProfile": "/Tu perfil",
+    "tastePlaceholder": "Aún no configurado",
+    "name": "Nombre de usuario",
+    "email": "Correo",
+    "phone": "Número de teléfono",
+    "tastes": "Tus gustos",
+    "drinkTaste": "Gusto de bebida",
+    "foodTaste": "Gusto de comida",
+    "musicTaste": "Gusto musical",
+    "editPhoto": "Cambiar foto",
+    "editTastes": "Editar tus gustos",
+    "dangerousHole": "Agujero peligroso",
+    "deleteWarning": "Al eliminar tu cuenta, no podrás recuperar tus datos guardados.",
+    "deleteAccount": "Eliminar cuenta"
+  },
+  "editProfile": {
+    "title": "Editar mi foto de perfil",
+    "choosePhoto": "Elegir foto",
+    "removePhoto": "Quitar foto",
+    "save": "Guardar",
+    "cropInstructions": "Arrastra para reposicionar, pellizca o desplázate para acercar",
+    "invalidFile": "Elige un archivo de imagen válido.",
+    "fileTooLarge": "La imagen es demasiado grande. Elige un archivo más pequeño."
+  },
+  "editTaste": {
+    "title": "Edita tus gustos",
+    "subtitle": "Si completas toda la información de tu perfil de gustos, obtendrás X puntos Yoyo.",
+    "drinkTaste": "Gusto de bebida",
+    "foodTaste": "Gusto de comida",
+    "musicTaste": "Gusto musical",
+    "save": "Guardar"
+  },
+  "deleteAccount": {
+    "title": "Eliminar cuenta",
+    "instructions": "Escribe tu contraseña para confirmar\nla eliminación de tu cuenta.",
+    "warning": "Al eliminar tu cuenta, no podrás\nrecuperar tus datos guardados.",
+    "password": "Contraseña",
+    "confirm": "Eliminar cuenta",
+    "missingPassword": "Ingresa tu contraseña.",
+    "incorrectPassword": "Contraseña incorrecta."
+  }
+}

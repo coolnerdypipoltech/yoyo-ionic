@@ -1,0 +1,39 @@
+.carousel-item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 148px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.carousel-item-card__image {
+  width: 148px;
+  height: 178px;
+  border-radius: var(--yoyo-radius-md);
+  background: var(--yoyo-card-bg);
+  overflow: hidden;
+}
+
+.carousel-item-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-item-card__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

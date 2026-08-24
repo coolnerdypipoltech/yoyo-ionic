@@ -1,0 +1,84 @@
+/* YoYo brand palette — matches the provided UI reference screenshots:
+   always-black app (not adaptive to system light/dark), red primary accent,
+   a teal/mint secondary accent used for positive/edit actions and info
+   callouts, and a serif display font for taglines alongside a bold
+   condensed font for the YOYO wordmark. */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Anton&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* App is always dark — force regardless of system color-scheme. */
+  color-scheme: dark;
+  --ion-background-color: #000000;
+  --ion-background-color-rgb: 0, 0, 0;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-toolbar-background: transparent;
+  --ion-item-background: transparent;
+  --ion-border-color: rgba(255, 255, 255, 0.1);
+
+  --ion-color-primary: #751518;
+  --ion-color-primary-rgb: 117, 21, 24;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #671214;
+  --ion-color-primary-tint: #8c2a2f;
+
+  --ion-color-secondary: #f5b942;
+  --ion-color-secondary-rgb: 245, 185, 66;
+  --ion-color-secondary-contrast: #1a1a1a;
+  --ion-color-secondary-contrast-rgb: 26, 26, 26;
+  --ion-color-secondary-shade: #d8a33a;
+  --ion-color-secondary-tint: #f6c055;
+
+  --ion-color-danger: #e5484d;
+  --ion-color-danger-rgb: 229, 72, 77;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #ca4044;
+  --ion-color-danger-tint: #e85b60;
+
+  /* Brand teal — positive/edit accents, info callouts, "enough" states. */
+  --yoyo-teal: #3ecfb2;
+  --yoyo-teal-rgb: 62, 207, 178;
+  --yoyo-teal-contrast: #05201a;
+
+  --yoyo-card-bg: #1c1c1e;
+  --yoyo-card-bg-2: rgba(255, 255, 255, 0.06);
+  --yoyo-muted: #9a9a9e;
+  --yoyo-divider: rgba(255, 255, 255, 0.1);
+
+  --yoyo-radius-sm: 8px;
+  --yoyo-radius-md: 14px;
+  --yoyo-radius-lg: 22px;
+  --yoyo-radius-pill: 999px;
+
+  --yoyo-font-display: 'Playfair Display', Georgia, serif;
+  --yoyo-font-logo: 'Anton', 'Arial Narrow', sans-serif;
+  --yoyo-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Ionic components read --ion-font-family internally (not the plain
+     inherited `font-family`) — both must be set for the brand font to
+     actually reach ion-* elements instead of falling back to Ionic's
+     platform default (Roboto on md mode). */
+  --ion-font-family: var(--yoyo-font-sans);
+  font-family: var(--yoyo-font-sans);
+}
+
+.ion-color-secondary {
+  --ion-color-base: var(--ion-color-secondary);
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb);
+  --ion-color-contrast: var(--ion-color-secondary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-secondary-shade);
+  --ion-color-tint: var(--ion-color-secondary-tint);
+}
+
+.ion-color-teal {
+  --ion-color-base: var(--yoyo-teal);
+  --ion-color-base-rgb: var(--yoyo-teal-rgb);
+  --ion-color-contrast: var(--yoyo-teal-contrast);
+  --ion-color-contrast-rgb: 5, 32, 26;
+  --ion-color-shade: #36b69c;
+  --ion-color-tint: #51d5ba;
+}

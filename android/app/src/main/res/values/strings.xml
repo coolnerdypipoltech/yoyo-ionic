@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">YoYo</string>
+    <string name="title_activity_main">YoYo</string>
+    <string name="package_name">com.yoyotheclub.app</string>
+    <string name="custom_url_scheme">com.yoyotheclub.app</string>
+</resources>

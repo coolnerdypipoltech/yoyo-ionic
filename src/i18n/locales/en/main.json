@@ -1,0 +1,68 @@
+{
+  "tabs": {
+    "places": "Places",
+    "rewards": "Rewards"
+  },
+  "places": {
+    "title": "Places",
+    "headingLine1": "You've Mastered",
+    "headingLine2": "The Rabbit's Trail.",
+    "placesSection": "Places",
+    "eventsSection": "Events",
+    "noPlaces": "No places available right now.",
+    "noEvents": "No events available right now."
+  },
+  "loyaltyCard": {
+    "idLabel": "ID",
+    "totalPoints": "Total Points",
+    "availablePoints": "Available Points",
+    "addPoints": "Add Points",
+    "flipHint": "Tap either side to flip the card"
+  },
+  "rewards": {
+    "title": "Rewards",
+    "headingLine1": "The House",
+    "headingLine2": "Owes You A Drink.",
+    "rewardsSection": "Rewards",
+    "partnersSection": "Partners",
+    "noRewards": "No rewards available right now.",
+    "noPartners": "No partners available right now.",
+    "availableCredits": "Available Points: {{points}}"
+  },
+  "detail": {
+    "getDirections": "Get Directions",
+    "reserve": "Reserve",
+    "buyTicket": "Buy Ticket",
+    "viewEvent": "View Event",
+    "redeem": "Change",
+    "cost": "{{cost}} YoYo Credits",
+    "stock": "{{count}} left",
+    "description": "/Description",
+    "musicLineup": "/Music Lineup",
+    "location": "/Location",
+    "dresscode": "/Dresscode",
+    "paymentOptions": "/Payment Options",
+    "paymentCard": "Credit Card",
+    "paymentCash": "Cash",
+    "paymentDisclaimer": "All payments must be completed at the establishment.",
+    "reviewDisclaimer": "Your request will undergo review. Should you not qualify for the reward, no points will be deducted.",
+    "conditions": "/Conditions",
+    "validity": "/Validity",
+    "availableQuantity": "/Available Quantity:"
+  },
+  "availability": {
+    "insufficientPointsReward": "You don't have enough points to redeem this reward.",
+    "insufficientPointsPartner": "You don't have enough points to find this partner.",
+    "outOfStockReward": "This reward is out of stock.",
+    "outOfStockPartner": "This partner is not available.",
+    "notAvailableYetReward": "This reward is not available at this time.",
+    "notAvailableYetPartner": "This partner is not available at this time."
+  },
+  "menu": {
+    "accountSettings": "Account Settings",
+    "faqs": "Faqs",
+    "privacyPolicies": "Privacy Policies",
+    "logOut": "Log Out",
+    "logOutConfirm": "Log Out?"
+  }
+}

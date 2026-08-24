@@ -1,0 +1,16 @@
+{
+  "title": "Preguntas frecuentes",
+  "placeholderAnswer": "Todavía estamos escribiendo esta respuesta — vuelve pronto.",
+  "items": [
+    { "q": "¿Qué es YoYo, realmente?", "a": "Digamos que es donde tus noches empiezan a recompensarte. YOYO es una app de recompensas de vida nocturna que te conecta con bares, eventos y experiencias exclusivas en la Ciudad de México. Cada visita te gana beneficios." },
+    { "q": "¿Cómo gano puntos?", "a": "" },
+    { "q": "¿Qué puedo desbloquear con mis puntos?", "a": "" },
+    { "q": "¿Por qué el conejo?", "a": "" },
+    { "q": "¿Dónde puedo usar YoYo?", "a": "" },
+    { "q": "¿Qué pasa si pierdo mi contraseña?", "a": "" },
+    { "q": "¿Puedo invitar amigos?", "a": "" },
+    { "q": "¿Quién está detrás de YoYo?", "a": "" },
+    { "q": "¿Necesito una invitación?", "a": "" },
+    { "q": "¿Puedo perder mis puntos?", "a": "" }
+  ]
+}

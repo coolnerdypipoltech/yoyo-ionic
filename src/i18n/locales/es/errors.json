@@ -1,0 +1,11 @@
+{
+  "alreadyExists": "Ya existe una cuenta con este correo.",
+  "invalidCredentials": "Correo o contraseña incorrectos.",
+  "emailNotVerified": "Verifica tu correo antes de iniciar sesión.",
+  "codeNotFound": "Este código de acceso no existe.",
+  "codeAlreadyRedeemed": "Este código de acceso ya fue usado.",
+  "invalidPassword": "Contraseña incorrecta.",
+  "notFound": "No encontrado.",
+  "network": "Revisa tu conexión a internet e inténtalo de nuevo.",
+  "generic": "Algo salió mal. Inténtalo de nuevo."
+}

@@ -1,0 +1,64 @@
+.places-page {
+  --background: #000000;
+  --padding-bottom: 100px;
+}
+
+.places-page__header {
+  --background: transparent;
+}
+
+.places-page__header ion-toolbar {
+  --background: transparent;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+.places-page__logo {
+  font-family: var(--yoyo-font-logo);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.places-page__menu-button {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--yoyo-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.places-page__heading {
+  padding: 4px 16px 4px;
+  margin: 0;
+}
+
+.places-page__heading-line {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.places-page__heading-display {
+  display: block;
+  font-family: var(--yoyo-font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.places-page__section {
+  margin-bottom: 8px;
+}
+
+.places-page__section-header {
+  margin: 16px 16px 8px;
+}

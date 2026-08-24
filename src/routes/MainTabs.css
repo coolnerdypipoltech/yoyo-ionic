@@ -1,0 +1,51 @@
+/* Floating glass tab bar — taken out of normal flow (position: absolute)
+   so ion-router-outlet expands to fill the whole screen behind it, instead
+   of the default docked bar that shrinks the content area. */
+.main-tabs {
+  /* ion-tabs has no intrinsic height of its own — its only "layout"
+     children (ion-router-outlet, and now the floating bar) are both
+     absolutely positioned, so without this it collapses to 0px tall and
+     the bar's `bottom` offset resolves against the wrong box. Stretch it
+     to fill its parent (the outer ion-router-outlet's page), which is
+     always the real viewport-sized box. */
+  position: absolute;
+  inset: 0;
+}
+
+.main-tabs__bar {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  margin: 0 auto;
+  max-width: 420px;
+  height: 60px;
+  border-radius: 999px;
+  overflow: hidden;
+
+  --background: transparent;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.main-tabs__button {
+  --background: transparent;
+}
+
+.main-tabs__rabbit {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.main-tabs__crown {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.main-tabs__crown--active {
+  color: var(--yoyo-teal);
+}

@@ -1,0 +1,26 @@
+.horizontal-carousel {
+  gap: 12px;
+  padding: 4px 16px 8px;
+}
+
+.horizontal-carousel--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 128px;
+}
+
+.horizontal-carousel__empty {
+  color: var(--ion-color-medium);
+  font-size: 13px;
+  margin: 0;
+}
+
+.horizontal-carousel__item {
+  flex: 0 0 auto;
+}
+
+.horizontal-carousel__sentinel {
+  flex: 0 0 1px;
+  width: 1px;
+}

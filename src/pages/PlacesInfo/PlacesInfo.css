@@ -1,0 +1,111 @@
+.places-info-page {
+  --background: #000000;
+}
+
+.places-info-page__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  --background: transparent;
+}
+
+.places-info-page__header ion-toolbar {
+  --background: transparent;
+}
+
+.places-info-page__hero {
+  position: relative;
+}
+
+.places-info-page__watermark {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  height: 35%;
+  pointer-events: none;
+  background-image: url('../../assets/Logo YOYO.png');
+  background-size: 90px;
+  background-repeat: repeat;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+}
+
+.places-info-page__content {
+  padding: 20px 16px calc(32px + env(safe-area-inset-bottom));
+}
+
+.places-info-page__title {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+.places-info-page__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--yoyo-muted);
+  margin: 0 0 14px;
+  white-space: pre-line;
+}
+
+.places-info-page__section-spacing {
+  margin-top: 20px;
+}
+
+.places-info-page__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+.places-info-page__tag {
+  background: var(--ion-color-primary);
+  color: #ffffff;
+  border-radius: var(--yoyo-radius-sm);
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.places-info-page__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0 4px;
+}
+
+.places-info-page__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.places-info-page__row ion-icon {
+  font-size: 18px;
+  color: var(--yoyo-muted);
+}
+
+.places-info-page__payment-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.places-info-page__disclaimer {
+  background: var(--yoyo-card-bg);
+  border-radius: var(--yoyo-radius-md);
+  padding: 16px;
+  margin-top: 24px;
+  color: var(--yoyo-muted);
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.5;
+}

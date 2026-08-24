@@ -1,0 +1,48 @@
+.account-menu-sheet {
+  --background: #000000;
+  --color: #ffffff;
+  text-align: center;
+}
+
+.account-menu-sheet__spark {
+  display: block;
+  margin: 18px auto 8px;
+  font-size: 22px;
+  color: var(--yoyo-teal);
+}
+
+.account-menu-sheet__list {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px 0;
+  text-align: left;
+}
+
+.account-menu-sheet__item {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--yoyo-divider);
+  padding: 18px 2px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: left;
+}
+
+.account-menu-sheet__item--last {
+  border-bottom: none;
+}
+
+.account-menu-sheet__close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto;
+}

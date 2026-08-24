@@ -1,0 +1,58 @@
+.welcome-page {
+  --background: #000000;
+}
+
+.welcome-page__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 50% at 50% 35%, rgba(160, 160, 165, 0.35) 0%, rgba(20, 20, 22, 0.4) 55%, #000000 85%);
+}
+
+.welcome-page__content {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 32px 24px calc(40px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.welcome-page__logo-frame {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px;
+}
+
+.welcome-page__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: contain;
+  display: block;
+  opacity: 0.92;
+}
+
+.welcome-page__tagline {
+  color: var(--ion-color-primary-tint);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+
+.welcome-page__actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

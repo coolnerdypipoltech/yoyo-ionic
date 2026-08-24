@@ -1,0 +1,84 @@
+.rewards-info-page {
+  --background: #000000;
+}
+
+.rewards-info-page__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  --background: transparent;
+}
+
+.rewards-info-page__header ion-toolbar {
+  --background: transparent;
+}
+
+.rewards-info-page__content {
+  padding: 20px 16px calc(32px + env(safe-area-inset-bottom));
+}
+
+.rewards-info-page__title {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.rewards-info-page__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--yoyo-muted);
+  margin: 0 0 8px;
+  white-space: pre-line;
+}
+
+.rewards-info-page__section-spacing {
+  margin-top: 20px;
+}
+
+.rewards-info-page__validity-box {
+  background: var(--yoyo-teal);
+  color: #04231c;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: var(--yoyo-radius-sm);
+  padding: 10px 14px;
+  margin: 0 0 8px;
+}
+
+.rewards-info-page__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.rewards-info-page__row ion-icon {
+  font-size: 16px;
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--yoyo-card-bg);
+  color: var(--yoyo-muted);
+}
+
+.rewards-info-page__disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--yoyo-card-bg);
+  border-radius: var(--yoyo-radius-md);
+  padding: 14px 16px;
+  margin: 14px 0 22px;
+  color: var(--yoyo-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  justify-content: center;
+}

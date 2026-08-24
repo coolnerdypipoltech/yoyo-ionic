@@ -1,0 +1,49 @@
+{
+  "profile": {
+    "title": "Account Settings",
+    "idLabel": "ID",
+    "points": "{{points}} points",
+    "totalPoints": "/Total points",
+    "yourTaste": "/Your taste",
+    "yourProfile": "/Your profile",
+    "tastePlaceholder": "Not set yet",
+    "name": "User name",
+    "email": "Email",
+    "phone": "Phone number",
+    "tastes": "Your Taste",
+    "drinkTaste": "Drink taste",
+    "foodTaste": "Food Taste",
+    "musicTaste": "Music Taste",
+    "editPhoto": "Change photo",
+    "editTastes": "Edit your taste",
+    "dangerousHole": "Dangerous Hole",
+    "deleteWarning": "By deleting your account, you won't be able to recover your saved data.",
+    "deleteAccount": "Delete Account"
+  },
+  "editProfile": {
+    "title": "Edit my profile picture",
+    "choosePhoto": "Choose photo",
+    "removePhoto": "Remove photo",
+    "save": "Save",
+    "cropInstructions": "Drag to reposition, pinch or scroll to zoom",
+    "invalidFile": "Please choose a valid image file.",
+    "fileTooLarge": "Image is too large. Please choose a smaller file."
+  },
+  "editTaste": {
+    "title": "Edit Your Taste",
+    "subtitle": "If you complete all the data in your taste profile you will get X Yoyo points.",
+    "drinkTaste": "Drink taste",
+    "foodTaste": "Food Taste",
+    "musicTaste": "Music Taste",
+    "save": "Save"
+  },
+  "deleteAccount": {
+    "title": "Delete Account",
+    "instructions": "Please enter your password to confirm\nthe deletion of your account.",
+    "warning": "By deleting your account, you won't be\nable to recover your saved data.",
+    "password": "Password",
+    "confirm": "Delete Account",
+    "missingPassword": "Please enter your password.",
+    "incorrectPassword": "Incorrect password."
+  }
+}

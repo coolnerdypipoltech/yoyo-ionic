@@ -1,0 +1,55 @@
+.delete-account-page {
+  --background: #000000;
+}
+
+.delete-account-page__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(117, 21, 24, 0.5) 0%, transparent 70%);
+}
+
+.delete-account-page__close {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0 16px;
+}
+
+.delete-account-page__content {
+  position: relative;
+  z-index: 1;
+  padding: 12px 20px calc(24px + env(safe-area-inset-bottom));
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.delete-account-page__tombstone {
+  width: 110px;
+  margin: 8px auto 20px;
+  display: block;
+}
+
+.delete-account-page__instructions {
+  font-size: 15px;
+  font-weight: 600;
+  white-space: pre-line;
+  margin: 0 0 12px;
+}
+
+.delete-account-page__warning {
+  font-size: 13px;
+  color: var(--yoyo-muted);
+  white-space: pre-line;
+  margin: 0 0 24px;
+}
+
+.delete-account-page__error {
+  color: var(--ion-color-danger);
+  font-size: 13px;
+  margin: 0 0 14px;
+}

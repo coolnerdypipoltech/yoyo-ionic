@@ -1,0 +1,30 @@
+{
+  "appName": "YoYo",
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back",
+    "logOut": "Log Out",
+    "retry": "Retry",
+    "confirm": "Confirm",
+    "delete": "Delete"
+  },
+  "loading": "Loading...",
+  "whatsapp": {
+    "addPoints": "Hello YoYo \nI'd like to add points to my account. \nMy ID is {{id}}",
+    "reservePlace": "Hello YoYo \nI'd like to request a reservation at {{title}}. \nMy ID is {{id}}",
+    "redeemReward": "Hello YoYo \nI'd like to redeem the following reward: {{title}}. \nMy ID is {{id}}",
+    "contactPartner": "Hello YoYo \nI would like to find this partner: {{title}}. \nMy ID is {{id}}"
+  },
+  "gender": {
+    "women": "Women",
+    "men": "Men",
+    "unspecified": "I prefer not to say it"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "es": "Español"
+  }
+}

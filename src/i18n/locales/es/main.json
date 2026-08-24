@@ -1,0 +1,68 @@
+{
+  "tabs": {
+    "places": "Lugares",
+    "rewards": "Recompensas"
+  },
+  "places": {
+    "title": "Lugares",
+    "headingLine1": "Dominaste",
+    "headingLine2": "El Camino del Conejo.",
+    "placesSection": "Lugares",
+    "eventsSection": "Eventos",
+    "noPlaces": "No hay lugares disponibles por ahora.",
+    "noEvents": "No hay eventos disponibles por ahora."
+  },
+  "loyaltyCard": {
+    "idLabel": "ID",
+    "totalPoints": "Puntos totales",
+    "availablePoints": "Puntos disponibles",
+    "addPoints": "Añadir puntos",
+    "flipHint": "Toca cualquier lado para voltear la tarjeta"
+  },
+  "rewards": {
+    "title": "Recompensas",
+    "headingLine1": "La casa",
+    "headingLine2": "Te debe un trago.",
+    "rewardsSection": "Recompensas",
+    "partnersSection": "Partners",
+    "noRewards": "No hay recompensas disponibles por ahora.",
+    "noPartners": "No hay partners disponibles por ahora.",
+    "availableCredits": "Puntos disponibles: {{points}}"
+  },
+  "detail": {
+    "getDirections": "Cómo llegar",
+    "reserve": "Reservar",
+    "buyTicket": "Comprar boleto",
+    "viewEvent": "Ver evento",
+    "redeem": "Cambiar",
+    "cost": "{{cost}} créditos YoYo",
+    "stock": "Quedan {{count}}",
+    "description": "/Descripción",
+    "musicLineup": "/Line-up musical",
+    "location": "/Ubicación",
+    "dresscode": "/Código de vestimenta",
+    "paymentOptions": "/Métodos de pago",
+    "paymentCard": "Tarjeta",
+    "paymentCash": "Efectivo",
+    "paymentDisclaimer": "Todos los pagos deben completarse en el establecimiento.",
+    "reviewDisclaimer": "Tu solicitud pasará por revisión. Si no calificas para la recompensa, no se descontarán puntos.",
+    "conditions": "/Condiciones",
+    "validity": "/Vigencia",
+    "availableQuantity": "/Cantidad disponible:"
+  },
+  "availability": {
+    "insufficientPointsReward": "No tienes suficientes puntos para redimir esta recompensa.",
+    "insufficientPointsPartner": "No tienes suficientes puntos para acceder a este partner.",
+    "outOfStockReward": "Esta recompensa está agotada.",
+    "outOfStockPartner": "Este partner no está disponible.",
+    "notAvailableYetReward": "Esta recompensa no está disponible en este momento.",
+    "notAvailableYetPartner": "Este partner no está disponible en este momento."
+  },
+  "menu": {
+    "accountSettings": "Configuración de cuenta",
+    "faqs": "Preguntas frecuentes",
+    "privacyPolicies": "Aviso de privacidad",
+    "logOut": "Cerrar sesión",
+    "logOutConfirm": "¿Cerrar sesión?"
+  }
+}
