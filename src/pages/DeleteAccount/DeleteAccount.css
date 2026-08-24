@@ -16,7 +16,7 @@
 .delete-account-page__close {
   position: relative;
   z-index: 1;
-  margin: 12px 0 0 16px;
+  margin: calc(12px + env(safe-area-inset-top)) 0 0 16px;
 }
 
 .delete-account-page__content {
