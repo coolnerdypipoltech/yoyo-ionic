@@ -1,5 +1,7 @@
 .rewards-page {
-  --background: #000000;
+  /* Transparent so the "main" background video (rendered behind MainTabs)
+     shows through. */
+  --background: transparent;
   --padding-bottom: 100px;
 }
 
@@ -40,7 +42,7 @@
 
 .rewards-page__heading-line {
   display: block;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
   color: #ffffff;
 }
@@ -48,9 +50,8 @@
 .rewards-page__heading-display {
   display: block;
   font-family: var(--yoyo-font-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 30px;
+
+  font-size: 52px;
   line-height: 1.2;
   color: #ffffff;
 }
@@ -59,7 +60,7 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--yoyo-muted);
-  margin: 6px 16px 4px;
+  
 }
 
 .rewards-page__section {
@@ -68,4 +69,12 @@
 
 .rewards-page__section-header {
   margin: 16px 16px 8px;
+}
+
+.rewards-page__credits-container{
+  display: flex;
+  align-items: center;
+  margin: 0px 20px 0px;
+  gap: 6px;
+  flex-direction: row;
 }

@@ -14,10 +14,11 @@
 
 .carousel-item-card__image {
   width: 148px;
-  height: 178px;
+  height: 148px;
   border-radius: var(--yoyo-radius-md);
   background: var(--yoyo-card-bg);
   overflow: hidden;
+
 }
 
 .carousel-item-card__image img {
@@ -29,6 +30,7 @@
 
 .carousel-item-card__title {
   font-size: 13px;
+  margin-left: 12px;
   font-weight: 600;
   color: #ffffff;
   line-height: 1.3;

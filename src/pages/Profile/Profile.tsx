@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <IonPage>
       <div className="profile-page__glow" />
-      <IonHeader className="ion-no-border profile-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset profile-page__header">
         <IonToolbar>
           <button type="button" className="yoyo-icon-button" onClick={() => history.goBack()} aria-label="Close">
             <IonIcon icon={closeOutline} />

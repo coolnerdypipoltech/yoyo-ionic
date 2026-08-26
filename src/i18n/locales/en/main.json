@@ -27,15 +27,15 @@
     "partnersSection": "Partners",
     "noRewards": "No rewards available right now.",
     "noPartners": "No partners available right now.",
-    "availableCredits": "Available Points: {{points}}"
+    "availableCredits": "Available Points:"
   },
   "detail": {
     "getDirections": "Get Directions",
     "reserve": "Reserve",
     "buyTicket": "Buy Ticket",
     "viewEvent": "View Event",
-    "redeem": "Change",
-    "cost": "{{cost}} YoYo Credits",
+    "redeem": "Redeem",
+    "cost": "Cost",
     "stock": "{{count}} left",
     "description": "/Description",
     "musicLineup": "/Music Lineup",

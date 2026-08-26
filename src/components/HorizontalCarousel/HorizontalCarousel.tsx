@@ -55,6 +55,8 @@ export default function HorizontalCarousel<T>({
 
   return (
     <div className="horizontal-carousel yoyo-scroll-x" ref={scrollRef}>
+       <div className="horizontal-carousel__spacer"></div>
+
       {items.map((item) => (
         <div key={getKey(item)} className="horizontal-carousel__item">
           {renderItem(item)}

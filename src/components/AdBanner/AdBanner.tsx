@@ -28,7 +28,7 @@ export default function AdBanner() {
   };
 
   return (
-    <div className="ad-banner yoyo-scroll-x">
+    <div className="ad-banner yoyo-scroll-x" style={{ justifyContent: ads.length === 1 ? 'center' : 'flex-start' }}>
       {ads.map((ad) => (
         <button type="button" key={ad.id} className="ad-banner__slide" onClick={() => handleClick(ad)}>
           <img src={ad.main.absolute_url} alt="" />

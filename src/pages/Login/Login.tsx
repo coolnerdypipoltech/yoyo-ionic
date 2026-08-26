@@ -1,5 +1,4 @@
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -13,11 +12,12 @@ import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
 import PasswordField from '../../components/PasswordField/PasswordField';
-import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher';
+import BackButton from '../../components/BackButton/BackButton';
+
 import { useAuth } from '../../context/AuthContext';
 import { ApiError } from '../../api/errors';
 import './Login.css';
-
+import yoyoLogo from '../../assets/icons/YoyoLetters.png';
 interface LocationState {
   justRegistered?: boolean;
 }
@@ -64,15 +64,13 @@ export default function Login() {
   return (
     <IonPage>
       <div className="login-page__glow" />
-      <IonHeader className="ion-no-border login-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset login-page__header">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/welcome" text="" />
+            <BackButton defaultHref="/welcome" />
           </IonButtons>
-          <span className="login-page__logo">YOYO</span>
-          <IonButtons slot="end">
-            <LanguageSwitcher />
-          </IonButtons>
+          <img src={yoyoLogo} className="login-page__logo" alt="YOYO" />
+
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="login-page">

@@ -1,5 +1,6 @@
 .places-info-page {
   --background: #000000;
+
 }
 
 .places-info-page__header {
@@ -34,18 +35,18 @@
 }
 
 .places-info-page__content {
-  padding: 20px 16px calc(32px + env(safe-area-inset-bottom));
+  padding: 20px 20px calc(32px + env(safe-area-inset-bottom));
 }
 
 .places-info-page__title {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 32px;
+
   text-align: center;
   margin: 0 0 14px;
 }
 
 .places-info-page__text {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   color: var(--yoyo-muted);
   margin: 0 0 14px;
@@ -66,7 +67,7 @@
 .places-info-page__tag {
   background: var(--ion-color-primary);
   color: #ffffff;
-  border-radius: var(--yoyo-radius-sm);
+
   padding: 7px 14px;
   font-size: 13px;
   font-weight: 700;
@@ -95,17 +96,26 @@
 
 .places-info-page__payment-row {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .places-info-page__disclaimer {
   background: var(--yoyo-card-bg);
-  border-radius: var(--yoyo-radius-md);
+  
   padding: 16px;
   margin-top: 24px;
   color: var(--yoyo-muted);
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
   line-height: 1.5;
+  display: flex;
+  justify-content: center;
+}
+
+.places-info-divider{
+  min-width: 100%;
+  min-height: 1px;
+  background: var(--yoyo-muted);
+  margin-top: 24px;
 }

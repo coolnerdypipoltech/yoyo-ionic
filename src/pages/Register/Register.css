@@ -1,5 +1,6 @@
 .register-page {
-  --background: #000000;
+  /* Transparent so the "welcome" background video shows through. */
+  --background: transparent;
 }
 
 .register-page__glow {

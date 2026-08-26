@@ -13,21 +13,23 @@ export default function SocialRow({ websiteUrl, facebookUrl, instagramUrl }: Soc
 
   return (
     <div className="social-row">
-      {websiteUrl ? (
-        <a className="social-row__icon" href={websiteUrl} target="_blank" rel="noopener noreferrer">
-          <IonIcon icon={globeOutline} />
+            {instagramUrl ? (
+        <a className="social-row__icon" href={instagramUrl} target="_blank" rel="noopener noreferrer">
+          <IonIcon icon={logoInstagram} />
         </a>
       ) : null}
+
       {facebookUrl ? (
         <a className="social-row__icon" href={facebookUrl} target="_blank" rel="noopener noreferrer">
           <IonIcon icon={logoFacebook} />
         </a>
       ) : null}
-      {instagramUrl ? (
-        <a className="social-row__icon" href={instagramUrl} target="_blank" rel="noopener noreferrer">
-          <IonIcon icon={logoInstagram} />
+            {websiteUrl ? (
+        <a className="social-row__icon" href={websiteUrl} target="_blank" rel="noopener noreferrer">
+          <IonIcon icon={globeOutline} />
         </a>
       ) : null}
+
     </div>
   );
 }

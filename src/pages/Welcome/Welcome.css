@@ -1,12 +1,14 @@
 .welcome-page {
-  --background: #000000;
+  /* Transparent so the "welcome" background video (rendered behind this
+     whole router tree, see UnauthenticatedApp.tsx) shows through. */
+  --background: transparent;
 }
 
 .welcome-page__glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 70% 50% at 50% 35%, rgba(160, 160, 165, 0.35) 0%, rgba(20, 20, 22, 0.4) 55%, #000000 85%);
+  background: radial-gradient(ellipse 70% 50% at 50% 35%, rgba(160, 160, 165, 0.25) 0%, rgba(20, 20, 22, 0.35) 55%, rgba(0, 0, 0, 0.65) 85%);
 }
 
 .welcome-page__content {
@@ -45,9 +47,15 @@
   color: var(--ion-color-primary-tint);
   font-weight: 700;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 13px;
-  margin: 0 0 40px;
+  
+  font-size: 21px;
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: 'InstrumentSerif-Regular';
+}
+
+.welcome-page__rabbit{
+  height: 75px;
 }
 
 .welcome-page__actions {

@@ -1,5 +1,4 @@
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -14,6 +13,7 @@ import { eyeOffOutline, eyeOutline } from 'ionicons/icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import BackButton from '../../components/BackButton/BackButton';
 import { isValidAccessCode } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import './VerifyCode.css';
@@ -47,10 +47,10 @@ export default function VerifyCode() {
   return (
     <IonPage>
       <div className="verify-code-page__glow" />
-      <IonHeader className="ion-no-border verify-code-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset verify-code-page__header">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/welcome" text="" />
+            <BackButton defaultHref="/welcome" />
           </IonButtons>
         </IonToolbar>
       </IonHeader>

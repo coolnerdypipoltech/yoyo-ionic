@@ -1,5 +1,4 @@
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonCheckbox,
@@ -13,6 +12,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
+import BackButton from '../../components/BackButton/BackButton';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import { ApiError } from '../../api/errors';
 import * as authService from '../../api/services/auth.service';
@@ -131,10 +131,10 @@ export default function Register() {
   return (
     <IonPage>
       <div className="register-page__glow" />
-      <IonHeader className="ion-no-border register-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset register-page__header">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/verify-code" text="" />
+            <BackButton defaultHref="/verify-code" />
           </IonButtons>
         </IonToolbar>
       </IonHeader>

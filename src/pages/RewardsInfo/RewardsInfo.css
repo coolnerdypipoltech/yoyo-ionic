@@ -20,8 +20,8 @@
 }
 
 .rewards-info-page__title {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 32px;
+
   text-align: center;
   margin: 0 0 4px;
 }
@@ -43,8 +43,8 @@
   color: #04231c;
   font-weight: 700;
   font-size: 13px;
-  border-radius: var(--yoyo-radius-sm);
-  padding: 10px 14px;
+  width: fit-content;
+  padding: 5px 14px;
   margin: 0 0 8px;
 }
 

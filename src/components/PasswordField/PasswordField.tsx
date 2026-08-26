@@ -1,8 +1,8 @@
-import { IonIcon, IonInput } from '@ionic/react';
-import { eyeOffOutline, eyeOutline } from 'ionicons/icons';
+import { IonInput } from '@ionic/react';
 import { useState } from 'react';
 import './PasswordField.css';
-
+import Visibility from "../../assets/icons/Visibility.svg"
+import VisibilityOff from "../../assets/icons/Visibility_Off.svg"
 interface PasswordFieldProps {
   label: string;
   value: string;
@@ -32,7 +32,7 @@ export default function PasswordField({ label, value, onChange, placeholder, id 
         aria-label={visible ? 'Hide password' : 'Show password'}
         onClick={() => setVisible((v) => !v)}
       >
-        <IonIcon icon={visible ? eyeOffOutline : eyeOutline} />
+        <img src={visible ? VisibilityOff : Visibility} alt={visible ? 'Hide password' : 'Show password'} />
       </button>
     </div>
   );

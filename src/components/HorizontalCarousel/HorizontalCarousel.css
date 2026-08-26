@@ -1,6 +1,6 @@
 .horizontal-carousel {
-  gap: 12px;
-  padding: 4px 16px 8px;
+  gap: 22px;
+  padding: 4px 10px 8px;
 }
 
 .horizontal-carousel--centered {
@@ -23,4 +23,9 @@
 .horizontal-carousel__sentinel {
   flex: 0 0 1px;
   width: 1px;
+}
+
+.horizontal-carousel__spacer {
+
+  min-width: 0px;
 }

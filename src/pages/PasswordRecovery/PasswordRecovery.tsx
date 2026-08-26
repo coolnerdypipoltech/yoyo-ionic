@@ -1,5 +1,4 @@
 import {
-  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
@@ -12,6 +11,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
+import BackButton from '../../components/BackButton/BackButton';
 import { isValidEmail } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import './PasswordRecovery.css';
@@ -47,10 +47,10 @@ export default function PasswordRecovery() {
   return (
     <IonPage>
       <div className="password-recovery-page__glow" />
-      <IonHeader className="ion-no-border password-recovery-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset password-recovery-page__header">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/login" text="" />
+            <BackButton defaultHref="/login" />
           </IonButtons>
         </IonToolbar>
       </IonHeader>

@@ -4,6 +4,8 @@ import Places from '../pages/Places/Places';
 import Rewards from '../pages/Rewards/Rewards';
 import rabbitOn from '../assets/Rabbit_icon_ON.png';
 import rabbitOff from '../assets/Rabbit_Icon_Off.png';
+import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
+import mainVideo from '../assets/videos/main-vieo.mp4';
 import './MainTabs.css';
 
 function CrownIcon({ active }: { active: boolean }) {
@@ -32,6 +34,7 @@ export default function MainTabs() {
 
   return (
     <IonTabs className="main-tabs">
+      <BackgroundVideo src={mainVideo} />
       <IonRouterOutlet>
         <Route exact path="/main/places" component={Places} />
         <Route exact path="/main/rewards" component={Rewards} />

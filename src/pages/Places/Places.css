@@ -1,6 +1,9 @@
 .places-page {
-  --background: #000000;
+  /* Transparent so the "main" background video (rendered behind MainTabs)
+     shows through. */
+  --background: transparent;
   --padding-bottom: 100px;
+
 }
 
 .places-page__header {
@@ -14,10 +17,7 @@
 }
 
 .places-page__logo {
-  font-family: var(--yoyo-font-logo);
-  font-size: 20px;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  height: 20px;
 }
 
 .places-page__menu-button {
@@ -40,18 +40,18 @@
 
 .places-page__heading-line {
   display: block;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
   color: #ffffff;
+  margin-top: 20px;
 }
 
 .places-page__heading-display {
   display: block;
-  font-family: var(--yoyo-font-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 1.2;
+  font-family: "InstrumentSerif-Regular";
+
+  font-size: 52px;
+
   color: #ffffff;
 }
 
@@ -61,4 +61,10 @@
 
 .places-page__section-header {
   margin: 16px 16px 8px;
+}
+
+.yoyo-section-header__spark {
+  width: 10px;
+  height: auto;
+
 }

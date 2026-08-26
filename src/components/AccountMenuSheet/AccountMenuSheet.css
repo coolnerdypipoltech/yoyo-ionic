@@ -2,27 +2,38 @@
   --background: #000000;
   --color: #ffffff;
   text-align: center;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.account-round-top-borders {
+  --border-radius: 16px 16px 0 0;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
 }
 
 .account-menu-sheet__spark {
   display: block;
+  height: 20px;
   margin: 18px auto 8px;
-  font-size: 22px;
+
   color: var(--yoyo-teal);
+  margin-top: 32px;
 }
 
 .account-menu-sheet__list {
   display: flex;
   flex-direction: column;
-  padding: 8px 24px 0;
+  padding: 8px 20vw 0;
   text-align: left;
 }
 
 .account-menu-sheet__item {
   background: none;
   border: none;
-  border-bottom: 1px solid var(--yoyo-divider);
-  padding: 18px 2px;
+  border-bottom: 1px solid white;
+  padding: 24px 2px;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;

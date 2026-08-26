@@ -13,7 +13,8 @@ import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as placesService from '../../api/services/places.service';
 import type { Place } from '../../api/types';
 import './Places.css';
-
+import spark from "../../assets/icons/Spark.png";
+import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
 
 export default function Places() {
@@ -37,9 +38,9 @@ export default function Places() {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border places-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
-          <span className="places-page__logo">YOYO</span>
+          <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
           <button
             type="button"
             slot="end"
@@ -66,7 +67,7 @@ export default function Places() {
 
         <section className="places-page__section">
           <h2 className="yoyo-section-header places-page__section-header">
-            <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('places.placesSection')}
           </h2>
           <HorizontalCarousel
@@ -88,7 +89,7 @@ export default function Places() {
 
         <section className="places-page__section">
           <h2 className="yoyo-section-header places-page__section-header">
-            <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('places.eventsSection')}
           </h2>
           <HorizontalCarousel

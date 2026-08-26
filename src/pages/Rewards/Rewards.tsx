@@ -13,7 +13,7 @@ import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as rewardsService from '../../api/services/rewards.service';
 import type { ResultObject } from '../../api/types';
 import './Rewards.css';
-
+import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
 
 export default function Rewards() {
@@ -37,9 +37,9 @@ export default function Rewards() {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border rewards-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset rewards-page__header">
         <IonToolbar>
-          <span className="rewards-page__logo">YOYO</span>
+          <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
           <button
             type="button"
             slot="end"
@@ -63,9 +63,13 @@ export default function Rewards() {
         </h1>
 
         {user ? (
-          <p className="rewards-page__credits">
-            {t('rewards.availableCredits', { points: user.related.points })}
+          <div className="rewards-page__credits-container">
+            <p className="rewards-page__credits">
+            {t('rewards.availableCredits' )}
+            
           </p>
+          <p className="rewards-page__credits" style={{color: "white"}}>{`${user.related.points}`}</p>
+          </div>
         ) : null}
 
         <AdBanner />

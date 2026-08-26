@@ -3,7 +3,9 @@
 
 .ion-page {
   --yoyo-page-padding: 16px;
+  
 }
+
 
 .yoyo-safe-top {
   padding-top: env(safe-area-inset-top);
@@ -16,7 +18,7 @@
 .yoyo-scroll-x {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x proximity;
+  
   -webkit-overflow-scrolling: touch;
 }
 
@@ -55,10 +57,11 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  font-weight: 700;
+
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin: 0 0 8px;
+  font-family: 'InstrumentSans-Bold' !important;
 }
 
 .yoyo-section-header__spark {
@@ -74,6 +77,14 @@
   border: none;
   border-top: 1px solid var(--yoyo-divider);
   margin: 20px 0;
+}
+
+/* Pushes every ion-header ~50px further down than Ionic's own safe-area
+   padding already places it — added on top of (not instead of) the
+   safe-area inset, so it still clears the notch and just adds extra
+   breathing room below it. Applied to every IonHeader in the app. */
+.yoyo-header-offset {
+  padding-top: 50px;
 }
 
 /* Circular icon buttons (back/close) floated over a glow/hero image. */
@@ -98,15 +109,19 @@
   font-weight: 700;
   font-size: 16px;
   min-height: 52px;
+  font-family: 'InstrumentSans-Bold' !important;
+  text-transform: uppercase;
 }
 
 .yoyo-pill--dark {
-  --background: rgba(255, 255, 255, 0.08);
+  --background: rgb(0, 0, 0);
   --color: #ffffff;
   --border-radius: var(--yoyo-radius-pill);
   font-weight: 700;
   font-size: 16px;
   min-height: 52px;
+  font-family: 'InstrumentSans-Bold' !important;
+  text-transform: uppercase;
 }
 
 .yoyo-pill--teal {
@@ -114,4 +129,36 @@
   --color: var(--yoyo-teal-contrast);
   --border-radius: var(--yoyo-radius-pill);
   font-weight: 700;
+}
+
+
+@font-face {
+  font-family: 'InstrumentSerif-Regular';
+  src: url(../assets/fonts/InstrumentSerif-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'InstrumentSans-Medium';
+  src: url(../assets/fonts/InstrumentSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'InstrumentSans-Regular';
+  src: url(../assets/fonts/InstrumentSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'InstrumentSans-Bold';
+  src: url(../assets/fonts/InstrumentSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'InstrumentSans-SemiBoldItalic';
+  src: url(../assets/fonts/InstrumentSans-SemiBoldItalic.ttf);
+}
+
+
+.button{
+  font-family: 'InstrumentSans-Bold' !important;
+
 }

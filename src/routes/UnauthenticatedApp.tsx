@@ -6,10 +6,13 @@ import Login from '../pages/Login/Login';
 import PasswordRecovery from '../pages/PasswordRecovery/PasswordRecovery';
 import VerifyCode from '../pages/VerifyCode/VerifyCode';
 import Register from '../pages/Register/Register';
+import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
+import welcomeVideo from '../assets/videos/welcome-video.mp4';
 
 export default function UnauthenticatedApp() {
   return (
     <IonReactRouter>
+      <BackgroundVideo src={welcomeVideo} />
       <IonRouterOutlet>
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/login" component={Login} />

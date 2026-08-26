@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 import type { MouseEvent } from 'react';
 import type { User } from '../../api/types';
 import { openWhatsApp, padUserId } from '../../services/whatsapp';
-import rabbitIcon from '../../assets/Rabbit_Icon_Off.png';
-import './LoyaltyCard.css';
 
+import './LoyaltyCard.css';
+import background from '../../assets/card/Tarjeta_YOYO.png';
+import rabbit from '../../assets/card/Tarjeta_YOYO_rabbit.png';
 interface LoyaltyCardProps {
   user: User;
 }
@@ -99,7 +100,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
     <div className="loyalty-card__scene">
       <div
         className={`loyalty-card__flipper${isDragging ? ' loyalty-card__flipper--dragging' : ''}`}
-        style={{ transform: `rotateX(${tiltX}deg) rotateY(${displayRotation}deg)` }}
+        style={{ transform: `rotateX(${tiltX}deg) rotateY(${displayRotation}deg)`, backgroundImage: `url(${background})` }}
         ref={flipperRef}
         role="button"
         tabIndex={0}
@@ -115,7 +116,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
 
         <div className="loyalty-card__face loyalty-card__face--front" aria-hidden={isBackVisible}>
           <div className="loyalty-card__badge">
-            <img src={rabbitIcon} alt="" />
+            <img src={rabbit} alt="" />
           </div>
           <div className="loyalty-card__front-info">
             <span className="loyalty-card__id">{padUserId(user.id)}</span>

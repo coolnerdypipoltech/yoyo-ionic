@@ -1,16 +1,17 @@
-import { IonBackButton, IonButtons, IonButton, IonContent, IonHeader, IonIcon, IonPage, IonToolbar } from '@ionic/react';
+import { IonButtons, IonButton, IonContent, IonHeader, IonIcon, IonPage, IonToolbar } from '@ionic/react';
 import { cardOutline, cashOutline, locationOutline, shirtOutline, sparklesOutline } from 'ionicons/icons';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import MediaCarousel from '../../components/MediaCarousel/MediaCarousel';
 import SocialRow from '../../components/SocialRow/SocialRow';
+import BackButton from '../../components/BackButton/BackButton';
 import { useAuth } from '../../context/AuthContext';
 import { openWhatsApp, padUserId } from '../../services/whatsapp';
 import { dresscodeMatches, paymentOptionMatches } from '../../utils/format';
 import type { Place } from '../../api/types';
 import './PlacesInfo.css';
-
+import spark from "../../assets/icons/Spark.png";
 interface LocationState {
   place?: Place;
   isFromPlace?: boolean;
@@ -53,12 +54,14 @@ export default function PlacesInfo() {
     paymentOptionMatches(place.payment_options, 'cash') ? t('detail.paymentCash') : null,
   ].filter(Boolean);
 
+  console.log(place);
+
   return (
     <IonPage>
-      <IonHeader className="ion-no-border places-info-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/main/places" text="" />
+            <BackButton defaultHref="/main/places" />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -66,17 +69,17 @@ export default function PlacesInfo() {
       <IonContent fullscreen className="places-info-page">
         <div className="places-info-page__hero">
           <MediaCarousel items={place.gallery.length > 0 ? place.gallery : place.media} />
-          <div className="places-info-page__watermark" />
+          
         </div>
 
         <div className="places-info-page__content">
           <h1 className="places-info-page__title">{place.name}</h1>
           <SocialRow websiteUrl={place.website_url} facebookUrl={place.facebook_url} instagramUrl={place.instagram_url} />
-
-          <hr className="yoyo-divider" />
-
-          <h2 className="yoyo-section-header">
-            <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+          
+          <hr className="places-info-divider" />
+          
+          <h2 className="yoyo-section-header" style={{marginTop: "24px", fontSize: "16px"}}>
+            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('detail.description')}
           </h2>
           <p className="places-info-page__text">{place.description}</p>
@@ -89,10 +92,12 @@ export default function PlacesInfo() {
             </div>
           ) : null}
 
+          
           {place.music_lineup ? (
             <>
-              <h2 className="yoyo-section-header places-info-page__section-spacing">
-                <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+            <hr className="places-info-divider" />
+              <h2 className="yoyo-section-header places-info-page__section-spacing" style={{fontSize: "16px"}}>
+                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.musicLineup')}
               </h2>
               <p className="places-info-page__text">{place.music_lineup}</p>
@@ -109,12 +114,14 @@ export default function PlacesInfo() {
               {isFromPlace ? t('detail.reserve') : t('detail.buyTicket')}
             </IonButton>
           </div>
+          
 
           {place.address || place.gmaps ? (
             <>
+            <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header">
-                <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.location')}
               </h2>
               <p className="places-info-page__row">
@@ -124,11 +131,14 @@ export default function PlacesInfo() {
             </>
           ) : null}
 
+          
+
           {dresscodeLabel ? (
             <>
+            <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header">
-                <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.dresscode')}
               </h2>
               <p className="places-info-page__row">
@@ -137,12 +147,14 @@ export default function PlacesInfo() {
               </p>
             </>
           ) : null}
+          
 
           {paymentLabels.length > 0 ? (
             <>
+            <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header">
-                <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.paymentOptions')}
               </h2>
               <div className="places-info-page__payment-row">
@@ -162,7 +174,7 @@ export default function PlacesInfo() {
             </>
           ) : null}
 
-          <div className="places-info-page__disclaimer">{t('detail.paymentDisclaimer')}</div>
+          <div className="places-info-page__disclaimer"><p style={{width: "80%"}}>{t('detail.paymentDisclaimer')}</p></div>
         </div>
       </IonContent>
     </IonPage>
