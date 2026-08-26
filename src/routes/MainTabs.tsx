@@ -2,8 +2,10 @@ import { IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
 import { Redirect, Route, useLocation } from 'react-router-dom';
 import Places from '../pages/Places/Places';
 import Rewards from '../pages/Rewards/Rewards';
-import rabbitOn from '../assets/Rabbit_icon_ON.png';
-import rabbitOff from '../assets/Rabbit_Icon_Off.png';
+import rabbitOn from '../assets/icons/Rabbit_icon_ON.svg';
+import rabbitOff from '../assets/icons/Rabbit_Icon_Off.svg';
+import crownOn from "../assets/icons/Perks_icon_ON.svg";
+import crownOff from "../assets/icons/Perks_icon_OFF.svg";
 import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
 import mainVideo from '../assets/videos/main-vieo.mp4';
 import './MainTabs.css';
@@ -46,7 +48,7 @@ export default function MainTabs() {
           <img className="main-tabs__rabbit" src={isRewards ? rabbitOff : rabbitOn} alt="" />
         </IonTabButton>
         <IonTabButton tab="rewards" href="/main/rewards" className="main-tabs__button">
-          <CrownIcon active={isRewards} />
+          <img className="main-tabs__rabbit" src={isRewards ? crownOn : crownOff} alt="" />
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

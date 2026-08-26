@@ -45,12 +45,38 @@
   margin: 0 0 14px;
 }
 
+.places-info-reserve-button{
+  position: sticky;
+  bottom: 20px;
+  margin-top: 20px;
+}
+
 .places-info-page__text {
   font-size: 15px;
   line-height: 1.6;
   color: var(--yoyo-muted);
   margin: 0 0 14px;
   white-space: pre-line;
+}
+
+.places-info-page__more-button{
+  font-size: 10px;
+  --color: var(--yoyo-muted);
+  --background: #222222;
+  --border-radius: var(--yoyo-radius-lg);
+  
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  --margin: 0px;
+  position: relative;
+  top: -5px;
+}
+
+.places-info-location-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
 }
 
 .places-info-page__section-spacing {

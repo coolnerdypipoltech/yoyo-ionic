@@ -24,3 +24,8 @@ export function dresscodeMatches(dresscode: string | null, keyword: 'formal' | '
 export function paymentOptionMatches(paymentOptions: string | null, keyword: 'cash' | 'card'): boolean {
   return !!paymentOptions && paymentOptions.toLowerCase().includes(keyword);
 }
+
+export function truncate(text: string | null, maxLength = 30): string {
+  if (!text) return '';
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+}

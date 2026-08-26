@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.998" height="26" viewBox="0 0 25.998 26">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_300" data-name="Rectángulo 300" width="15.546" height="14.43" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icon_fecha" transform="translate(-46 0.567)">
+    <rect id="Rectángulo_172" data-name="Rectángulo 172" width="25.998" height="26" rx="12.999" transform="translate(46 -0.567)" fill="#232323"/>
+    <g id="Grupo_933" data-name="Grupo 933" transform="translate(51 5.433)">
+      <g id="Grupo_932" data-name="Grupo 932" transform="translate(0 -0.001)" clip-path="url(#clip-path)">
+        <path id="Trazado_975" data-name="Trazado 975" d="M13.748,1.335h-1.7A1.369,1.369,0,0,0,10.68,0H9.822A1.369,1.369,0,0,0,8.455,1.335h-1.3A1.369,1.369,0,0,0,5.79,0H4.931A1.369,1.369,0,0,0,3.563,1.335H1.8A1.8,1.8,0,0,0,0,3.132v9.5a1.8,1.8,0,0,0,1.8,1.8H13.748a1.8,1.8,0,0,0,1.8-1.8v-9.5a1.8,1.8,0,0,0-1.8-1.8m.537,5.392v5.906a.537.537,0,0,1-.537.537H1.8a.537.537,0,0,1-.537-.537V6.727ZM5.9,2.926a.107.107,0,0,1-.107.107H4.931a.107.107,0,0,1-.107-.107V1.368a.107.107,0,0,1,.107-.107H5.79a.107.107,0,0,1,.107.107ZM4.931,4.293H5.79A1.369,1.369,0,0,0,7.157,2.926V2.6h1.3v.331A1.369,1.369,0,0,0,9.822,4.293h.859a1.369,1.369,0,0,0,1.368-1.367V2.6h1.7a.537.537,0,0,1,.537.537V5.466H1.26V3.132A.537.537,0,0,1,1.8,2.6H3.563v.331A1.369,1.369,0,0,0,4.931,4.293m5.857-1.367a.108.108,0,0,1-.107.107H9.822a.107.107,0,0,1-.107-.107V1.368a.107.107,0,0,1,.107-.107h.859a.108.108,0,0,1,.107.107Z" transform="translate(0.001 0)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { PRIVACY_POLICY_URL } from '../../api/config';
 import { useAuth } from '../../context/AuthContext';
 import './AccountMenuSheet.css';
-import spark from "../../assets/icons/Spark.png";
+import spark from "../../assets/icons/SparkG.svg";
 interface AccountMenuSheetProps {
   isOpen: boolean;
   onClose: () => void;

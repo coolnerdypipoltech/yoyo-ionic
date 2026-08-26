@@ -1,24 +1,38 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonIcon, IonPage, IonToolbar } from '@ionic/react';
-import { cardOutline, cashOutline, locationOutline, shirtOutline, sparklesOutline } from 'ionicons/icons';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
-import MediaCarousel from '../../components/MediaCarousel/MediaCarousel';
-import SocialRow from '../../components/SocialRow/SocialRow';
-import BackButton from '../../components/BackButton/BackButton';
-import { useAuth } from '../../context/AuthContext';
-import { openWhatsApp, padUserId } from '../../services/whatsapp';
-import { dresscodeMatches, paymentOptionMatches } from '../../utils/format';
-import type { Place } from '../../api/types';
-import './PlacesInfo.css';
-import spark from "../../assets/icons/Spark.png";
+import {
+  IonButtons,
+  IonButton,
+  IonContent,
+  IonHeader,
+
+  IonPage,
+  IonToolbar,
+} from "@ionic/react";
+
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useHistory, useLocation } from "react-router-dom";
+import MediaCarousel from "../../components/MediaCarousel/MediaCarousel";
+import SocialRow from "../../components/SocialRow/SocialRow";
+import BackButton from "../../components/BackButton/BackButton";
+import { useAuth } from "../../context/AuthContext";
+import { openWhatsApp, padUserId } from "../../services/whatsapp";
+import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/format";
+import type { Place } from "../../api/types";
+import "./PlacesInfo.css";
+import spark from "../../assets/icons/Spark.svg";
+
+import locationIcon from "../../assets/icons/Icon_Location.svg";
+import dresscode from "../../assets/icons/Dresscode.svg";
+import card from "../../assets/icons/Icon_Credit.svg";
+import cash from "../../assets/icons/Cash.svg";
+
 interface LocationState {
   place?: Place;
   isFromPlace?: boolean;
 }
 
 export default function PlacesInfo() {
-  const { t } = useTranslation('main');
+  const { t } = useTranslation("main");
   const history = useHistory();
   const location = useLocation<LocationState | undefined>();
   const { user } = useAuth();
@@ -28,7 +42,7 @@ export default function PlacesInfo() {
 
   useEffect(() => {
     if (!place) {
-      history.replace('/main/places');
+      history.replace("/main/places");
     }
     // Only needs to run once — location.state is fixed for this page instance.
   }, []);
@@ -37,28 +51,37 @@ export default function PlacesInfo() {
 
   const handleReserve = () => {
     if (isFromPlace) {
-      openWhatsApp(t('common:whatsapp.reservePlace', { title: place.name, id: padUserId(user.id) }));
+      openWhatsApp(
+        t("common:whatsapp.reservePlace", {
+          title: place.name,
+          id: padUserId(user.id),
+        }),
+      );
     } else if (place.url) {
-      window.open(place.url, '_blank', 'noopener,noreferrer');
+      window.open(place.url, "_blank", "noopener,noreferrer");
     }
   };
 
-  const dresscodeLabel = dresscodeMatches(place.dresscode, 'formal')
-    ? 'Formal'
-    : dresscodeMatches(place.dresscode, 'casual')
-      ? 'Casual'
+  const dresscodeLabel = dresscodeMatches(place.dresscode, "formal")
+    ? "Formal"
+    : dresscodeMatches(place.dresscode, "casual")
+      ? "Casual"
       : place.dresscode;
 
   const paymentLabels = [
-    paymentOptionMatches(place.payment_options, 'card') ? t('detail.paymentCard') : null,
-    paymentOptionMatches(place.payment_options, 'cash') ? t('detail.paymentCash') : null,
+    paymentOptionMatches(place.payment_options, "card")
+      ? t("detail.paymentCard")
+      : null,
+    paymentOptionMatches(place.payment_options, "cash")
+      ? t("detail.paymentCash")
+      : null,
   ].filter(Boolean);
 
   console.log(place);
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
+      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header">
         <IonToolbar>
           <IonButtons slot="start">
             <BackButton defaultHref="/main/places" />
@@ -68,113 +91,153 @@ export default function PlacesInfo() {
 
       <IonContent fullscreen className="places-info-page">
         <div className="places-info-page__hero">
-          <MediaCarousel items={place.gallery.length > 0 ? place.gallery : place.media} />
-          
+          <MediaCarousel
+            items={place.gallery.length > 0 ? place.gallery : place.media}
+          />
         </div>
 
         <div className="places-info-page__content">
           <h1 className="places-info-page__title">{place.name}</h1>
-          <SocialRow websiteUrl={place.website_url} facebookUrl={place.facebook_url} instagramUrl={place.instagram_url} />
-          
+          <SocialRow
+            websiteUrl={place.website_url}
+            facebookUrl={place.facebook_url}
+            instagramUrl={place.instagram_url}
+          />
+
           <hr className="places-info-divider" />
-          
-          <h2 className="yoyo-section-header" style={{marginTop: "24px", fontSize: "16px"}}>
-            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-            {t('detail.description')}
+
+          <h2
+            className="yoyo-section-header"
+            style={{ marginTop: "24px", fontSize: "16px" }}
+          >
+            <img
+              src={spark}
+              alt="Spark"
+              className="yoyo-section-header__spark"
+            />
+            {t("detail.description")}
           </h2>
           <p className="places-info-page__text">{place.description}</p>
 
           {place.music_genre_list.length > 0 ? (
             <div className="places-info-page__tags">
               {place.music_genre_list.map((genre) => (
-                <span key={genre} className="places-info-page__tag">{genre}</span>
+                <span key={genre} className="places-info-page__tag">
+                  {genre}
+                </span>
               ))}
             </div>
           ) : null}
 
-          
           {place.music_lineup ? (
             <>
-            <hr className="places-info-divider" />
-              <h2 className="yoyo-section-header places-info-page__section-spacing" style={{fontSize: "16px"}}>
-                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-                {t('detail.musicLineup')}
+              <hr className="places-info-divider" />
+              <h2
+                className="yoyo-section-header places-info-page__section-spacing"
+                style={{ fontSize: "16px" }}
+              >
+                <img
+                  src={spark}
+                  alt="Spark"
+                  className="yoyo-section-header__spark"
+                />
+                {t("detail.musicLineup")}
               </h2>
               <p className="places-info-page__text">{place.music_lineup}</p>
             </>
           ) : null}
 
-          <div className="places-info-page__actions">
-            {place.gmaps ? (
-              <IonButton expand="block" className="yoyo-pill--dark" href={place.gmaps} target="_blank">
-                {t('detail.getDirections')}
-              </IonButton>
-            ) : null}
-            <IonButton expand="block" className="yoyo-pill--white" onClick={handleReserve}>
-              {isFromPlace ? t('detail.reserve') : t('detail.buyTicket')}
-            </IonButton>
-          </div>
-          
-
           {place.address || place.gmaps ? (
             <>
-            <hr className="places-info-divider" />
+              <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
-                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-                {t('detail.location')}
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+                <img
+                  src={spark}
+                  alt="Spark"
+                  className="yoyo-section-header__spark"
+                />
+                {t("detail.location")}
               </h2>
-              <p className="places-info-page__row">
-                <IonIcon icon={locationOutline} />
-                {place.address}
+              <div className="places-info-location-row">
+                <p className="places-info-page__row">
+                <img src={locationIcon} alt="Location" />
+                {truncate(place.address)}
               </p>
+              <div className="places-info-page__actions">
+                {place.gmaps ? (
+                  <IonButton
+                    expand="block"
+                    className="places-info-page__more-button"
+                    href={place.gmaps}
+                    target="_blank"
+                  >
+                    {t("detail.getDirections")}
+                  </IonButton>
+                ) : null}
+              </div>
+              </div>
             </>
           ) : null}
 
-          
-
           {dresscodeLabel ? (
             <>
-            <hr className="places-info-divider" />
+              <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
-                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-                {t('detail.dresscode')}
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+                <img
+                  src={spark}
+                  alt="Spark"
+                  className="yoyo-section-header__spark"
+                />
+                {t("detail.dresscode")}
               </h2>
               <p className="places-info-page__row">
-                <IonIcon icon={shirtOutline} />
+                <img src={dresscode} alt="Dresscode" />
                 {dresscodeLabel}
               </p>
             </>
           ) : null}
-          
 
           {paymentLabels.length > 0 ? (
             <>
-            <hr className="places-info-divider" />
+              <hr className="places-info-divider" />
               <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
-                <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-                {t('detail.paymentOptions')}
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+                <img
+                  src={spark}
+                  alt="Spark"
+                  className="yoyo-section-header__spark"
+                />
+                {t("detail.paymentOptions")}
               </h2>
               <div className="places-info-page__payment-row">
-                {paymentOptionMatches(place.payment_options, 'card') ? (
+                {paymentOptionMatches(place.payment_options, "card") ? (
                   <span className="places-info-page__row">
-                    <IonIcon icon={cardOutline} />
-                    {t('detail.paymentCard')}
+                    <img src={card} alt="Card" />
+                    {t("detail.paymentCard")}
                   </span>
                 ) : null}
-                {paymentOptionMatches(place.payment_options, 'cash') ? (
+                {paymentOptionMatches(place.payment_options, "cash") ? (
                   <span className="places-info-page__row">
-                    <IonIcon icon={cashOutline} />
-                    {t('detail.paymentCash')}
+                    <img src={cash} alt="Cash" />
+                    {t("detail.paymentCash")}
                   </span>
                 ) : null}
               </div>
             </>
           ) : null}
 
-          <div className="places-info-page__disclaimer"><p style={{width: "80%"}}>{t('detail.paymentDisclaimer')}</p></div>
+          <div className="places-info-page__disclaimer">
+            <p style={{ width: "80%" }}>{t("detail.paymentDisclaimer")}</p>
+          </div>
+          <IonButton
+            expand="block"
+            className="yoyo-pill--white places-info-reserve-button"
+            onClick={handleReserve}
+          >
+            {isFromPlace ? t("detail.reserve") : t("detail.buyTicket")}
+          </IonButton>
         </div>
       </IonContent>
     </IonPage>

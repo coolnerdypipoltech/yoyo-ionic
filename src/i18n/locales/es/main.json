@@ -30,7 +30,7 @@
     "availableCredits": "Puntos disponibles: {{points}}"
   },
   "detail": {
-    "getDirections": "Cómo llegar",
+    "getDirections": "MÁS",
     "reserve": "Reservar",
     "buyTicket": "Comprar boleto",
     "viewEvent": "Ver evento",

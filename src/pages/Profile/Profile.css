@@ -17,6 +17,7 @@
   position: relative;
   z-index: 1;
   --background: transparent;
+  
 }
 
 .profile-page__header ion-toolbar {
@@ -28,8 +29,9 @@
   z-index: 1;
   text-align: center;
   font-size: 22px;
-  font-weight: 700;
+
   margin: 4px 0 20px;
+  padding-top: 150px;
 }
 
 .profile-page__avatar-block {
@@ -65,8 +67,8 @@
 
 .profile-page__avatar-edit {
   position: absolute;
-  right: -2px;
-  bottom: -2px;
+  margin-top: 70px;
+  margin-left: 72px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -76,6 +78,7 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  z-index: 10;
 }
 
 .profile-page__id {
@@ -121,7 +124,9 @@
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--yoyo-divider);
+  margin-left: 20px;
+  border-bottom: 1px solid white;
+  margin-right: 20px;
 }
 
 .profile-page__taste-row--last {
@@ -163,12 +168,17 @@
   position: relative;
   z-index: 1;
   margin: 0 16px;
-  background: var(--yoyo-card-bg-2);
-  border-radius: var(--yoyo-radius-lg);
+  background: transparent;
+  border-radius: 22px;
+  border: #AEAEAE 1px solid;
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
 }
 
 .profile-page__info-row {
@@ -232,9 +242,9 @@
   display: block;
   width: calc(100% - 32px);
   margin: 0 16px calc(32px + env(safe-area-inset-bottom));
-  background: var(--yoyo-teal);
+  background: #222222;
   border: none;
-  color: #04231c;
+  color: #B4B4B4;
   border-radius: var(--yoyo-radius-pill);
   padding: 16px;
   font-size: 14px;

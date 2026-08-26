@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
-import { sparklesOutline } from 'ionicons/icons';
+
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,8 @@ import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as placesService from '../../api/services/places.service';
 import type { Place } from '../../api/types';
 import './Places.css';
-import spark from "../../assets/icons/Spark.png";
+import spark from "../../assets/icons/Spark.svg";
+import spark2 from "../../assets/icons/SparkG.svg";
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
 
@@ -48,7 +49,7 @@ export default function Places() {
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
           >
-            <IonIcon icon={sparklesOutline} />
+            <img src={spark2} alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>

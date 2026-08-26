@@ -1,4 +1,5 @@
-import { IonContent, IonHeader, IonIcon, IonPage, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonIcon, IonPage, IonToolbar, IonButtons } from '@ionic/react';
+import BackButton from '../../components/BackButton/BackButton';
 import { closeOutline, createOutline, informationCircleOutline, personOutline } from 'ionicons/icons';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -6,6 +7,11 @@ import { useAuth } from '../../context/AuthContext';
 import { padUserId } from '../../services/whatsapp';
 import tombstoneIcon from '../../assets/ACCS_Icon_DeleteAcount.png';
 import './Profile.css';
+
+import editPhoto from "../../assets/icons/Editar_foto.svg";
+import editTaste from "../../assets/icons/Editar.svg";
+import spark from "../../assets/icons/Spark.svg";
+import tooltip from "../../assets/icons/Tooltip.svg";
 
 export default function Profile() {
   const { t } = useTranslation('profile');
@@ -18,11 +24,11 @@ export default function Profile() {
   return (
     <IonPage>
       <div className="profile-page__glow" />
-      <IonHeader className="ion-no-border yoyo-header-offset profile-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
-          <button type="button" className="yoyo-icon-button" onClick={() => history.goBack()} aria-label="Close">
-            <IonIcon icon={closeOutline} />
-          </button>
+          <IonButtons  slot="start">
+            <BackButton defaultHref="/main/places" closeHref={true} />
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
 
@@ -32,26 +38,27 @@ export default function Profile() {
         <div className="profile-page__avatar-block">
           <button type="button" className="profile-page__avatar" onClick={() => history.push('/profile/edit-photo')}>
             {avatarUrl ? <img src={avatarUrl} alt="" /> : <IonIcon icon={personOutline} />}
-            <span className="profile-page__avatar-edit">
-              <IonIcon icon={createOutline} />
-            </span>
+
           </button>
-          <span className="profile-page__id">
+                      <span className="profile-page__avatar-edit">
+              <img src={editPhoto} alt="edit photo" />
+            </span>
+          <span className="profile-page__id ">
             {t('profile.idLabel')}: {padUserId(user.id)}
           </span>
         </div>
 
         <h2 className="yoyo-section-header profile-page__section-header">
-          <span className="yoyo-section-header__spark">✦</span>
+          <img src={spark} alt="spark" />
           {t('profile.totalPoints')}
-          <IonIcon icon={informationCircleOutline} className="profile-page__info-icon" />
+          <img src={tooltip} alt="tooltip" />
         </h2>
         <div className="profile-page__points-box">{t('profile.points', { points: user.related.points })}</div>
 
         <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
-          <span className="yoyo-section-header__spark">✦</span>
+          <img src={spark} alt="spark" />
           {t('profile.yourTaste')}
-          <IonIcon icon={informationCircleOutline} className="profile-page__info-icon" />
+          <img src={tooltip} alt="tooltip" />
         </h2>
 
         <div className="profile-page__taste-row">
@@ -60,7 +67,7 @@ export default function Profile() {
             <span className="profile-page__taste-value">{user.related.taste_drink || t('profile.tastePlaceholder')}</span>
           </div>
           <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <IonIcon icon={createOutline} />
+            <img src={editTaste} alt="edit taste" />
           </button>
         </div>
         <div className="profile-page__taste-row">
@@ -69,23 +76,23 @@ export default function Profile() {
             <span className="profile-page__taste-value">{user.related.taste_music || t('profile.tastePlaceholder')}</span>
           </div>
           <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <IonIcon icon={createOutline} />
+            <img src={editTaste} alt="edit taste" />
           </button>
         </div>
-        <div className="profile-page__taste-row profile-page__taste-row--last">
+        <div className="profile-page__taste-row">
           <div>
             <span className="profile-page__taste-label">{t('profile.foodTaste')}</span>
             <span className="profile-page__taste-value">{user.related.taste_food || t('profile.tastePlaceholder')}</span>
           </div>
           <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <IonIcon icon={createOutline} />
+            <img src={editTaste} alt="edit taste" />
           </button>
         </div>
 
         <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
-          <span className="yoyo-section-header__spark">✦</span>
+          <img src={spark} alt="spark" />
           {t('profile.yourProfile')}
-          <IonIcon icon={informationCircleOutline} className="profile-page__info-icon" />
+          <img src={tooltip} alt="tooltip" />
         </h2>
 
         <div className="profile-page__info-card">

@@ -7,9 +7,9 @@
 }
 
 .account-round-top-borders {
-  --border-radius: 16px 16px 0 0;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  --border-radius: 32px 32px 0 0;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
   overflow: hidden;
 }
 

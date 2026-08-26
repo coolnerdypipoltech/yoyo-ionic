@@ -1,5 +1,12 @@
 .yoyo-back-button {
-  --icon-font-size: 35px;
+  --icon-font-size: 15px;
   margin-left: 20px;
   margin-right: 10px;
+  background: #ffffff31;
+  backdrop-filter: blur(20px);
+  border-radius: var(--yoyo-radius-pill);
+  -webkit-border-radius: var(--yoyo-radius-pill);
+  -moz-border-radius: var(--yoyo-radius-pill);
+  -ms-border-radius: var(--yoyo-radius-pill);
+  -o-border-radius: var(--yoyo-radius-pill);
 }

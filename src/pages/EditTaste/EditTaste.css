@@ -1,5 +1,7 @@
 .edit-taste-page {
   --background: #000000;
+  
+  
 }
 
 .edit-taste-page__glow {
@@ -15,8 +17,12 @@
 
 .edit-taste-page__close {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   margin: calc(12px + env(safe-area-inset-top)) 0 0 16px;
+  top: 40px;
+  margin-left: 25px;
+  height: 48px;
+  width: 48px;
 }
 
 .edit-taste-page__content {
@@ -25,16 +31,27 @@
   padding: 20px 20px 0;
   max-width: 480px;
   margin: 0 auto;
+    display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+  justify-content: flex-end;
+  padding-bottom: 10vh;
 }
 
 .edit-taste-page__title {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 30px;
+
   margin: 0 0 10px;
 }
 
+.edit-taste-page__form-container{
+  margin: 20px 10px;
+
+}
+
 .edit-taste-page__subtitle {
-  font-size: 13px;
+  font-size: 15px;
+  font-family: var(--yoyo-font-text);
   color: var(--yoyo-muted);
   line-height: 1.5;
   margin: 0;

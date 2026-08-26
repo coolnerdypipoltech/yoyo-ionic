@@ -26,6 +26,12 @@
   margin: 0 0 4px;
 }
 
+.rewards-info-page__redeem-button{
+  position: sticky;
+  bottom: 20px;
+  margin-top: 20px;
+}
+
 .rewards-info-page__text {
   font-size: 14px;
   line-height: 1.6;
@@ -71,9 +77,10 @@
 .rewards-info-page__disclaimer {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 10px;
   background: var(--yoyo-card-bg);
-  border-radius: var(--yoyo-radius-md);
+
   padding: 14px 16px;
   margin: 14px 0 22px;
   color: var(--yoyo-muted);

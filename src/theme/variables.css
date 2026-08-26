@@ -56,7 +56,7 @@
   --yoyo-font-display: 'InstrumentSerif-Regular', Georgia, serif;
   --yoyo-font-logo: 'InstrumentSerif-Regular', 'Arial Narrow', sans-serif;
   --yoyo-font-sans: 'InstrumentSerif-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
+  --yoyo-font-text: 'InstrumentSans-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   /* Ionic components read --ion-font-family internally (not the plain
      inherited `font-family`) — both must be set for the brand font to
      actually reach ion-* elements instead of falling back to Ionic's

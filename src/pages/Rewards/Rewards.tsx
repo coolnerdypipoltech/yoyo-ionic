@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
-import { sparklesOutline } from 'ionicons/icons';
+
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -14,6 +14,9 @@ import * as rewardsService from '../../api/services/rewards.service';
 import type { ResultObject } from '../../api/types';
 import './Rewards.css';
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
+
+
+import spark from "../../assets/icons/SparkG.svg";
 const PAGE_SIZE = 10;
 
 export default function Rewards() {
@@ -47,7 +50,7 @@ export default function Rewards() {
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
           >
-            <IonIcon icon={sparklesOutline} />
+            <img src={spark} alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>
@@ -76,7 +79,7 @@ export default function Rewards() {
 
         <section className="rewards-page__section">
           <h2 className="yoyo-section-header rewards-page__section-header">
-            <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('rewards.rewardsSection')}
           </h2>
           <HorizontalCarousel
@@ -98,7 +101,7 @@ export default function Rewards() {
 
         <section className="rewards-page__section">
           <h2 className="yoyo-section-header rewards-page__section-header">
-            <IonIcon icon={sparklesOutline} className="yoyo-section-header__spark" />
+            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('rewards.partnersSection')}
           </h2>
           <HorizontalCarousel

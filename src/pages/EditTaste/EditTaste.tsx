@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
 import { useAuth } from '../../context/AuthContext';
 import './EditTaste.css';
+import closeIcon from "../../assets/icons/Icon_cerrar.svg";
 
 export default function EditTaste() {
   const { t } = useTranslation('profile');
@@ -41,18 +42,20 @@ export default function EditTaste() {
       <div className="edit-taste-page__glow" />
       <IonContent fullscreen className="edit-taste-page">
         <button type="button" className="yoyo-icon-button edit-taste-page__close" onClick={() => history.goBack()}>
-          <IonIcon icon={closeOutline} />
+          <img src={closeIcon} alt="Close" />
         </button>
 
         <div className="edit-taste-page__content">
           <h1 className="edit-taste-page__title">{t('editTaste.title')}</h1>
           <p className="edit-taste-page__subtitle">{t('editTaste.subtitle')}</p>
 
-          <hr className="yoyo-divider" />
-
-          <FormField showLabel label={t('editTaste.drinkTaste')} value={drink} onChange={setDrink} />
+          <hr className="places-info-divider" />
+          
+          <div className="edit-taste-page__form-container">
+            <FormField showLabel label={t('editTaste.drinkTaste')} value={drink} onChange={setDrink} />
           <FormField showLabel label={t('editTaste.musicTaste')} value={music} onChange={setMusic} />
           <FormField showLabel label={t('editTaste.foodTaste')} value={food} onChange={setFood} />
+          </div>
 
           <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSaving} onClick={handleSave}>
             {isSaving ? <IonSpinner name="dots" /> : t('editTaste.save')}

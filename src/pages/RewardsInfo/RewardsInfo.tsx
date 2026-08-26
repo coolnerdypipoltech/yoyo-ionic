@@ -1,5 +1,5 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonIcon, IonPage, IonToolbar } from '@ionic/react';
-import { pricetagOutline, sparklesOutline, wineOutline } from 'ionicons/icons';
+import { IonButtons, IonButton, IonContent, IonHeader, IonPage, IonToolbar } from '@ionic/react';
+
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -12,7 +12,11 @@ import { formatDateRange } from '../../utils/format';
 import { getUnavailabilityReason } from '../../utils/availability';
 import type { ResultObject } from '../../api/types';
 import './RewardsInfo.css';
-import spark from "../../assets/icons/Spark.png";
+import spark from "../../assets/icons/SparkG.svg";
+
+import Points from "../../assets/icons/Points.svg";
+import Quantity from "../../assets/icons/Quantity.svg";
+import Danger from "../../assets/icons/Danger.svg";
 interface LocationState {
   item?: ResultObject;
   isFromRewards?: boolean;
@@ -99,7 +103,7 @@ export default function RewardsInfo() {
             {t('detail.cost')}
           </h2>
           <p className="rewards-info-page__row">
-            <IonIcon icon={pricetagOutline} />
+            <img src={Points} alt="Points" />
             {`${item.cost} points`}
           </p>
 
@@ -108,15 +112,15 @@ export default function RewardsInfo() {
             {t('detail.availableQuantity')}
           </h2>
           <p className="rewards-info-page__row">
-            <IonIcon icon={wineOutline} />
+            <img src={Quantity} alt="Quantity" />
             {item.stock}
           </p>
 
           <AvailabilityNotice reason={reason} isFromRewards={isFromRewards} />
 
-          {reason ? <div className="rewards-info-page__disclaimer">{t('detail.reviewDisclaimer')}</div> : null}
+          {reason ? <div className="rewards-info-page__disclaimer"><img src={Danger} alt="Danger" />{t('detail.reviewDisclaimer')}</div> : null}
 
-          <IonButton expand="block" className="yoyo-pill--white" disabled={reason !== null} onClick={handleRedeem}>
+          <IonButton expand="block" className="yoyo-pill--white rewards-info-page__redeem-button" disabled={reason !== null} onClick={handleRedeem}>
             {t('detail.redeem')}
           </IonButton>
         </div>
