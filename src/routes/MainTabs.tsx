@@ -8,35 +8,19 @@ import crownOn from "../assets/icons/Perks_icon_ON.svg";
 import crownOff from "../assets/icons/Perks_icon_OFF.svg";
 import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
 import mainVideo from '../assets/videos/main-vieo.mp4';
+import mainVideoDesktop from '../assets/videos/desktop/main-video.mp4';
 import './MainTabs.css';
 
-function CrownIcon({ active }: { active: boolean }) {
-  return (
-    <svg
-      className={`main-tabs__crown${active ? ' main-tabs__crown--active' : ''}`}
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <path
-        d="M4 18h16M4.5 18 3 8l5 3.5L12 6l4 5.5 5-3.5-1.5 10z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+import { useViewport } from '../context/ViewportContext';
 
 export default function MainTabs() {
   const location = useLocation();
   const isRewards = location.pathname.startsWith('/main/rewards');
+  const { isMobile } = useViewport();
 
   return (
     <IonTabs className="main-tabs">
-      <BackgroundVideo src={mainVideo} />
+      <BackgroundVideo src={isMobile ? mainVideo : mainVideoDesktop} />
       <IonRouterOutlet>
         <Route exact path="/main/places" component={Places} />
         <Route exact path="/main/rewards" component={Rewards} />

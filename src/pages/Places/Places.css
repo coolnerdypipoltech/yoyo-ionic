@@ -40,7 +40,7 @@
 
 .places-page__heading-line {
   display: block;
-  font-size: 30px;
+  font-size: var(--yoyo-header-size);
   font-weight: 500;
   color: #ffffff;
   margin-top: 20px;
@@ -50,7 +50,7 @@
   display: block;
   font-family: "InstrumentSerif-Regular";
 
-  font-size: 52px;
+  font-size: calc(var(--yoyo-super-header-size) * 1.4);
 
   color: #ffffff;
 }

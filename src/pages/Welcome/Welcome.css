@@ -17,10 +17,16 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
   padding: 32px 24px calc(40px + env(safe-area-inset-bottom));
   box-sizing: border-box;
+}
+
+.welcome-page__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .welcome-page__logo-frame {
@@ -45,17 +51,17 @@
 
 .welcome-page__tagline {
   color: var(--ion-color-primary-tint);
-  font-weight: 700;
+
   letter-spacing: 0.06em;
   
-  font-size: 21px;
-  margin: 0 0 10px;
+  font-size: var(--yoyo-title-size);
+  margin: 0 0 0px;
   text-align: center;
   font-family: 'InstrumentSerif-Regular';
 }
 
 .welcome-page__rabbit{
-  height: 75px;
+  height: 65px;
 }
 
 .welcome-page__actions {
@@ -63,4 +69,5 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+
 }

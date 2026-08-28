@@ -11,7 +11,13 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-import '@ionic/react/css/palettes/dark.system.css';
+// Deliberately not importing '@ionic/react/css/palettes/dark.system.css' —
+// this app is always dark regardless of the device's system setting (see
+// theme/variables.css), and that palette sets --ion-background-color to
+// #121212 whenever the system happens to be in dark mode. Most components
+// never notice because they're themed through page-local --background
+// vars, but a few (e.g. ion-accordion's host) read --ion-background-color
+// directly, so it was leaking through as a gray background there.
 
 import './theme/variables.css';
 import './theme/global.css';

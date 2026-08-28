@@ -1,6 +1,6 @@
 .register-page {
   /* Transparent so the "welcome" background video shows through. */
-  --background: transparent;
+  --background: black;
 }
 
 .register-page__glow {
@@ -31,77 +31,79 @@
   max-width: 480px;
   margin: 0 auto;
   padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  margin-top: 10vh;
 }
 
 .register-page__title {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 8px;
-}
+  font-size: var(--yoyo-header-size);
 
-.register-page__disclaimer {
-  color: var(--yoyo-muted);
-  font-size: 12px;
-  line-height: 1.5;
   margin: 0 0 20px;
 }
 
-.register-page__field-group {
-  margin-bottom: 14px;
+.register-page__hint {
+  color: var(--yoyo-muted);
+  font-size: var(--yoyo-body-size);
+  line-height: 1.5;
+  margin: -6px 0 32px;
 }
 
-.register-page__label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.register-page__gender-options {
+.register-page__select {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.register-page__gender-option {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: var(--yoyo-card-bg);
-  border-radius: 999px;
-  padding: 9px 16px;
-  font-size: 13px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: black;
+  border: none;
+  border-radius: 32px;
+  padding: 15px 16px;
+  margin-bottom: 14px;
+  font-size: var(--yoyo-body-size);
   color: #ffffff;
+  border: 1px solid var(--yoyo-divider);
+  font-family: var(--yoyo-font-text);
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
 }
 
-.register-page__gender-option--active {
-  background: var(--ion-color-primary);
-  border-color: var(--ion-color-primary);
-  color: #ffffff;
-}
-
-.register-page__phone-row {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 10px;
+.register-page__select-chevron {
+  color: var(--yoyo-muted);
+  font-size: 18px;
+  flex-shrink: 0;
 }
 
 .register-page__terms {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
   line-height: 1.5;
-  margin: 6px 0 18px;
+  margin: 6px 0 32px;
+  
 }
 
 .register-page__terms a {
   color: var(--yoyo-teal);
 }
 
+.register-page__checkbox {
+  flex-shrink: 0;
+  margin-top: 1px;
+  --size: 20px;
+  --border-radius: 20%;
+  --border-width: 1px;
+  --checkbox-background: rgb(0, 0, 0) !important;
+  --border-color: var(--ion-color-primary);
+  --border-color-checked: var(--ion-color-primary);
+  --background-checked: var(--ion-color-primary);
+  --checkmark-color: #ffffff;
+}
+
 .register-page__error {
   color: var(--ion-color-danger);
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   margin: 0 0 14px;
 }
 
@@ -112,7 +114,26 @@
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-  margin-top: 14px;
+  font-size: var(--yoyo-body-size);
+
+  margin-top: 16px;
+}
+
+.register-page__login-link a {
+  color: white;
+
+}
+
+/* Ionic's action sheet otherwise re-themes itself per iOS/Android light
+   or dark system setting — pin it to the app's own dark style with red
+   option text regardless of the device's theme. */
+.register-page__gender-sheet {
+  --background: #111111;
+  --color: #ffffff;
+  --button-color: var(--ion-color-primary);
+  --backdrop-opacity: 0.6;
+}
+
+.register-page__gender-sheet .action-sheet-title {
+  color: #ffffff;
 }

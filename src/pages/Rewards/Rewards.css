@@ -7,13 +7,15 @@
 
 .rewards-page__header {
   --background: transparent;
+  
 }
 
 .rewards-page__header ion-toolbar {
   --background: transparent;
   --padding-start: 16px;
-  --padding-end: 16px;
+  --padding-end: clamp(16px, 5vw, 32px);
 }
+
 
 .rewards-page__logo {
   font-family: var(--yoyo-font-logo);
@@ -35,6 +37,8 @@
   justify-content: center;
 }
 
+
+
 .rewards-page__heading {
   padding: 4px 16px 4px;
   margin: 0;
@@ -42,8 +46,8 @@
 
 .rewards-page__heading-line {
   display: block;
-  font-size: 30px;
-  font-weight: 500;
+  font-size: var(--yoyo-header-size);
+
   color: #ffffff;
 }
 
@@ -51,7 +55,7 @@
   display: block;
   font-family: var(--yoyo-font-display);
 
-  font-size: 52px;
+  font-size: calc(var(--yoyo-super-header-size) * 1.4);
   line-height: 1.2;
   color: #ffffff;
 }
@@ -60,6 +64,7 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--yoyo-muted);
+  margin: 0px;
   
 }
 

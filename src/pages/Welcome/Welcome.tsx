@@ -16,7 +16,7 @@ export default function Welcome() {
 
         <div className="welcome-page__content">
           <div></div>
-          <div>
+          <div className="welcome-page__logo-container">
             <div className="welcome-page__logo-frame">
             <img className="welcome-page__logo" src={logoPattern} alt="YOYO" />
           </div>

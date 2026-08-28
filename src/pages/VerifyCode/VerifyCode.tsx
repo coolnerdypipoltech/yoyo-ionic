@@ -3,19 +3,19 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
-  IonInput,
   IonPage,
   IonSpinner,
   IonToolbar,
 } from '@ionic/react';
-import { eyeOffOutline, eyeOutline } from 'ionicons/icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import BackButton from '../../components/BackButton/BackButton';
+import PasswordField from '../../components/PasswordField/PasswordField';
 import { isValidAccessCode } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/gradient/Gradient_Verification_code.png";
 import './VerifyCode.css';
 
 export default function VerifyCode() {
@@ -23,7 +23,6 @@ export default function VerifyCode() {
   const history = useHistory();
 
   const [code, setCode] = useState('');
-  const [visible, setVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -33,7 +32,10 @@ export default function VerifyCode() {
     setIsSubmitting(true);
     try {
       await authService.verifyAccessCode(code);
-      history.push('/register', { accessCode: code });
+      // Replace instead of push — Register shouldn't be a page you can
+      // land back on via the hardware/browser back button once you've
+      // moved past it (see Register's own push->replace to Login).
+      history.replace('/register', { accessCode: code });
     } catch {
       // The backend distinguishes "not found" (404) from "already redeemed"
       // (400), but the old client never surfaced that distinction to the
@@ -47,6 +49,7 @@ export default function VerifyCode() {
   return (
     <IonPage>
       <div className="verify-code-page__glow" />
+      <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset verify-code-page__header">
         <IonToolbar>
           <IonButtons slot="start">
@@ -59,25 +62,14 @@ export default function VerifyCode() {
           <h1 className="verify-code-page__title">{t('verifyCode.title')}</h1>
           <p className="verify-code-page__instructions">{t('verifyCode.instructions')}</p>
 
-          <div className="verify-code-page__input-wrap">
-            <IonInput
-              className="verify-code-page__input"
-              fill="outline"
-              type={visible ? 'text' : 'password'}
-              value={code}
-              placeholder={t('verifyCode.placeholder')}
-              maxlength={6}
-              onIonInput={(e) => setCode((e.detail.value ?? '').replace(/[^a-zA-Z0-9]/g, '').slice(0, 6))}
-            />
-            <button
-              type="button"
-              className="verify-code-page__toggle"
-              aria-label={visible ? 'Hide code' : 'Show code'}
-              onClick={() => setVisible((v) => !v)}
-            >
-              <IonIcon icon={visible ? eyeOffOutline : eyeOutline} />
-            </button>
-          </div>
+          <PasswordField
+            label={t('verifyCode.placeholder')}
+            className="verify-code-page__input-wrap"
+            inputClassName="verify-code-page__input"
+            value={code}
+            onChange={(v) => setCode(v.replace(/[^a-zA-Z0-9]/g, '').slice(0, 6))}
+            maxLength={6}
+          />
 
           {error ? <p className="verify-code-page__error">/{error}</p> : null}
 

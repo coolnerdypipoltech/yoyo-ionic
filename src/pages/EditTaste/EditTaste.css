@@ -39,7 +39,7 @@
 }
 
 .edit-taste-page__title {
-  font-size: 30px;
+  font-size: var(--yoyo-header-size);
 
   margin: 0 0 10px;
 }
@@ -50,7 +50,7 @@
 }
 
 .edit-taste-page__subtitle {
-  font-size: 15px;
+  font-size: var(--yoyo-body-size);
   font-family: var(--yoyo-font-text);
   color: var(--yoyo-muted);
   line-height: 1.5;

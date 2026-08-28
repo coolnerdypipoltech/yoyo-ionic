@@ -14,6 +14,11 @@ interface FormFieldProps {
    * the input, only placeholder text — set true to render a visible label
    * instead (used by editing screens like Edit Your Taste). */
   showLabel?: boolean;
+  /** Shows the placeholder with a trailing red asterisk instead of plain
+   * text. A native `placeholder` string can't mix colors, so this hides
+   * the real placeholder and overlays a fake one built from JSX — same
+   * position, hidden as soon as there's a value, same as a real one. */
+  required?: boolean;
 }
 
 export default function FormField({
@@ -25,7 +30,9 @@ export default function FormField({
   error,
   id,
   showLabel = false,
+  required = false,
 }: FormFieldProps) {
+  const displayText = placeholder ?? label;
   return (
     <div className="form-field">
       {showLabel ? (
@@ -33,16 +40,24 @@ export default function FormField({
           {label}
         </label>
       ) : null}
-      <IonInput
-        className={`form-field__input${error ? ' form-field__input--invalid' : ''}`}
-        aria-label={label}
-        type={type}
-        value={value}
-        placeholder={placeholder ?? label}
-        id={id}
-        fill="outline"
-        onIonInput={(e) => onChange(e.detail.value ?? '')}
-      />
+      <div className="form-field__input-wrap">
+        <IonInput
+          className={`form-field__input${error ? ' form-field__input--invalid' : ''}`}
+          aria-label={label}
+          type={type}
+          value={value}
+          placeholder={required ? '' : displayText}
+          id={id}
+          fill="outline"
+          onIonInput={(e) => onChange(e.detail.value ?? '')}
+        />
+        {required && !value ? (
+          <span className="form-field__placeholder" aria-hidden="true">
+            {displayText}
+            <span className="form-field__required-asterisk">*</span>
+          </span>
+        ) : null}
+      </div>
       {error ? <p className="form-field__error">{error}</p> : null}
     </div>
   );

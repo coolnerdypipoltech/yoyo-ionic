@@ -1,13 +1,17 @@
 {
   "name": "yoyo-ionic",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "homepage": "https://coolnerdypipoltech.github.io/yoyo-ionic/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:gh-pages": "tsc -b && vite build --base=/yoyo-ionic/",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build:gh-pages",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.0",
@@ -24,7 +28,8 @@
     "react-easy-crop": "^6.2.3",
     "react-i18next": "^17.0.11",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "ghpages": "0.0.10"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.5.0",

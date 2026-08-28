@@ -26,5 +26,8 @@
     "label": "Idioma",
     "en": "English",
     "es": "Español"
+  },
+  "phoneField": {
+    "searchCountry": "Buscar país"
   }
 }

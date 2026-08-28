@@ -1,5 +1,6 @@
 .delete-account-page {
   --background: #000000;
+  
 }
 
 .delete-account-page__glow {
@@ -26,6 +27,7 @@
   max-width: 480px;
   margin: 0 auto;
   text-align: center;
+  margin-top: 100px;
 }
 
 .delete-account-page__tombstone {
@@ -35,14 +37,14 @@
 }
 
 .delete-account-page__instructions {
-  font-size: 15px;
+  font-size: var(--yoyo-body-size);
   font-weight: 600;
   white-space: pre-line;
   margin: 0 0 12px;
 }
 
 .delete-account-page__warning {
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
   white-space: pre-line;
   margin: 0 0 24px;
@@ -50,6 +52,6 @@
 
 .delete-account-page__error {
   color: var(--ion-color-danger);
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   margin: 0 0 14px;
 }

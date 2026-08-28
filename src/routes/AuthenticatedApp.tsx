@@ -12,7 +12,7 @@ import DeleteAccount from '../pages/DeleteAccount/DeleteAccount';
 
 export default function AuthenticatedApp() {
   return (
-    <IonReactRouter>
+    <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <IonRouterOutlet>
         <Route path="/main" render={() => <MainTabs />} />
         <Route exact path="/places/:id" component={PlacesInfo} />

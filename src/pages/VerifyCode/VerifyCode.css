@@ -1,6 +1,6 @@
 .verify-code-page {
   /* Transparent so the "welcome" background video shows through. */
-  --background: transparent;
+  --background: black;
 }
 
 .verify-code-page__glow {
@@ -32,20 +32,20 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 90dvh;
   justify-content: flex-end;
-  padding-bottom: 10vh;
+  padding-bottom: 9dvh;
 }
 
 .verify-code-page__title {
-  font-size: 24px;
+  font-size: var(--yoyo-header-size);
   font-weight: 700;
   margin: 0 0 10px;
 }
 
 .verify-code-page__instructions {
   color: var(--yoyo-muted);
-  font-size: 14px;
+  font-size: var(--yoyo-body-size);
   line-height: 1.5;
   margin: 0 0 24px;
 }
@@ -56,36 +56,29 @@
 }
 
 .verify-code-page__input {
-  --background: var(--yoyo-card-bg);
+  --background-color: var(--yoyo-card-bg);
   --color: #ffffff;
   --placeholder-color: var(--yoyo-muted);
   --placeholder-opacity: 1;
   --border-radius: var(--yoyo-radius-md);
   --border-width: 0;
+  --border-radius: 0px !important;
   --padding-start: 16px;
   --padding-end: 44px;
   --padding-top: 15px;
   --padding-bottom: 15px;
-  letter-spacing: 0.15em;
-}
-
-.verify-code-page__toggle {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  padding: 6px;
-  font-size: 18px;
-  color: var(--yoyo-muted);
-  display: flex;
+  font-size: var(--yoyo-body-size) !important;
+  letter-spacing: 0;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -ms-border-radius: 0px !important;
+  -o-border-radius: 0px !important;
 }
 
 .verify-code-page__error {
-  color: var(--yoyo-teal);
-  font-size: 12px;
-  font-weight: 700;
+  color: var(--ion-color-primary);
+    font-size: var(--yoyo-body-size);
+
   letter-spacing: 0.03em;
   text-align: right;
   margin: 0 0 20px;

@@ -1,8 +1,8 @@
-import { IonButton, IonContent, IonIcon, IonPage, IonSpinner } from '@ionic/react';
-import { closeOutline } from 'ionicons/icons';
+import { IonButton, IonContent, IonPage, IonSpinner, IonHeader, IonToolbar, IonButtons } from '@ionic/react';
+import BackButton from '../../components/BackButton/BackButton';
+
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import { useAuth } from '../../context/AuthContext';
 import tombstoneIcon from '../../assets/ACCS_Icon_DeleteAcount.png';
@@ -10,7 +10,6 @@ import './DeleteAccount.css';
 
 export default function DeleteAccount() {
   const { t } = useTranslation('profile');
-  const history = useHistory();
   const { deleteAccount } = useAuth();
 
   const [password, setPassword] = useState('');
@@ -38,10 +37,16 @@ export default function DeleteAccount() {
   return (
     <IonPage>
       <div className="delete-account-page__glow" />
+            <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
+        <IonToolbar>
+          <IonButtons  slot="start">
+            <BackButton defaultHref="/main/places" closeHref={true} />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen className="delete-account-page">
-        <button type="button" className="yoyo-icon-button delete-account-page__close" onClick={() => history.goBack()}>
-          <IonIcon icon={closeOutline} />
-        </button>
+
+
 
         <div className="delete-account-page__content">
           <img className="delete-account-page__tombstone" src={tombstoneIcon} alt="" />
@@ -52,7 +57,7 @@ export default function DeleteAccount() {
 
           {error ? <p className="delete-account-page__error">{error}</p> : null}
 
-          <IonButton expand="block" className="yoyo-pill--teal" disabled={isSubmitting} onClick={handleConfirm}>
+          <IonButton expand="block" className="yoyo-pill--dark" disabled={isSubmitting} onClick={handleConfirm}>
             {isSubmitting ? <IonSpinner name="dots" /> : t('deleteAccount.confirm')}
           </IonButton>
         </div>

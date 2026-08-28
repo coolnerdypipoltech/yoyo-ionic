@@ -116,10 +116,12 @@ export default function EditProfile() {
               </IonButton>
 
               {hasExistingPhoto ? (
-                <IonButton expand="block" className="yoyo-pill--teal" disabled={isSaving} onClick={handleRemovePhoto}>
+                <IonButton expand="block" className="yoyo-pill--dark" disabled={isSaving} onClick={handleRemovePhoto}>
                   {isSaving ? <IonSpinner name="dots" /> : t('editProfile.removePhoto')}
                 </IonButton>
               ) : null}
+
+              
             </div>
           )}
         </div>

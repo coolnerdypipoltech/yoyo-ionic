@@ -1,4 +1,5 @@
 import { IonRouterOutlet } from '@ionic/react';
+
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Welcome from '../pages/Welcome/Welcome';
@@ -8,11 +9,14 @@ import VerifyCode from '../pages/VerifyCode/VerifyCode';
 import Register from '../pages/Register/Register';
 import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
 import welcomeVideo from '../assets/videos/welcome-video.mp4';
+import welcomeVideoDesktop from '../assets/videos/desktop/welcome-video.mp4';
 
+import { useViewport } from '../context/ViewportContext';
 export default function UnauthenticatedApp() {
+  const { isMobile } = useViewport();
   return (
-    <IonReactRouter>
-      <BackgroundVideo src={welcomeVideo} />
+    <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+      <BackgroundVideo src={isMobile ? welcomeVideo : welcomeVideoDesktop} variant="welcome" />
       <IonRouterOutlet>
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/login" component={Login} />

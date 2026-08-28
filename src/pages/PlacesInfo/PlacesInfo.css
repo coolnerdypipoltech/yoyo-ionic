@@ -39,10 +39,10 @@
 }
 
 .places-info-page__title {
-  font-size: 32px;
+  font-size: var(--yoyo-header-size);
 
   text-align: center;
-  margin: 0 0 14px;
+  margin: 18px 0 14px;
 }
 
 .places-info-reserve-button{
@@ -52,8 +52,8 @@
 }
 
 .places-info-page__text {
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: var(--yoyo-body-size);
+  line-height: 1.3;
   color: var(--yoyo-muted);
   margin: 0 0 14px;
   white-space: pre-line;
@@ -87,7 +87,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 20px;
+  margin: 0 0 36px;
 }
 
 .places-info-page__tag {
@@ -96,27 +96,27 @@
 
   padding: 7px 14px;
   font-size: 13px;
-  font-weight: 700;
+
 }
 
 .places-info-page__actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 8px 0 4px;
+  margin: 0px 0 0px;
 }
 
 .places-info-page__row {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: var(--yoyo-body-size);
   color: #ffffff;
   margin: 0 0 4px;
 }
 
 .places-info-page__row ion-icon {
-  font-size: 18px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
 }
 
@@ -131,8 +131,8 @@
   
   padding: 16px;
   margin-top: 24px;
-  color: var(--yoyo-muted);
-  font-size: 15px;
+  color: white;
+  font-size: var(--yoyo-body-size);
   text-align: center;
   line-height: 1.5;
   display: flex;
@@ -142,6 +142,6 @@
 .places-info-divider{
   min-width: 100%;
   min-height: 1px;
-  background: var(--yoyo-muted);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.699);
   margin-top: 24px;
 }

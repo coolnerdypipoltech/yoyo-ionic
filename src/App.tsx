@@ -1,5 +1,6 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ViewportProvider } from './context/ViewportContext';
 import UnauthenticatedApp from './routes/UnauthenticatedApp';
 import AuthenticatedApp from './routes/AuthenticatedApp';
 
@@ -23,7 +24,9 @@ function AppShell() {
 export default function App() {
   return (
     <AuthProvider>
-      <AppShell />
+      <ViewportProvider>
+        <AppShell />
+      </ViewportProvider>
     </AuthProvider>
   );
 }

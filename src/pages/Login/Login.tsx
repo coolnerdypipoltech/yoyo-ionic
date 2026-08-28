@@ -29,6 +29,7 @@ export default function Login() {
   const { login } = useAuth();
 
   const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -102,7 +103,6 @@ export default function Login() {
             {isSubmitting ? <IonSpinner name="dots" /> : t('login.continue')}
           </IonButton>
 
-          <p className="login-page__disclaimer">{t('login.disclaimer')}</p>
         </div>
       </IonContent>
     </IonPage>

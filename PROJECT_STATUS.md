@@ -1,6 +1,6 @@
 # YoYo Ionic — Estado del proyecto
 
-Resumen para retomar esta conversación en otra sesión. Última actualización: 2026-08-25.
+Resumen para retomar esta conversación en otra sesión. Última actualización: 2026-08-26.
 
 ## Qué es esto
 
@@ -36,7 +36,7 @@ Ver [package.json](package.json) para la lista completa.
 | Pantalla | Backend/lógica | Rediseño visual |
 |---|---|---|
 | Welcome, Login, VerifyCode, PasswordRecovery | ✅ | ✅ contra captura |
-| Register | ✅ | ⚠️ sin captura de referencia — estilo genérico consistente |
+| Register | ✅ | ✅ contra captura (2026-08-26) — código de acceso ahora se pide/edita directo en el formulario (`form.code`, prellenado desde `location.state.accessCode` si viene de VerifyCode) en vez de depender solo del state de navegación |
 | Places, Rewards (tabs) | ✅ | ✅ contra captura |
 | PlacesInfo, RewardsInfo | ✅ | ✅ contra captura |
 | Config (menú bottom-sheet) | ✅ | ✅ contra captura |
@@ -63,7 +63,8 @@ Ver [package.json](package.json) para la lista completa.
 
 - **FAQ**: solo hay respuesta real para "What is YoYo, really?" — las otras 9 preguntas en [i18n/locales/en/faqs.json](src/i18n/locales/en/faqs.json) tienen `placeholderAnswer` genérico. Falta el contenido real.
 - **Privacy Policy / Terms URLs**: placeholders en [api/config.ts](src/api/config.ts) (`PRIVACY_POLICY_URL`, `TERMS_URL`), marcados con `// TODO`.
-- Register y DeleteAccount no tienen captura de referencia — si el usuario tiene diseño para esas pantallas, falta aplicarlo.
+- DeleteAccount no tiene captura de referencia — si el usuario tiene diseño para esa pantalla, falta aplicarlo.
+- **Nuevo componente** `PhoneNumberField` ([components/PhoneNumberField/](src/components/PhoneNumberField/)): selector de teléfono con país separado, usado en Register. Guarda el país como ISO2 (`countryIso2`, ver [utils/countries.ts](src/utils/countries.ts)) en vez del dial code directamente, porque varios países comparten el mismo dial code (+1 = US/CA/etc.) — el dial code se resuelve al armar el payload (`dialCodeFor`). Nombres de país se resuelven en caliente con `Intl.DisplayNames` (no hay tabla de traducción propia) y las banderas son emoji de regional-indicator (sin assets de imagen). No se verificó el submit completo contra el backend real (evitar consumir el código de acceso de prueba que compartió el usuario sin confirmar primero) — sí se verificó toda la validación client-side, el picker de género (ahora `IonActionSheet` en vez de botones segmentados) y el picker de país con búsqueda.
 - Color teal exacto y tipografía del logo "YOYO" wordmark eran aproximaciones antes de que el usuario empezara a meter sus propios assets — revisar si ya quedó resuelto con lo que él agregó.
 
 ## Cómo correr / verificar

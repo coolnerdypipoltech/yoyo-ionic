@@ -63,9 +63,9 @@ export default function RewardsInfo() {
         <div className="rewards-info-page__content">
           <h1 className="rewards-info-page__title">{item.name}</h1>
 
-          <hr className="yoyo-divider" />
-          <hr className="places-info-divider" />
-          <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+          
+          <hr className="places-info-divider"  />
+          <h2 className="yoyo-section-header" style={{fontSize: "16px", marginTop: "24px"}}>
             <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('detail.description')}
           </h2>
@@ -73,7 +73,7 @@ export default function RewardsInfo() {
 
           {item.starts_on && item.ends_on ? (
             <>
-              <h2 className="yoyo-section-header yoyo-section-header--teal rewards-info-page__section-spacing" style={{fontSize: "16px"}}>
+              <h2 className="yoyo-section-header yoyo-section-header--teal rewards-info-page__section-spacing" style={{fontSize: "16px", marginTop: "24px"}}>
                 <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.validity')}
               </h2>
@@ -87,8 +87,8 @@ export default function RewardsInfo() {
           {item.conditions ? (
             <>
             
-              <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+              
+              <h2 className="yoyo-section-header" style={{fontSize: "16px", marginTop: "24px"}}>
                 <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
                 {t('detail.conditions')}
               </h2>
@@ -96,9 +96,9 @@ export default function RewardsInfo() {
             </>
           ) : null}
 
-          <hr className="yoyo-divider" />
+          
 
-          <h2 className="yoyo-section-header" style={{fontSize: "16px"}}>
+          <h2 className="yoyo-section-header" style={{fontSize: "16px", marginTop: "24px"}}>
             <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('detail.cost')}
           </h2>
@@ -107,7 +107,7 @@ export default function RewardsInfo() {
             {`${item.cost} points`}
           </p>
 
-          <h2 className="yoyo-section-header rewards-info-page__section-spacing" style={{fontSize: "16px"}}>
+          <h2 className="yoyo-section-header rewards-info-page__section-spacing" style={{fontSize: "16px", marginTop: "24px"}}>
             <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('detail.availableQuantity')}
           </h2>

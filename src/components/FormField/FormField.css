@@ -1,10 +1,10 @@
 .form-field {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .form-field__label {
   display: block;
-  font-size: 18px;
+  font-size: var(--yoyo-title-size);
 
   color: #ffffff;
   margin-bottom: 8px;
@@ -12,18 +12,50 @@
 
 .form-field__input {
   --background: var(--yoyo-card-bg);
+  --background-color: var(--yoyo-card-bg);
+  background-color: var(--yoyo-card-bg);
+  background: var(--yoyo-card-bg);
   --color: #ffffff;
   --placeholder-color: var(--yoyo-muted);
   --placeholder-opacity: 1;
   font-family: var(--yoyo-font-text);
   --border-width: 0;
   --border-color: transparent;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 15px;
-  --padding-bottom: 15px;
+  /* iOS mode's ion-input CSS has no fill="outline" override at all (only
+     md.css does), so --padding-start etc. fall back to the base :host
+     default of 0px on iPhone unless forced — the values coincidentally
+     matched Ionic's own md-mode default (16px) so this looked fine in
+     Chromium/md testing, but iOS was rendering text flush against the
+     left edge with no padding. */
+  --padding-start: 16px !important;
+  --padding-end: 16px !important;
+  --padding-top: 15px !important;
+  --padding-bottom: 15px !important;
+  font-size: var(--yoyo-subtitle-size);
+  color: var(--yoyo-muted);
+}
+
+.form-field__input-wrap {
+  position: relative;
+}
+
+.form-field__placeholder {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--yoyo-muted);
+  font-family: var(--yoyo-font-text);
   font-size: 15px;
-  color: var(--yoyo-muted)
+  pointer-events: none;
+  /* ion-input sets its own z-index: 2 internally (for its outline-fill
+     styling) — without this, it paints over this overlay and hides it
+     completely, even though it comes first in DOM order. */
+  z-index: 3;
+}
+
+.form-field__required-asterisk {
+  color: #ff2728;
 }
 
 .form-field__input--invalid {

@@ -2,7 +2,7 @@
    their own .css files, never here. */
 
 .ion-page {
-  --yoyo-page-padding: 16px;
+  --yoyo-page-padding: 0px;
   
 }
 
@@ -84,7 +84,7 @@
    safe-area inset, so it still clears the notch and just adds extra
    breathing room below it. Applied to every IonHeader in the app. */
 .yoyo-header-offset {
-  padding-top: 50px;
+  padding-top: 3vh;
 }
 
 /* Circular icon buttons (back/close) floated over a glow/hero image. */
@@ -107,7 +107,7 @@
   --color: #0a0a0a;
   --border-radius: var(--yoyo-radius-pill);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--yoyo-body-size);
   min-height: 52px;
   font-family: 'InstrumentSans-Bold' !important;
   text-transform: uppercase;
@@ -117,8 +117,11 @@
   --background: rgb(0, 0, 0);
   --color: #ffffff;
   --border-radius: var(--yoyo-radius-pill);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: #151515;
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--yoyo-body-size);
   min-height: 52px;
   font-family: 'InstrumentSans-Bold' !important;
   text-transform: uppercase;
@@ -129,6 +132,10 @@
   --color: var(--yoyo-teal-contrast);
   --border-radius: var(--yoyo-radius-pill);
   font-weight: 700;
+  font-size: var(--yoyo-body-size);
+  min-height: 52px;
+  font-family: 'InstrumentSans-Bold' !important;
+  text-transform: uppercase;
 }
 
 
@@ -161,4 +168,8 @@
 .button{
   font-family: 'InstrumentSans-Bold' !important;
 
+}
+
+.native-input.sc-ion-input-md {
+  padding-left: 5px!important;
 }

@@ -1,5 +1,21 @@
 .profile-page {
   --background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-page__content-container {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-page__content {
+  max-width: 720px;
+  align-self: center;
 }
 
 .profile-page__glow {
@@ -28,7 +44,7 @@
   position: relative;
   z-index: 1;
   text-align: center;
-  font-size: 22px;
+  font-size: var(--yoyo-header-size);
 
   margin: 4px 0 20px;
   padding-top: 150px;
@@ -72,7 +88,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--yoyo-teal);
+  background: transparent;
   color: #04231c;
   display: flex;
   align-items: center;
@@ -82,8 +98,8 @@
 }
 
 .profile-page__id {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: var(--yoyo-body-size);
+  font-family: 'InstrumentSans-Regular' !important;
   color: #ffffff;
 }
 
@@ -95,11 +111,11 @@
 }
 
 .profile-page__section-spacing {
-  margin-top: 28px;
+  margin-top: 36px;
 }
 
 .profile-page__info-icon {
-  font-size: 14px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
   text-transform: none;
 }
@@ -111,7 +127,7 @@
   background: var(--yoyo-card-bg);
   border-radius: var(--yoyo-radius-pill);
   padding: 16px 20px;
-  font-size: 15px;
+  font-size: var(--yoyo-body-size);
   font-weight: 600;
   color: #ffffff;
 }
@@ -125,7 +141,7 @@
   gap: 12px;
   padding: 14px 16px;
   margin-left: 20px;
-  border-bottom: 1px solid white;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.699);
   margin-right: 20px;
 }
 
@@ -140,13 +156,13 @@
 }
 
 .profile-page__taste-label {
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   font-weight: 600;
   color: #ffffff;
 }
 
 .profile-page__taste-value {
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
 }
 
@@ -154,7 +170,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--yoyo-card-bg);
+  background: transparent;
   border: none;
   color: var(--yoyo-teal);
   font-size: 16px;
@@ -170,7 +186,8 @@
   margin: 0 16px;
   background: transparent;
   border-radius: 22px;
-  border: #AEAEAE 1px solid;
+  background: rgba(255, 255, 255, 0.103);
+  border: rgba(255, 255, 255, 0.699) 0.5px solid;
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
@@ -188,12 +205,13 @@
 }
 
 .profile-page__info-label {
-  font-size: 12px;
-  color: var(--yoyo-muted);
+  font-size: var(--yoyo-body-size);
+  color: white;
+  font-family: 'InstrumentSans-Regular' !important;
 }
 
 .profile-page__info-value {
-  font-size: 14px;
+  font-size: var(--yoyo-body-size);
   font-weight: 700;
   color: #ffffff;
 }
@@ -216,7 +234,7 @@
 
 .profile-page__danger-title {
   color: var(--yoyo-teal);
-  font-size: 15px;
+  font-size: var(--yoyo-body-size);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -230,7 +248,7 @@
 }
 
 .profile-page__danger-text {
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
   line-height: 1.5;
   margin: 0;
@@ -247,6 +265,6 @@
   color: #B4B4B4;
   border-radius: var(--yoyo-radius-pill);
   padding: 16px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--yoyo-body-size);
+
 }

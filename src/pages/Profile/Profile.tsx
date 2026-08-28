@@ -1,6 +1,6 @@
-import { IonContent, IonHeader, IonIcon, IonPage, IonToolbar, IonButtons } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonToolbar, IonButtons } from '@ionic/react';
 import BackButton from '../../components/BackButton/BackButton';
-import { closeOutline, createOutline, informationCircleOutline, personOutline } from 'ionicons/icons';
+
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -13,6 +13,9 @@ import editTaste from "../../assets/icons/Editar.svg";
 import spark from "../../assets/icons/Spark.svg";
 import tooltip from "../../assets/icons/Tooltip.svg";
 
+import profile_f from "../../assets/profile/profile_f.png";
+import profile_m from "../../assets/profile/profile_m.png";
+
 export default function Profile() {
   const { t } = useTranslation('profile');
   const history = useHistory();
@@ -20,6 +23,8 @@ export default function Profile() {
 
   if (!user) return null;
   const avatarUrl = user.related.image?.absolute_url;
+
+  console.log(user.related.gender)
 
   return (
     <IonPage>
@@ -37,18 +42,20 @@ export default function Profile() {
 
         <div className="profile-page__avatar-block">
           <button type="button" className="profile-page__avatar" onClick={() => history.push('/profile/edit-photo')}>
-            {avatarUrl ? <img src={avatarUrl} alt="" /> : <IonIcon icon={personOutline} />}
+            {avatarUrl ? <img src={avatarUrl} alt="" /> : (user.related.gender?.toLowerCase() === 'women' ? <img src={profile_f} alt="" /> : <img src={profile_m} alt="" />)}
 
           </button>
                       <span className="profile-page__avatar-edit">
               <img src={editPhoto} alt="edit photo" />
             </span>
           <span className="profile-page__id ">
-            {t('profile.idLabel')}: {padUserId(user.id)}
+            {t('profile.idLabel')}: <span style={{fontFamily: "InstrumentSans-Bold"}}>{padUserId(user.id)}</span>
           </span>
         </div>
-
-        <h2 className="yoyo-section-header profile-page__section-header">
+      
+        <div className="profile-page__content-container">
+          <div className="profile-page__content">
+                  <h2 className="yoyo-section-header profile-page__section-header">
           <img src={spark} alt="spark" />
           {t('profile.totalPoints')}
           <img src={tooltip} alt="tooltip" />
@@ -110,7 +117,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <hr className="yoyo-divider" />
+        <hr className="yoyo-divider" style={{ borderTop: '0.5px solid rgba(255, 255, 255, 0.699)' }} />
 
         <div className="profile-page__danger-card">
           <h2 className="profile-page__danger-title">{t('profile.dangerousHole')}</h2>
@@ -118,9 +125,11 @@ export default function Profile() {
           <p className="profile-page__danger-text">{t('profile.deleteWarning')}</p>
         </div>
 
-        <button type="button" className="profile-page__delete-button" onClick={() => history.push('/profile/delete')}>
+        <button type="button" className="profile-page__delete-button yoyo-pill--dark" onClick={() => history.push('/profile/delete')}>
           {t('profile.deleteAccount')}
         </button>
+        </div>
+        </div>
       </IonContent>
     </IonPage>
   );

@@ -109,20 +109,17 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           if (e.key === 'Enter' || e.key === ' ') setRotation((r) => r + 180);
         }}
       >
-        <div className="loyalty-card__edge loyalty-card__edge--top" />
-        <div className="loyalty-card__edge loyalty-card__edge--bottom" />
-        <div className="loyalty-card__edge loyalty-card__edge--left" />
-        <div className="loyalty-card__edge loyalty-card__edge--right" />
+        
 
         <div className="loyalty-card__face loyalty-card__face--front" aria-hidden={isBackVisible}>
           <div className="loyalty-card__badge">
-            <img src={rabbit} alt="" />
+            <img src={rabbit} style={{height: "64px", width: "auto"}} alt="" />
           </div>
           <div className="loyalty-card__front-info">
             <span className="loyalty-card__id">{padUserId(user.id)}</span>
             <span className="loyalty-card__name">{user.name}</span>
           </div>
-          <span className="loyalty-card__shine" />
+
         </div>
 
         <div className="loyalty-card__face loyalty-card__face--back" aria-hidden={!isBackVisible}>

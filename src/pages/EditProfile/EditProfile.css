@@ -30,13 +30,13 @@
 
 .edit-profile-page__close {
   position: absolute;
-  top: 14px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.342);
   border: none;
   color: #ffffff;
   font-size: 18px;
@@ -47,7 +47,7 @@
 
 .edit-profile-page__title {
   text-align: center;
-  font-size: 16px;
+  font-size: var(--yoyo-title-size);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -57,14 +57,14 @@
 
 .edit-profile-page__hint {
   text-align: center;
-  font-size: 12px;
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
   margin: 0;
 }
 
 .edit-profile-page__error {
   color: var(--ion-color-danger);
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   text-align: center;
   margin: 0;
 }

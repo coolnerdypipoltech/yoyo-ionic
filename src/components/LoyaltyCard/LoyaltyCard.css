@@ -3,12 +3,13 @@
   perspective: 1400px;
   display: flex;
   justify-content: center;
+  margin-bottom: 38px;
 }
 
 .loyalty-card__flipper {
-  --loyalty-card-thickness: 9px;
+  --loyalty-card-thickness: 4.5px;
   position: relative;
-  width: 90%;
+  width: 100%;
   aspect-ratio: 1.65 / 1;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.34, 1.15, 0.64, 1);
@@ -46,7 +47,7 @@
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
   color: #ffffff;
   overflow: hidden;
-
+  border-radius: var(--yoyo-radius-lg);
 }
 
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
@@ -61,44 +62,25 @@
   transform: rotateY(180deg) translateZ(calc(var(--loyalty-card-thickness) / 2));
 }
 
-.loyalty-card__edge {
+/* Four separate rotated side-panels can never quite agree on a corner —
+   each one only rounds within its own flat plane, so where two of them
+   meet (the card's actual corners) you either get a seam or a hard
+   square notch, no matter how precisely each panel's own radius is
+   tuned. A single flat plate sitting exactly between the front and back
+   faces sidesteps the problem entirely: there's nothing for it to seam
+   against, so one border-radius is enough for the whole shape. Sized a
+   few px larger than the faces, it peeks out evenly around whichever
+   edge is leading the rotation, reading as thickness without ever
+   trying to render a literal side wall. */
+.loyalty-card__depth {
   position: absolute;
-  background: linear-gradient(180deg, #06140f 0%, #0a2119 50%, #06140f 100%);
-  border-radius: 3px;
-}
-
-.loyalty-card__edge--left,
-.loyalty-card__edge--right {
-  top: 0;
-  width: var(--loyalty-card-thickness);
-  height: 100%;
-}
-
-.loyalty-card__edge--left {
-  left: calc(var(--loyalty-card-thickness) / -2);
-  transform: rotateY(-90deg);
-}
-
-.loyalty-card__edge--right {
-  right: calc(var(--loyalty-card-thickness) / -2);
-  transform: rotateY(90deg);
-}
-
-.loyalty-card__edge--top,
-.loyalty-card__edge--bottom {
-  left: 0;
-  width: 100%;
-  height: var(--loyalty-card-thickness);
-}
-
-.loyalty-card__edge--top {
-  top: calc(var(--loyalty-card-thickness) / -2);
-  transform: rotateX(90deg);
-}
-
-.loyalty-card__edge--bottom {
-  bottom: calc(var(--loyalty-card-thickness) / -2);
-  transform: rotateX(-90deg);
+  inset: -4px;
+  background: linear-gradient(180deg, #ffffff 0%, #d9d9d9 50%, #ffffff 100%);
+  /* Same corner ratio as the faces below — measured directly off
+     Tarjeta_YOYO.png's baked-in rounded corner (~4.8% of width / ~8% of
+     height) so the sliver that peeks out lines up with the art's own
+     curve at any screen size. */
+  border-radius: 4.8% / 8%;
 }
 
 .loyalty-card__badge {

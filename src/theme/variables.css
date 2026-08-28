@@ -53,6 +53,12 @@
   --yoyo-radius-lg: 22px;
   --yoyo-radius-pill: 999px;
 
+  --yoyo-super-header-size: 36px;
+  --yoyo-header-size: 28px;
+  --yoyo-title-size: 20px;
+  --yoyo-subtitle-size: 16px;
+  --yoyo-body-size: 14px;
+
   --yoyo-font-display: 'InstrumentSerif-Regular', Georgia, serif;
   --yoyo-font-logo: 'InstrumentSerif-Regular', 'Arial Narrow', sans-serif;
   --yoyo-font-sans: 'InstrumentSerif-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -63,6 +69,16 @@
      platform default (Roboto on md mode). */
   --ion-font-family: 'InstrumentSans-Medium';
   font-family: 'InstrumentSans-Medium';
+}
+
+@media (max-height: 700px) and (max-width: 720px) {
+  :root {
+    --yoyo-super-header-size: 32px;
+    --yoyo-header-size: 28px;
+    --yoyo-title-size: 18px;
+    --yoyo-subtitle-size: 14px;
+    --yoyo-body-size: 14px;
+  }
 }
 
 .ion-color-secondary {

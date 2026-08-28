@@ -1,6 +1,6 @@
 .login-page {
   /* Transparent so the "welcome" background video shows through. */
-  --background: transparent;
+  --background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,16 +46,16 @@
   padding: 24px 24px calc(32px + env(safe-area-inset-bottom));
   max-width: 480px;
   margin: 0 auto;
-  padding-bottom: 20vh;
+  justify-content: center;
 }
 
 .login-page__heading {
-  margin: 12px 0 32px;
+  margin: 12px 0 16px;
 }
 
 .login-page__heading-line {
   display: block;
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 500;
   color: #ffffff;
   line-height: 1.25;
@@ -63,13 +63,24 @@
 
 .login-page__heading-display {
   display: block;
-  font-family: 'InstrumentSerif', serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 60px;
+  font-family: 'InstrumentSerif-Regular', serif;
+
+  font-size: 78px;
   line-height: 1.15;
   color: #ffffff;
   margin-top: 2px;
+}
+
+@media (max-height: 700px) and (max-width: 720px) {
+
+  .login-page__heading-line {
+    font-size: 26px;
+  }
+
+  .login-page__heading-display {
+    font-size: 62px;
+
+  }
 }
 
 .login-page__banner {
@@ -77,7 +88,7 @@
   color: var(--yoyo-teal);
   border-radius: var(--yoyo-radius-sm);
   padding: 12px 14px;
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   margin-bottom: 18px;
 }
 
@@ -88,8 +99,7 @@
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--yoyo-body-size);
   letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 0;
@@ -98,15 +108,16 @@
 
 .login-page__error {
   color: var(--ion-color-danger);
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
   margin: 0 0 14px;
 }
 
 .login-page__disclaimer {
-  font-size: 15px;
-  color: var(--yoyo-muted);
+  font-size: var(--yoyo-body-size);
+  color: var(--yoyo-teal);
   line-height: 1.5;
   margin: 14px 0 0;
+  text-align: center;
 }
 
 .login-page__logo{

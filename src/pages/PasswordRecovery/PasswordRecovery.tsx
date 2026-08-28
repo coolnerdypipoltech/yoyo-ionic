@@ -82,10 +82,10 @@ export default function PasswordRecovery() {
               <IonButton
                 expand="block"
                 fill="clear"
-                className="password-recovery-page__popup-button"
+                className="yoyo-pill--dark  password-recovery-page__popup-button"
                 onClick={() => history.push('/login')}
               >
-                {t('login.logIn')}
+                {t('passwordRecovery.successButton')}
               </IonButton>
             </div>
           </div>

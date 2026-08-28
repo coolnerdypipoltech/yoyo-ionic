@@ -1,5 +1,7 @@
 .media-carousel {
   position: relative;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .media-carousel--empty {
@@ -17,6 +19,7 @@
   width: 100%;
   height: 100%;
   scroll-snap-align: center;
+  
 }
 
 .media-carousel__slide img,
@@ -48,4 +51,56 @@
   background: #ffffff;
   width: 18px;
   border-radius: 999px;
+}
+
+.media-carousel__nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.media-carousel__nav--prev {
+  left: 12px;
+}
+
+.media-carousel__nav--next {
+  right: 12px;
+}
+
+.media-carousel__nav:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Tablet/desktop: a fixed 320px-tall full-bleed slide reads fine on a
+   narrow phone screen but turns into a thin letterboxed strip on a wide
+   one. A square slide fixes the ratio; since the carousel itself is now
+   capped at 480px (see .media-carousel above) there's no room left to
+   peek at a neighboring slide, so explicit prev/next arrows take over
+   as the "there's more" affordance instead — hidden on mobile, where
+   swiping already does the job. */
+@media (min-width: 768px) {
+  .media-carousel__scroller {
+    height: auto;
+  }
+
+  .media-carousel__slide {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .media-carousel__nav {
+    display: flex;
+  }
 }

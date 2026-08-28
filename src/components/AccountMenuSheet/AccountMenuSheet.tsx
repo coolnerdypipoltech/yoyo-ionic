@@ -1,5 +1,4 @@
-import { IonContent, IonIcon, IonModal } from '@ionic/react';
-import { closeOutline, sparklesOutline } from 'ionicons/icons';
+import { IonContent, IonModal } from '@ionic/react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { PRIVACY_POLICY_URL } from '../../api/config';

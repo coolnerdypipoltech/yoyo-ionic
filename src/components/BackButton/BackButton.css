@@ -1,7 +1,11 @@
 .yoyo-back-button {
-  --icon-font-size: 15px;
+  --icon-font-size: 16px;
+  --icon-padding-start: 2px;
   margin-left: 20px;
-  margin-right: 10px;
+  margin-right: 20px;
+  padding: 0px;
+  min-width: 48px;
+  min-height: 48px;
   background: #ffffff31;
   backdrop-filter: blur(20px);
   border-radius: var(--yoyo-radius-pill);
@@ -9,4 +13,6 @@
   -moz-border-radius: var(--yoyo-radius-pill);
   -ms-border-radius: var(--yoyo-radius-pill);
   -o-border-radius: var(--yoyo-radius-pill);
+  align-self: center;
+  
 }

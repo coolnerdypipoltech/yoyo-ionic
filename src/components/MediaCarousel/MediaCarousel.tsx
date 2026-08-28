@@ -1,3 +1,5 @@
+import { IonIcon } from '@ionic/react';
+import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { useRef, useState } from 'react';
 import type { UIEvent } from 'react';
 import './MediaCarousel.css';
@@ -34,6 +36,13 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
     });
   };
 
+  const goToIndex = (index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(index, items.length - 1));
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: 'smooth' });
+  };
+
   return (
     <div className="media-carousel">
       <div className="media-carousel__scroller yoyo-scroll-x" ref={scrollRef} onScroll={handleScroll}>
@@ -49,14 +58,35 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
       </div>
 
       {items.length > 1 ? (
-        <div className="media-carousel__dots">
-          {items.map((item, index) => (
-            <span
-              key={`dot-${item.absolute_url}-${index}`}
-              className={`media-carousel__dot${index === activeIndex ? ' media-carousel__dot--active' : ''}`}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            type="button"
+            className="media-carousel__nav media-carousel__nav--prev"
+            onClick={() => goToIndex(activeIndex - 1)}
+            disabled={activeIndex === 0}
+            aria-label="Previous image"
+          >
+            <IonIcon icon={chevronBackOutline} />
+          </button>
+          <button
+            type="button"
+            className="media-carousel__nav media-carousel__nav--next"
+            onClick={() => goToIndex(activeIndex + 1)}
+            disabled={activeIndex === items.length - 1}
+            aria-label="Next image"
+          >
+            <IonIcon icon={chevronForwardOutline} />
+          </button>
+
+          <div className="media-carousel__dots">
+            {items.map((item, index) => (
+              <span
+                key={`dot-${item.absolute_url}-${index}`}
+                className={`media-carousel__dot${index === activeIndex ? ' media-carousel__dot--active' : ''}`}
+              />
+            ))}
+          </div>
+        </>
       ) : null}
     </div>
   );

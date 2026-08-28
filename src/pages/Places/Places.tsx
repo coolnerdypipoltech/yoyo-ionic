@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonIcon, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
 
 import { useCallback, useState } from 'react';

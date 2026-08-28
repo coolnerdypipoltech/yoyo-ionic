@@ -1,5 +1,4 @@
-import { IonButton, IonContent, IonIcon, IonPage, IonSpinner } from '@ionic/react';
-import { closeOutline } from 'ionicons/icons';
+import { IonButton, IonContent, IonPage, IonSpinner } from '@ionic/react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';

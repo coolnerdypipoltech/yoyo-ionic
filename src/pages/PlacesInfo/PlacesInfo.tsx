@@ -120,13 +120,16 @@ export default function PlacesInfo() {
           <p className="places-info-page__text">{place.description}</p>
 
           {place.music_genre_list.length > 0 ? (
+            <>
             <div className="places-info-page__tags">
               {place.music_genre_list.map((genre) => (
                 <span key={genre} className="places-info-page__tag">
                   {genre}
                 </span>
               ))}
+              
             </div>
+            </>
           ) : null}
 
           {place.music_lineup ? (
@@ -149,9 +152,9 @@ export default function PlacesInfo() {
 
           {place.address || place.gmaps ? (
             <>
-              <hr className="places-info-divider" />
-              <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+              <hr className="places-info-divider"/>
+
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"
@@ -183,8 +186,8 @@ export default function PlacesInfo() {
           {dresscodeLabel ? (
             <>
               <hr className="places-info-divider" />
-              <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"
@@ -202,8 +205,8 @@ export default function PlacesInfo() {
           {paymentLabels.length > 0 ? (
             <>
               <hr className="places-info-divider" />
-              <hr className="yoyo-divider" />
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px" }}>
+ 
+              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"
