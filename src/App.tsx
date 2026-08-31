@@ -1,6 +1,7 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ViewportProvider } from './context/ViewportContext';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import UnauthenticatedApp from './routes/UnauthenticatedApp';
 import AuthenticatedApp from './routes/AuthenticatedApp';
 
@@ -23,10 +24,12 @@ function AppShell() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <ViewportProvider>
-        <AppShell />
-      </ViewportProvider>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <ViewportProvider>
+          <AppShell />
+        </ViewportProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }

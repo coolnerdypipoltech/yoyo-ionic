@@ -73,6 +73,7 @@ export interface Place {
   schedule_list: string[];
   media: MediaRef[];
   gallery: Gallery[];
+  thumbnail: Thumbnail | null;
 }
 
 export interface ResultObject {

@@ -2,6 +2,8 @@ import { IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonPage
 import BackButton from '../../components/BackButton/BackButton';
 import { useTranslation } from 'react-i18next';
 import './Faqs.css';
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/faqs.png";
 
 interface FaqItem {
   q: string;
@@ -14,7 +16,7 @@ export default function Faqs() {
 
   return (
     <IonPage>
-      <div className="faqs-page__glow" />
+      <BackgroundGradient src={gradient}   />
             <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
           <IonButtons  slot="start">

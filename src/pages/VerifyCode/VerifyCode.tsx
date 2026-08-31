@@ -15,7 +15,7 @@ import PasswordField from '../../components/PasswordField/PasswordField';
 import { isValidAccessCode } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
-import gradient from "../../assets/gradient/Gradient_Verification_code.png";
+import gradient from "../../assets/backgrounds/verify_code.png";
 import './VerifyCode.css';
 
 export default function VerifyCode() {
@@ -36,6 +36,7 @@ export default function VerifyCode() {
       // land back on via the hardware/browser back button once you've
       // moved past it (see Register's own push->replace to Login).
       history.replace('/register', { accessCode: code });
+      
     } catch {
       // The backend distinguishes "not found" (404) from "already redeemed"
       // (400), but the old client never surfaced that distinction to the
@@ -48,7 +49,7 @@ export default function VerifyCode() {
 
   return (
     <IonPage>
-      <div className="verify-code-page__glow" />
+      
       <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset verify-code-page__header">
         <IonToolbar>

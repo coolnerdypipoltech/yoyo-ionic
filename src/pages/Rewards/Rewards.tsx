@@ -40,13 +40,13 @@ export default function Rewards() {
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border yoyo-header-offset rewards-page__header">
+      <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
           <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
           <button
             type="button"
             slot="end"
-            className="rewards-page__menu-button"
+            className={`places-page__menu-button ${menuOpen ? 'places-page__menu-button--rotated' : ''}`}
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
           >

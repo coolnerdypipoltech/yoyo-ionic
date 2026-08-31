@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="25.998" height="26" viewBox="0 0 25.998 26">
   <g id="Icon_Credit" transform="translate(-61.877 0.404)">
-    <rect id="Rectángulo_172" data-name="Rectángulo 172" width="25.998" height="26" rx="12.999" transform="translate(61.877 -0.404)" fill="#232323"/>
-    <g id="Icon_credit_card" data-name="Icon_credit card" transform="translate(66.877 7.596)">
+  <g id="Icon_credit_card" data-name="Icon_credit card" transform="translate(66.877 7.596)">
       <path id="Icon_credit_card-2" data-name="Icon_credit_card" d="M1.814,10.22A1.794,1.794,0,0,1,0,8.455V1.761A1.791,1.791,0,0,1,1.814,0H15.19A1.79,1.79,0,0,1,17,1.761V8.455A1.793,1.793,0,0,1,15.19,10.22ZM1.167,1.761V8.455a.64.64,0,0,0,.647.631H15.19a.639.639,0,0,0,.646-.631V1.761a.638.638,0,0,0-.646-.627H1.814A.639.639,0,0,0,1.167,1.761ZM12.5,7.865a1.446,1.446,0,0,1-1.106.507,1.391,1.391,0,1,1,0-2.782A1.445,1.445,0,0,1,12.5,6.1a1.441,1.441,0,0,1,1.105-.509,1.391,1.391,0,1,1,0,2.782A1.443,1.443,0,0,1,12.5,7.865ZM2.492,4.067a.368.368,0,0,1-.373-.362V2.316a.369.369,0,0,1,.373-.365H5.37a.371.371,0,0,1,.373.365V3.705a.37.37,0,0,1-.373.362Z" transform="translate(0 0)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
     </g>
   </g>

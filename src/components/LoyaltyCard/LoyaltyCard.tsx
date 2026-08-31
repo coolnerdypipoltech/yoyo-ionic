@@ -8,6 +8,13 @@ import { openWhatsApp, padUserId } from '../../services/whatsapp';
 import './LoyaltyCard.css';
 import background from '../../assets/card/Tarjeta_YOYO.png';
 import rabbit from '../../assets/card/Tarjeta_YOYO_rabbit.png';
+
+const FRAME_COUNT = 72;
+const frames = Array.from(
+  { length: FRAME_COUNT },
+  (_, i) => new URL(`../../assets/card/animation/CardFX_${String(i).padStart(2, '0')}.png`, import.meta.url).href
+);
+
 interface LoyaltyCardProps {
   user: User;
 }
@@ -28,6 +35,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
   const [liveOffset, setLiveOffset] = useState(0);
   const [tiltX, setTiltX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [frameIndex, setFrameIndex] = useState(0);
 
   useEffect(() => {
     const el = flipperRef.current;
@@ -87,6 +95,29 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rotation]);
 
+  // Animate the holographic frame sequence while the user is dragging the card.
+  useEffect(() => {
+    if (isDragging) {
+      setFrameIndex(0);
+      return;
+    }
+
+    let rafId: number;
+    let lastTime = 0;
+    const FRAME_DURATION = 33; // ~30 fps
+
+    const tick = (time: number) => {
+      if (time - lastTime >= FRAME_DURATION) {
+        setFrameIndex((i) => (i + 1) % frames.length);
+        lastTime = time;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [isDragging]);
+
   const handleAddPoints = (e: MouseEvent) => {
     e.stopPropagation();
     openWhatsApp(t('common:whatsapp.addPoints', { id: padUserId(user.id) }));
@@ -95,6 +126,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
   const displayRotation = rotation + liveOffset;
   const normalizedRotation = ((rotation % 360) + 360) % 360;
   const isBackVisible = normalizedRotation === 180;
+
 
   return (
     <div className="loyalty-card__scene">
@@ -109,7 +141,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           if (e.key === 'Enter' || e.key === ' ') setRotation((r) => r + 180);
         }}
       >
-        
+
 
         <div className="loyalty-card__face loyalty-card__face--front" aria-hidden={isBackVisible}>
           <div className="loyalty-card__badge">
@@ -121,6 +153,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           </div>
 
         </div>
+
 
         <div className="loyalty-card__face loyalty-card__face--back" aria-hidden={!isBackVisible}>
           <div className="loyalty-card__points-row">
@@ -137,6 +170,11 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
             {t('loyaltyCard.addPoints')}
           </IonButton>
         </div>
+
+        <div className="loyalty-card__face_anim" style={{ zIndex: 10 }}>
+          {!isDragging && <img src={frames[frameIndex]} alt="" />}
+        </div>
+
       </div>
     </div>
   );

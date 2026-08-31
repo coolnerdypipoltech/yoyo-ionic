@@ -18,6 +18,8 @@ import FormField from '../../components/FormField/FormField';
 import BackButton from '../../components/BackButton/BackButton';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import PhoneNumberField from '../../components/PhoneNumberField/PhoneNumberField';
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/create_account.png";
 import { ApiError } from '../../api/errors';
 import * as authService from '../../api/services/auth.service';
 import { dialCodeFor, DEFAULT_COUNTRY_ISO2 } from '../../utils/countries';
@@ -84,7 +86,6 @@ export default function Register() {
     if (!form.name.trim()) missing.push(t('register.fullName'));
     if (!form.email.trim()) missing.push(t('register.email'));
     if (!form.code.trim()) missing.push(t('register.code'));
-    if (!form.pronouns.trim()) missing.push(t('register.pronouns'));
     if (!form.age.trim()) missing.push(t('register.age'));
     if (!form.phone.trim()) missing.push(t('register.phone'));
     if (!form.password) missing.push(t('register.password'));
@@ -118,7 +119,7 @@ export default function Register() {
         phone: assemblePhone(dialCodeFor(form.countryIso2), form.phone),
         password: form.password,
         points: 0,
-        pronouns: form.pronouns.trim(),
+        pronouns: form.pronouns?.trim() ?? '',
         access_code: form.code.trim(),
       });
       // Replace, not push — once you've registered, pressing back from
@@ -143,7 +144,8 @@ export default function Register() {
 
   return (
     <IonPage>
-      <div className="register-page__glow" />
+      
+      <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset register-page__header">
         <IonToolbar>
           <IonButtons slot="start">
@@ -173,7 +175,7 @@ export default function Register() {
             <IonIcon icon={chevronForward} className="register-page__select-chevron" />
           </button>
 
-          <FormField required label={t('register.pronouns')} value={form.pronouns} onChange={(v) => update('pronouns', v)} />
+          <FormField label={t('register.pronouns')} value={form.pronouns} onChange={(v) => update('pronouns', v)} />
           <FormField required label={t('register.age')} type="number" value={form.age} onChange={(v) => update('age', v)} />
 
           <PhoneNumberField

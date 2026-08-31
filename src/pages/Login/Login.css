@@ -1,6 +1,6 @@
 .login-page {
   /* Transparent so the "welcome" background video shows through. */
-  --background: black;
+  --background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;

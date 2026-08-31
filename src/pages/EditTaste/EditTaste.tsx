@@ -7,6 +7,9 @@ import { useAuth } from '../../context/AuthContext';
 import './EditTaste.css';
 import closeIcon from "../../assets/icons/Icon_cerrar.svg";
 
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/taste.png";
+
 export default function EditTaste() {
   const { t } = useTranslation('profile');
   const history = useHistory();
@@ -38,7 +41,7 @@ export default function EditTaste() {
 
   return (
     <IonPage>
-      <div className="edit-taste-page__glow" />
+      <BackgroundGradient src={gradient} />
       <IonContent fullscreen className="edit-taste-page">
         <button type="button" className="yoyo-icon-button edit-taste-page__close" onClick={() => history.goBack()}>
           <img src={closeIcon} alt="Close" />

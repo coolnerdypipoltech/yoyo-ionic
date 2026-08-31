@@ -60,9 +60,11 @@
   },
   "menu": {
     "accountSettings": "Account Settings",
-    "faqs": "Faqs",
+    "faqs": "Frequently Asked Questions",
     "privacyPolicies": "Privacy Policies",
     "logOut": "Log Out",
-    "logOutConfirm": "Log Out?"
+    "logOutConfirm": "Log Out?",
+    "logOutConfirmMessage": "Are you sure you want to log out?",
+    "logOutAccept": "Accept"
   }
 }

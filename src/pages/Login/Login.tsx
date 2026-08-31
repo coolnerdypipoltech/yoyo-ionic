@@ -18,6 +18,8 @@ import { useAuth } from '../../context/AuthContext';
 import { ApiError } from '../../api/errors';
 import './Login.css';
 import yoyoLogo from '../../assets/icons/YoyoLetters.png';
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/login.png";
 interface LocationState {
   justRegistered?: boolean;
 }
@@ -64,7 +66,7 @@ export default function Login() {
 
   return (
     <IonPage>
-      <div className="login-page__glow" />
+      <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset login-page__header">
         <IonToolbar>
           <IonButtons slot="start">

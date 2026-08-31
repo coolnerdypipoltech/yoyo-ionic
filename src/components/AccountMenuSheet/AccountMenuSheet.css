@@ -2,10 +2,25 @@
   --background: #000000;
   --color: #ffffff;
   text-align: center;
-
+  z-index: 1;
 
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+}
+
+.border-teal{
+  
+  top: 35.5vh;
+  border-radius: 32px;
+  box-shadow: 0 0 20px var(--yoyo-teal);
+  position: absolute;
+  z-index: 1;
+  width: calc(100%);
+  height: 100%;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
 }
 
 
@@ -15,16 +30,17 @@
   border-top-right-radius: 32px;
   overflow: hidden;
   --background: transparent;
-
+  
 }
 
 .account-menu-sheet__spark {
   display: block;
-  height: 20px;
+  height: 14px;
   margin: 18px auto 8px;
 
   color: var(--yoyo-teal);
-  margin-top: 32px;
+  margin-top: 55px;
+  margin-bottom: 22px;
 }
 
 .account-menu-sheet__list {
@@ -32,6 +48,8 @@
   flex-direction: column;
   padding: 8px 80px 0;
   text-align: left;
+  position: relative;
+  z-index: 10;
 }
 
 .account-menu-sheet__item {
@@ -47,6 +65,56 @@
 
 .account-menu-sheet__item--last {
   border-bottom: none;
+}
+
+/* Same popup format as PasswordRecovery's success dialog — dimmed
+   full-screen backdrop + centered dark card — instead of the native
+   IonAlert. z-index is well above any Ionic overlay (the account menu's
+   own IonModal already sits at ~20000+) so it always lands on top. */
+.account-menu-sheet__logout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 99999;
+}
+
+.account-menu-sheet__logout-popup {
+  width: 100%;
+  max-width: 320px;
+  background: var(--yoyo-card-bg);
+  border-radius: var(--yoyo-radius-lg);
+  padding: 22px 20px 12px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.account-menu-sheet__logout-popup-title {
+  color: #ffffff;
+  font-size: var(--yoyo-title-size);
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.account-menu-sheet__logout-popup-text {
+  color: var(--yoyo-muted);
+  font-size: var(--yoyo-body-size);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.account-menu-sheet__logout-popup-button {
+  margin-bottom: 16px;
+}
+
+.account-menu-sheet__logout-popup-cancel {
+  --color: var(--yoyo-muted);
+  font-weight: 500;
+
 }
 
 .account-menu-sheet__close {

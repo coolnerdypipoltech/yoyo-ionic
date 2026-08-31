@@ -12,12 +12,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: auto;
-  height: 160%;
+  width: 100vw;
+  height: 100dvh;
   object-fit: cover;
-  transform: translateY(-20%);
-  -webkit-transform: translateY(-20%);
-  -moz-transform: translateY(-20%);
-  -ms-transform: translateY(-20%);
-  -o-transform: translateY(-20%);
+
 }

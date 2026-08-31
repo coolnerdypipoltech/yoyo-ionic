@@ -25,6 +25,7 @@ import locationIcon from "../../assets/icons/Icon_Location.svg";
 import dresscode from "../../assets/icons/Dresscode.svg";
 import card from "../../assets/icons/Icon_Credit.svg";
 import cash from "../../assets/icons/Cash.svg";
+import time from "../../assets/icons/Icon_reloj.svg";
 
 interface LocationState {
   place?: Place;
@@ -148,6 +149,18 @@ export default function PlacesInfo() {
               </h2>
               <p className="places-info-page__text">{place.music_lineup}</p>
             </>
+          ) : null}
+
+          {place.schedule_list.length > 0 ? (
+            place.schedule_list.map((schedule) => (
+              <>
+              <span className="places-info-page__row" style={{ marginBottom: "6px" }}>
+                    <img src={time} alt="Time" />
+                    {schedule}
+                  </span>
+                  
+              </>
+            ))
           ) : null}
 
           {place.address || place.gmaps ? (

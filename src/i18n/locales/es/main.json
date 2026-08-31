@@ -63,6 +63,8 @@
     "faqs": "Preguntas frecuentes",
     "privacyPolicies": "Aviso de privacidad",
     "logOut": "Cerrar sesión",
-    "logOutConfirm": "¿Cerrar sesión?"
+    "logOutConfirm": "¿Cerrar sesión?",
+    "logOutConfirmMessage": "¿Estás seguro de que quieres cerrar sesión?",
+    "logOutAccept": "Aceptar"
   }
 }

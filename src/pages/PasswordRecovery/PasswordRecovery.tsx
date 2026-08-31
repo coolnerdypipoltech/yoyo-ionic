@@ -15,6 +15,8 @@ import BackButton from '../../components/BackButton/BackButton';
 import { isValidEmail } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import './PasswordRecovery.css';
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/recover.png";
 
 export default function PasswordRecovery() {
   const { t } = useTranslation('auth');
@@ -46,7 +48,7 @@ export default function PasswordRecovery() {
 
   return (
     <IonPage>
-      <div className="password-recovery-page__glow" />
+      <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset password-recovery-page__header">
         <IonToolbar>
           <IonButtons slot="start">
@@ -82,8 +84,8 @@ export default function PasswordRecovery() {
               <IonButton
                 expand="block"
                 fill="clear"
-                className="yoyo-pill--dark  password-recovery-page__popup-button"
-                onClick={() => history.push('/login')}
+                className="yoyo-pill--white  password-recovery-page__popup-button"
+                onClick={() => {history.replace('/login'); setSent(false);}}
               >
                 {t('passwordRecovery.successButton')}
               </IonButton>

@@ -1,4 +1,5 @@
-import { IonInput } from '@ionic/react';
+import { IonIcon, IonInput } from '@ionic/react';
+import { closeCircle } from 'ionicons/icons';
 import type { TextFieldTypes } from '@ionic/core';
 import './FormField.css';
 
@@ -56,6 +57,11 @@ export default function FormField({
             {displayText}
             <span className="form-field__required-asterisk">*</span>
           </span>
+        ) : null}
+        {value ? (
+          <button type="button" className="form-field__clear" aria-label="Clear" onClick={() => onChange('')}>
+            <IonIcon icon={closeCircle} />
+          </button>
         ) : null}
       </div>
       {error ? <p className="form-field__error">{error}</p> : null}

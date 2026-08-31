@@ -28,7 +28,7 @@
      Chromium/md testing, but iOS was rendering text flush against the
      left edge with no padding. */
   --padding-start: 16px !important;
-  --padding-end: 16px !important;
+  --padding-end: 40px !important;
   --padding-top: 15px !important;
   --padding-bottom: 15px !important;
   font-size: var(--yoyo-subtitle-size);
@@ -37,6 +37,22 @@
 
 .form-field__input-wrap {
   position: relative;
+}
+
+.form-field__clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  font-size: 18px;
+  color: var(--yoyo-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
 }
 
 .form-field__placeholder {

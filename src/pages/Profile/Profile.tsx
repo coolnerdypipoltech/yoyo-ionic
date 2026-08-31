@@ -7,14 +7,19 @@ import { useAuth } from '../../context/AuthContext';
 import { padUserId } from '../../services/whatsapp';
 import tombstoneIcon from '../../assets/ACCS_Icon_DeleteAcount.png';
 import './Profile.css';
+import button from "../../assets/account-button.png";
 
 import editPhoto from "../../assets/icons/Editar_foto.svg";
 import editTaste from "../../assets/icons/Editar.svg";
 import spark from "../../assets/icons/Spark.svg";
-import tooltip from "../../assets/icons/Tooltip.svg";
+import Tooltip from "../../components/Tooltip/Tooltip";
 
 import profile_f from "../../assets/profile/profile_f.png";
 import profile_m from "../../assets/profile/profile_m.png";
+
+import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
+import gradient from "../../assets/backgrounds/account_settings.png";
+import bckg from "../../assets/account-modal-bckg.png";
 
 export default function Profile() {
   const { t } = useTranslation('profile');
@@ -28,7 +33,7 @@ export default function Profile() {
 
   return (
     <IonPage>
-      <div className="profile-page__glow" />
+      <BackgroundGradient src={gradient} />
       <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
           <IonButtons  slot="start">
@@ -58,14 +63,14 @@ export default function Profile() {
                   <h2 className="yoyo-section-header profile-page__section-header">
           <img src={spark} alt="spark" />
           {t('profile.totalPoints')}
-          <img src={tooltip} alt="tooltip" />
+          <Tooltip text={t('profile.totalPointsTooltip')} />
         </h2>
-        <div className="profile-page__points-box">{t('profile.points', { points: user.related.points })}</div>
+        <div className="profile-page__points-box" style={{backgroundImage: `url(${button})`, backgroundSize: 'cover' }}>{t('profile.points', { points: user.related.points })}</div>
 
         <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
           <img src={spark} alt="spark" />
           {t('profile.yourTaste')}
-          <img src={tooltip} alt="tooltip" />
+          <Tooltip text={t('profile.yourTasteTooltip')} />
         </h2>
 
         <div className="profile-page__taste-row">
@@ -99,10 +104,10 @@ export default function Profile() {
         <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
           <img src={spark} alt="spark" />
           {t('profile.yourProfile')}
-          <img src={tooltip} alt="tooltip" />
+          <Tooltip text={t('profile.yourProfileTooltip')} />
         </h2>
 
-        <div className="profile-page__info-card">
+        <div className="profile-page__info-card" style={{backgroundImage: `url(${bckg})`, backgroundSize: 'cover' }}>
           <div className="profile-page__info-row">
             <span className="profile-page__info-label">{t('profile.name')}</span>
             <span className="profile-page__info-value">{user.name}</span>

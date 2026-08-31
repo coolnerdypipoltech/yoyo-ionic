@@ -19,7 +19,7 @@ export default function BackgroundVideo({ src, variant = 'default' }: Background
 
   return (
     <>   <div className="background-video" aria-hidden="true">
-      <video className={videoClass} src={src} autoPlay loop muted playsInline preload="auto" />
+      <video className={videoClass} src={src} autoPlay loop muted playsInline preload="metadata" />
       <div className="background-video__scrim" />
     </div></>
   );

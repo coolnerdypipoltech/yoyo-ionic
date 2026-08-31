@@ -37,6 +37,8 @@ export default function Places() {
     event.detail.complete();
   };
 
+  console.log(places);
+
   return (
     <IonPage>
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
@@ -45,7 +47,7 @@ export default function Places() {
           <button
             type="button"
             slot="end"
-            className="places-page__menu-button"
+            className={`places-page__menu-button ${menuOpen ? 'places-page__menu-button--rotated' : ''}`}
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
           >
@@ -81,7 +83,7 @@ export default function Places() {
             renderItem={(item) => (
               <CarouselItemCard
                 title={item.name}
-                imageUrl={item.gallery[0]?.absolute_url}
+                imageUrl={item.thumbnail?.absolute_url}
                 onClick={() => history.push(`/places/${item.id}`, { place: item, isFromPlace: true })}
               />
             )}
@@ -103,7 +105,7 @@ export default function Places() {
             renderItem={(item) => (
               <CarouselItemCard
                 title={item.name}
-                imageUrl={item.gallery[0]?.absolute_url}
+                imageUrl={item.thumbnail?.absolute_url}
                 onClick={() => history.push(`/places/${item.id}`, { place: item, isFromPlace: false })}
               />
             )}

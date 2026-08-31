@@ -50,6 +50,27 @@
   border-radius: var(--yoyo-radius-lg);
 }
 
+.loyalty-card__face_anim {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: visible;
+  align-items: center;
+}
+
+.loyalty-card__face_anim img {
+  min-width: calc(100% * 1.17);
+  
+  height: calc(100% * 1.17);
+  object-fit: cover;
+  position: relative;
+  top: -7%;
+}
+
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
    top of each other) is what gives the card real thickness — the edge
    strips below fill in the gap between them so it reads as a solid slab

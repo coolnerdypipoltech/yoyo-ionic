@@ -1,7 +1,7 @@
 .places-page {
   /* Transparent so the "main" background video (rendered behind MainTabs)
      shows through. */
-  --background: transparent;
+  --background: black;
   --padding-bottom: 100px;
 
 }
@@ -31,7 +31,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+
 }
+
+.places-page__menu-button--rotated {
+  transform: rotate(-45deg);
+}
+
+
 
 .places-page__heading {
   padding: 4px 16px 4px;

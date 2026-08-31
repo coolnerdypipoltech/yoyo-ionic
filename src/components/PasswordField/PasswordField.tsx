@@ -1,4 +1,5 @@
-import { IonInput } from '@ionic/react';
+import { IonIcon, IonInput } from '@ionic/react';
+import { closeCircle } from 'ionicons/icons';
 import { useState } from 'react';
 import './PasswordField.css';
 import Visibility from "../../assets/icons/Visibility.svg"
@@ -43,14 +44,21 @@ export default function PasswordField({
         fill="outline"
         onIonInput={(e) => onChange(e.detail.value ?? '')}
       />
-      <button
-        type="button"
-        className="password-field__toggle"
-        aria-label={visible ? 'Hide password' : 'Show password'}
-        onClick={() => setVisible((v) => !v)}
-      >
-        <img src={!visible ? VisibilityOff : Visibility} alt={visible ? 'Hide password' : 'Show password'} />
-      </button>
+      <div className="password-field__actions">
+        {value ? (
+          <button type="button" className="password-field__clear" aria-label="Clear" onClick={() => onChange('')}>
+            <IonIcon icon={closeCircle} />
+          </button>
+        ) : null}
+        <button
+          type="button"
+          className="password-field__toggle"
+          aria-label={visible ? 'Hide password' : 'Show password'}
+          onClick={() => setVisible((v) => !v)}
+        >
+          <img src={!visible ? VisibilityOff : Visibility} alt={visible ? 'Hide password' : 'Show password'} />
+        </button>
+      </div>
     </div>
   );
 }

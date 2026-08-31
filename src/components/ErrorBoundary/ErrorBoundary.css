@@ -1,0 +1,31 @@
+.yoyo-error-boundary {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.yoyo-error-boundary__text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.yoyo-error-boundary__button {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 700;
+}

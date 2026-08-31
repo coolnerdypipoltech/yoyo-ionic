@@ -30,10 +30,27 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   z-index: 10;
+  /* ion-tab-bar is already centered by default, but each ion-tab-button
+     has its own `flex: 1` (grow to fill equal share of the bar) — with
+     only two of them in a bar up to 420px wide, that alone pushed the
+     icons out to opposite ends. Stopping them from growing and adding
+     an explicit gap here is what actually controls how close they sit. */
+  gap: 32px;
 }
 
 .main-tabs__button {
   --background: transparent;
+  /* Ionic defaults --color-selected (and the tap ripple, which reads
+     that same variable) to --ion-color-primary — this app's red — so
+     tapping a tab flashed a red splash. Active/inactive state here is
+     already shown by swapping the icon image, so neither is needed;
+     just neutralize them to a subtle white tint. */
+  --color-selected: #ffffff;
+  --ripple-color: rgba(255, 255, 255, 0.25);
+  flex: 0  0 auto;
+  width: auto;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .main-tabs__rabbit {

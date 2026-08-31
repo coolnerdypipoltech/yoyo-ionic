@@ -1,6 +1,6 @@
 .verify-code-page {
   /* Transparent so the "welcome" background video shows through. */
-  --background: black;
+  --background: transparent;
 }
 
 .verify-code-page__glow {

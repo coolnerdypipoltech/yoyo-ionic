@@ -36,7 +36,7 @@ export default function DeleteAccount() {
 
   return (
     <IonPage>
-      <div className="delete-account-page__glow" />
+      
             <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
           <IonButtons  slot="start">

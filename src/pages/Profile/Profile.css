@@ -1,5 +1,5 @@
 .profile-page {
-  --background: #000000;
+  --background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,11 +124,11 @@
   position: relative;
   z-index: 1;
   margin: 0 16px;
-  background: var(--yoyo-card-bg);
+
   border-radius: var(--yoyo-radius-pill);
   padding: 16px 20px;
   font-size: var(--yoyo-body-size);
-  font-weight: 600;
+
   color: #ffffff;
 }
 
@@ -186,8 +186,7 @@
   margin: 0 16px;
   background: transparent;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.103);
-  border: rgba(255, 255, 255, 0.699) 0.5px solid;
+
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
