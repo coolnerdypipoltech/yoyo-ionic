@@ -68,7 +68,7 @@
   height: calc(100% * 1.17);
   object-fit: cover;
   position: relative;
-  top: -7%;
+  top: -8%;
 }
 
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
@@ -156,14 +156,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10%;
   height: 100%;
 }
 
 .loyalty-card__points-block {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+
 }
 
 .loyalty-card__points-label {
@@ -175,7 +175,7 @@
 }
 
 .loyalty-card__points-value {
-  font-size: var(--yoyo-title-size);
+  font-size: var(--yoyo-subtitle-size);
   font-family: var(--yoyo-font-text);
   text-align: center;
 }
@@ -186,9 +186,10 @@
   --color: black;
   --border-radius: var(--yoyo-radius-pill);
   font-family: var(--yoyo-font-text) !important;
-
+  
   --background-activated: var(--yoyo-teal);
   --color-activated: #ffffff;
+  font-size: 12px;
 }
 
 

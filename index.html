@@ -5,7 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" user-scalable="no"   />
     <title>yoyo-ionic</title>
-    
+    <style>
+      /* Inline, so it applies on first paint — before main.tsx's CSS
+         imports have downloaded and parsed — otherwise the WebView's own
+         default (white) background shows through for a beat on native,
+         which is what "app opened white instead of dark" actually was. */
+      html, body { background: #000000; }
+      :root { color-scheme: dark; }
+    </style>
+
     <script>
       // Other half of the public/404.html redirect — unpacks the real
       // path from the query string and restores it via history so the

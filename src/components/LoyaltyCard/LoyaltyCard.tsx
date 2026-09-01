@@ -8,7 +8,7 @@ import { openWhatsApp, padUserId } from '../../services/whatsapp';
 import './LoyaltyCard.css';
 import background from '../../assets/card/Tarjeta_YOYO.png';
 import rabbit from '../../assets/card/Tarjeta_YOYO_rabbit.png';
-
+import line from "../../assets/card/Line_card.png"
 const FRAME_COUNT = 72;
 const frames = Array.from(
   { length: FRAME_COUNT },
@@ -104,7 +104,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
 
     let rafId: number;
     let lastTime = 0;
-    const FRAME_DURATION = 33; // ~30 fps
+    const FRAME_DURATION = 40; // ~30 fps
 
     const tick = (time: number) => {
       if (time - lastTime >= FRAME_DURATION) {
@@ -155,13 +155,15 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
         </div>
 
 
-        <div className="loyalty-card__face loyalty-card__face--back" aria-hidden={!isBackVisible}>
+        <div className="loyalty-card__face loyalty-card__face--back" aria-hidden={!isBackVisible} style={{padding: "5%"}}>
           <div className="loyalty-card__points-row">
             <div className="loyalty-card__points-block">
               <span className="loyalty-card__points-label">{t('loyaltyCard.totalPoints')}</span>
               <span className="loyalty-card__points-value">{t('loyaltyCard.points', { points: user.related.total_points })}</span>
             </div>
-            <div></div>
+            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+              <img src={line} alt="line" />
+            </div>
             <div className="loyalty-card__points-block">
               <span className="loyalty-card__points-label">{t('loyaltyCard.availablePoints')}</span>
               <span className="loyalty-card__points-value"> {t('loyaltyCard.points', { points: user.related.points })}</span>
