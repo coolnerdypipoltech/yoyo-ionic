@@ -145,7 +145,7 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
 
         <div className="loyalty-card__face loyalty-card__face--front" aria-hidden={isBackVisible}>
           <div className="loyalty-card__badge">
-            <img src={rabbit} style={{height: "64px", width: "auto"}} alt="" />
+            <img src={rabbit} style={{height: "80px", width: "auto"}} alt="" />
           </div>
           <div className="loyalty-card__front-info">
             <span className="loyalty-card__id">{padUserId(user.id)}</span>
@@ -159,11 +159,12 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           <div className="loyalty-card__points-row">
             <div className="loyalty-card__points-block">
               <span className="loyalty-card__points-label">{t('loyaltyCard.totalPoints')}</span>
-              <span className="loyalty-card__points-value">{user.related.total_points}</span>
+              <span className="loyalty-card__points-value">{t('loyaltyCard.points', { points: user.related.total_points })}</span>
             </div>
+            <div></div>
             <div className="loyalty-card__points-block">
               <span className="loyalty-card__points-label">{t('loyaltyCard.availablePoints')}</span>
-              <span className="loyalty-card__points-value">{user.related.points}</span>
+              <span className="loyalty-card__points-value"> {t('loyaltyCard.points', { points: user.related.points })}</span>
             </div>
           </div>
           <IonButton size="small" className="loyalty-card__add-button" onClick={handleAddPoints}>

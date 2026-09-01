@@ -22,11 +22,14 @@ export default function Welcome() {
           </div>
           
           </div>
-
-          <div className="welcome-page__actions">
+          <div className="welcome-page__actions" >
             <img src={rabbit} className='welcome-page__rabbit' alt="Rabbit" />
             <p className="welcome-page__tagline">{t('welcome.tagline')}</p>
-            <IonButton expand="block" size="large" className="yoyo-pill--white" onClick={() => history.push('/login')}>
+          </div>
+          <div className="welcome-page__actions">
+            
+            
+            <IonButton expand="block" size="large" className="yoyo-pill--white login-button" onClick={() => history.push('/login')}>
               {t('welcome.logIn')}
             </IonButton>
             <IonButton
@@ -38,6 +41,7 @@ export default function Welcome() {
               {t('welcome.createAccount')}
             </IonButton>
           </div>
+          <div></div>
         </div>
       </IonContent>
     </IonPage>

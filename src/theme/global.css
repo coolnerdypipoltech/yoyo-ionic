@@ -111,6 +111,8 @@
   min-height: 52px;
   font-family: 'InstrumentSans-Bold' !important;
   text-transform: uppercase;
+  --background-activated: var(--yoyo-teal);
+  --color-activated: #ffffff;
 }
 
 .yoyo-pill--dark {

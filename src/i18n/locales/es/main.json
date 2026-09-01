@@ -16,7 +16,8 @@
     "idLabel": "ID",
     "totalPoints": "Puntos totales",
     "availablePoints": "Puntos disponibles",
-    "addPoints": "Añadir puntos",
+    "addPoints": "+ AÑADIR PUNTOS",
+    "points": "{{puntos}} puntos",
     "flipHint": "Toca cualquier lado para voltear la tarjeta"
   },
   "rewards": {

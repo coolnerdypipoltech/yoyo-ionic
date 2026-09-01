@@ -47,15 +47,23 @@ export default function FormField({
           aria-label={label}
           type={type}
           value={value}
-          placeholder={required ? '' : displayText}
+
           id={id}
           fill="outline"
+          
           onIonInput={(e) => onChange(e.detail.value ?? '')}
         />
         {required && !value ? (
           <span className="form-field__placeholder" aria-hidden="true">
             {displayText}
             <span className="form-field__required-asterisk">*</span>
+          </span>
+        ) : null}
+
+        {!required && !value ? (
+          <span className="form-field__placeholder" aria-hidden="true">
+            {displayText}
+            
           </span>
         ) : null}
         {value ? (

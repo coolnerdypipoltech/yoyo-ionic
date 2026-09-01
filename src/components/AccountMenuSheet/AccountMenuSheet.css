@@ -1,26 +1,49 @@
 .account-menu-sheet {
-  --background: #000000;
+  --background: transparent;
   --color: #ffffff;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
 
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  --border-radius: 32px 32px 0 0;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+    --border-top-left-radius: 32px;
+  --border-top-right-radius: 32px;
+  border-radius: 32px 32px 0 0;
+
+}
+
+/* Matches IonModal's own md-mode sheet enter animation exactly (same
+   duration + easing, see @ionic/core's md.enter.js) so this slides up
+   in sync with the modal instead of popping into place while the modal
+   is still animating. It's a plain div (not an Ionic component), so it
+   needs its own @keyframes — a `transition` wouldn't fire here since
+   the element is only ever mounted already-open (see the `isOpen &&`
+   conditional render in the component), with no prior "closed" state
+   for a transition to animate from. */
+@keyframes border-teal-enter {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .border-teal{
-  
-  top: 35.5vh;
+  top: 8px;
   border-radius: 32px;
-  box-shadow: 0 0 20px var(--yoyo-teal);
+  box-shadow: 0 0 10px var(--yoyo-teal);
   position: absolute;
   z-index: 1;
+  background-color: black;
   width: calc(100%);
-  height: 100%;
+  height: calc(100%);
   -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
   -ms-border-radius: 32px;
   -o-border-radius: 32px;
+
 }
 
 
@@ -28,9 +51,13 @@
   --border-radius: 32px 32px 0 0;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
-  overflow: hidden;
+
   --background: transparent;
-  
+  --border-top-left-radius: 32px;
+  --border-top-right-radius: 32px;
+  border-radius: 32px 32px 0 0;
+
+
 }
 
 .account-menu-sheet__spark {
@@ -129,4 +156,15 @@
   align-items: center;
   justify-content: center;
   margin: 24px auto;
+}
+
+/* ion-modal uses real shadow DOM (unlike ion-input/ion-action-sheet
+   elsewhere in this app), and .modal-handle's `top: 5px` is a plain
+   hardcoded value, not a CSS custom property — a `--top` var (or any
+   plain `.modal-handle` selector) never reaches inside the shadow root
+   at all. Ionic exposes it as `part="handle"` specifically so it can be
+   targeted from outside via ::part(). Scoped to this modal's own class
+   so it doesn't affect other IonModals (e.g. the country picker). */
+ion-modal.account-round-top-borders::part(handle) {
+  top: 10px !important;
 }

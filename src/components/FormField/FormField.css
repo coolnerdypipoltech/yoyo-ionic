@@ -31,7 +31,7 @@
   --padding-end: 40px !important;
   --padding-top: 15px !important;
   --padding-bottom: 15px !important;
-  font-size: var(--yoyo-subtitle-size);
+  font-size: var(--yoyo-body-size);
   color: var(--yoyo-muted);
 }
 
@@ -62,7 +62,7 @@
   transform: translateY(-50%);
   color: var(--yoyo-muted);
   font-family: var(--yoyo-font-text);
-  font-size: 15px;
+  font-size: var(--yoyo-body-size);
   pointer-events: none;
   /* ion-input sets its own z-index: 2 internally (for its outline-fill
      styling) — without this, it paints over this overlay and hides it

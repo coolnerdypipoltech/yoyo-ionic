@@ -7,8 +7,10 @@ import rabbitOff from '../assets/icons/Rabbit_Icon_Off.svg';
 import crownOn from "../assets/icons/Perks_icon_ON.svg";
 import crownOff from "../assets/icons/Perks_icon_OFF.svg";
 import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
-import mainVideo from '../assets/videos/main-vieo.mp4';
+import BackgroundGradient from '../components/BackgroundGradient/BackgroundGradient';
+
 import mainVideoDesktop from '../assets/videos/desktop/main-video.mp4';
+import gradient from '../assets/backgrounds/login.png';
 import './MainTabs.css';
 
 import { useViewport } from '../context/ViewportContext';
@@ -20,7 +22,10 @@ export default function MainTabs() {
 
   return (
     <IonTabs className="main-tabs">
-      <BackgroundVideo src={isMobile ? mainVideo : mainVideoDesktop} />
+            {isMobile ? (
+        <BackgroundGradient src={gradient} />
+      ) : <BackgroundVideo src={mainVideoDesktop} variant="welcome" />}
+      
       <IonRouterOutlet>
         <Route exact path="/main/places" component={Places} />
         <Route exact path="/main/rewards" component={Rewards} />

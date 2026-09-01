@@ -49,8 +49,8 @@
   --ripple-color: rgba(255, 255, 255, 0.25);
   flex: 0  0 auto;
   width: auto;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .main-tabs__rabbit {

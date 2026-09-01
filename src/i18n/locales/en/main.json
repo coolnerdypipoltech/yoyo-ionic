@@ -16,7 +16,8 @@
     "idLabel": "ID",
     "totalPoints": "Total Points",
     "availablePoints": "Available Points",
-    "addPoints": "Add Points",
+    "addPoints": "+ ADD POINTS",
+    "points": "{{points}} points",
     "flipHint": "Tap either side to flip the card"
   },
   "rewards": {

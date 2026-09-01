@@ -8,15 +8,22 @@ import PasswordRecovery from '../pages/PasswordRecovery/PasswordRecovery';
 import VerifyCode from '../pages/VerifyCode/VerifyCode';
 import Register from '../pages/Register/Register';
 import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
-import welcomeVideo from '../assets/videos/welcome-video.mp4';
+
 import welcomeVideoDesktop from '../assets/videos/desktop/welcome-video.mp4';
+import gradient from '../assets/backgrounds/login.png';
+
 
 import { useViewport } from '../context/ViewportContext';
+import BackgroundGradient from '../components/BackgroundGradient/BackgroundGradient';
 export default function UnauthenticatedApp() {
   const { isMobile } = useViewport();
   return (
     <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-      <BackgroundVideo src={isMobile ? welcomeVideo : welcomeVideoDesktop} variant="welcome" />
+      {isMobile ? (
+        <BackgroundGradient src={gradient} />
+      ) : <BackgroundVideo src={welcomeVideoDesktop} variant="welcome" />}
+      
+      
       <IonRouterOutlet>
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/login" component={Login} />

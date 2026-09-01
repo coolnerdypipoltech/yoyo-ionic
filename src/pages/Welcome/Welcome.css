@@ -50,7 +50,7 @@
 }
 
 .welcome-page__tagline {
-  color: var(--ion-color-primary-tint);
+  color: white;
 
   letter-spacing: 0.06em;
   
@@ -61,7 +61,7 @@
 }
 
 .welcome-page__rabbit{
-  height: 65px;
+  height: 50px;
 }
 
 .welcome-page__actions {
@@ -70,4 +70,9 @@
   flex-direction: column;
   gap: 12px;
 
+}
+
+.login-button{
+    --background-activated: #682A27 !important;
+  --color-activated: #ffffff;
 }

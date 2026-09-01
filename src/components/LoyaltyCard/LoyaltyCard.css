@@ -40,7 +40,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: var(--yoyo-radius-lg);
-  padding: 20px;
+  padding: 30px 20px 30px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -128,14 +128,14 @@
 }
 
 .loyalty-card__id {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: var(--yoyo-font-text);
+  font-family: 'InstrumentSans-Bold';
   letter-spacing: 0.08em;
 }
 
 .loyalty-card__name {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: var(--yoyo-font-text);
+  font-family: 'InstrumentSans-Bold';
   letter-spacing: 0.06em;
   text-transform: uppercase;
   opacity: 0.95;
@@ -153,7 +153,11 @@
 
 .loyalty-card__points-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
 }
 
 .loyalty-card__points-block {
@@ -163,21 +167,28 @@
 }
 
 .loyalty-card__points-label {
-  font-size: 11px;
-  opacity: 0.75;
+  font-size: var(--yoyo-subtitle-size);
+
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  font-family: 'InstrumentSans-Bold';
 }
 
 .loyalty-card__points-value {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: var(--yoyo-title-size);
+  font-family: var(--yoyo-font-text);
+  text-align: center;
 }
 
 .loyalty-card__add-button {
-  align-self: flex-start;
+  align-self: center;
   --background: #ffffff;
-  --color: #0a0a0a;
+  --color: black;
   --border-radius: var(--yoyo-radius-pill);
-  font-weight: 700;
+  font-family: var(--yoyo-font-text) !important;
+
+  --background-activated: var(--yoyo-teal);
+  --color-activated: #ffffff;
 }
+
+
