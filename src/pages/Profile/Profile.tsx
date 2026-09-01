@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonToolbar, IonButtons } from '@ionic/react';
 import BackButton from '../../components/BackButton/BackButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -43,7 +44,7 @@ export default function Profile() {
       </IonHeader>
 
       <IonContent fullscreen className="profile-page">
-        <h1 className="profile-page__title">{t('profile.title')}</h1>
+        <PageTitle className="profile-page__title">{t('profile.title')}</PageTitle>
 
         <div className="profile-page__avatar-block">
           <button type="button" className="profile-page__avatar" onClick={() => history.push('/profile/edit-photo')}>

@@ -4,6 +4,16 @@
   margin: 0 auto;
 }
 
+/* Used on PlacesInfo/RewardsInfo as the hero above the title — fades/
+   slides in first, with the page's <h1> (see global.css) delayed to
+   cascade in right after, so those two detail screens get a fuller,
+   longer entrance than a plain form page's single title. */
+@media (prefers-reduced-motion: no-preference) {
+  .media-carousel {
+    animation: yoyo-enter-up 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
 .media-carousel--empty {
   height: 240px;
   background: var(--ion-color-light-shade);

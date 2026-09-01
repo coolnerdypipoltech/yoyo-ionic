@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
 import './EditTaste.css';
 import closeIcon from "../../assets/icons/Icon_cerrar.svg";
@@ -48,7 +49,7 @@ export default function EditTaste() {
         </button>
 
         <div className="edit-taste-page__content">
-          <h1 className="edit-taste-page__title">{t('editTaste.title')}</h1>
+          <PageTitle className="edit-taste-page__title">{t('editTaste.title')}</PageTitle>
           <p className="edit-taste-page__subtitle">{t('editTaste.subtitle')}</p>
 
           <hr className="places-info-divider" />

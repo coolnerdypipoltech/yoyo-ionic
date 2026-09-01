@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import ImageCropper from '../../components/ImageCropper/ImageCropper';
 import type { ImageCropperHandle } from '../../components/ImageCropper/ImageCropper';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
 import * as authService from '../../api/services/auth.service';
 import './EditProfile.css';
@@ -107,7 +108,7 @@ export default function EditProfile() {
               <button type="button" className="edit-profile-page__close" onClick={() => history.goBack()}>
                 <IonIcon icon={closeOutline} />
               </button>
-              <h1 className="edit-profile-page__title">{t('editProfile.title')}</h1>
+              <PageTitle className="edit-profile-page__title">{t('editProfile.title')}</PageTitle>
 
               {error ? <p className="edit-profile-page__error">{error}</p> : null}
 

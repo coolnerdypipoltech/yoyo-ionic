@@ -77,3 +77,23 @@
     --background-activated: #682A27 !important;
   --color-activated: #ffffff;
 }
+
+/* Welcome doesn't use an <h1> (see global.css's entrance-animation rule
+   for every other page's title) — its logo is the closest thing, so it
+   gets the same treatment directly, cascading into the tagline and
+   buttons right after. */
+@media (prefers-reduced-motion: no-preference) {
+  .welcome-page__logo-frame {
+    animation: yoyo-enter-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .welcome-page__tagline {
+    animation: yoyo-enter-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 140ms;
+  }
+
+  .welcome-page__actions {
+    animation: yoyo-enter-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 280ms;
+  }
+}

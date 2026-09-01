@@ -1,5 +1,6 @@
 import { IonAccordion, IonAccordionGroup, IonContent, IonItem, IonLabel, IonPage, IonHeader, IonToolbar, IonButtons } from '@ionic/react';
 import BackButton from '../../components/BackButton/BackButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useTranslation } from 'react-i18next';
 import './Faqs.css';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
@@ -28,7 +29,7 @@ export default function Faqs() {
       <IonContent fullscreen className="faqs-page">
 
 
-        <h1 className="faqs-page__title">{t('title')} <br></br> {t('title2')}</h1>
+        <PageTitle className="faqs-page__title">{t('title')} <br></br> {t('title2')}</PageTitle>
 
         <IonAccordionGroup className="faqs-page__group" value="0">
           {items.map((item, index) => (

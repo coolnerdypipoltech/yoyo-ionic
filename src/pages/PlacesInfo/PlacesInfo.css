@@ -45,6 +45,14 @@
   margin: 18px 0 14px;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  /* Cascades in after the hero carousel above it (see
+     MediaCarousel.css) instead of both fading in at once. */
+  .places-info-page__title {
+    animation-delay: 220ms;
+  }
+}
+
 .places-info-reserve-button{
   position: sticky;
   bottom: 20px;

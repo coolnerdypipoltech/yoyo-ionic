@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
 import BackButton from '../../components/BackButton/BackButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { isValidEmail } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import './PasswordRecovery.css';
@@ -58,7 +59,7 @@ export default function PasswordRecovery() {
       </IonHeader>
       <IonContent fullscreen className="password-recovery-page">
         <div className="password-recovery-page__content">
-          <h1 className="password-recovery-page__title">{t('passwordRecovery.title')}</h1>
+          <PageTitle className="password-recovery-page__title">{t('passwordRecovery.title')}</PageTitle>
           <p className="password-recovery-page__instructions">{t('passwordRecovery.instructions')}</p>
 
           <FormField

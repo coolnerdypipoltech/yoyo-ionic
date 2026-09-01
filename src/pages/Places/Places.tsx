@@ -8,6 +8,7 @@ import LoyaltyCard from '../../components/LoyaltyCard/LoyaltyCard';
 import HorizontalCarousel from '../../components/HorizontalCarousel/HorizontalCarousel';
 import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard';
 import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
 import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as placesService from '../../api/services/places.service';
@@ -61,10 +62,10 @@ export default function Places() {
           <IonRefresherContent />
         </IonRefresher>
 
-        <h1 className="places-page__heading">
+        <PageTitle className="places-page__heading">
           <span className="places-page__heading-line">{t('places.headingLine1')}</span>
           <span className="places-page__heading-display">{t('places.headingLine2')}</span>
-        </h1>
+        </PageTitle>
 
         {user ? <LoyaltyCard user={user} /> : null}
 

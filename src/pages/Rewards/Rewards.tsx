@@ -8,6 +8,7 @@ import AdBanner from '../../components/AdBanner/AdBanner';
 import HorizontalCarousel from '../../components/HorizontalCarousel/HorizontalCarousel';
 import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard';
 import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
 import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as rewardsService from '../../api/services/rewards.service';
@@ -60,10 +61,10 @@ export default function Rewards() {
           <IonRefresherContent />
         </IonRefresher>
 
-        <h1 className="rewards-page__heading">
+        <PageTitle className="rewards-page__heading">
           <span className="rewards-page__heading-line">{t('rewards.headingLine1')}</span>
           <span className="rewards-page__heading-display">{t('rewards.headingLine2')}</span>
-        </h1>
+        </PageTitle>
 
         {user ? (
           <div className="rewards-page__credits-container">

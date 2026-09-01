@@ -13,6 +13,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import BackButton from '../../components/BackButton/BackButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 import { useAuth } from '../../context/AuthContext';
 import { ApiError } from '../../api/errors';
@@ -78,11 +79,11 @@ export default function Login() {
       </IonHeader>
       <IonContent fullscreen className="login-page">
         <div className="login-page__content">
-          <h1 className="login-page__heading">
+          <PageTitle className="login-page__heading">
             <span className="login-page__heading-line">{t('login.headingLine1')}</span>
             <span className="login-page__heading-line">{t('login.headingLine2')}</span>
             <span className="login-page__heading-display">{t('login.headingLine3')}</span>
-          </h1>
+          </PageTitle>
 
           {showVerifyBanner ? (
             <div className="login-page__banner">{t('login.verifyEmailBanner')}</div>

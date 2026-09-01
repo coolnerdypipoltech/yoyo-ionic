@@ -14,6 +14,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import MediaCarousel from "../../components/MediaCarousel/MediaCarousel";
 import SocialRow from "../../components/SocialRow/SocialRow";
 import BackButton from "../../components/BackButton/BackButton";
+import PageTitle from "../../components/PageTitle/PageTitle";
 import { useAuth } from "../../context/AuthContext";
 import { openWhatsApp, padUserId } from "../../services/whatsapp";
 import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/format";
@@ -98,7 +99,7 @@ export default function PlacesInfo() {
         </div>
 
         <div className="places-info-page__content">
-          <h1 className="places-info-page__title">{place.name}</h1>
+          <PageTitle className="places-info-page__title">{place.name}</PageTitle>
           <SocialRow
             websiteUrl={place.website_url}
             facebookUrl={place.facebook_url}

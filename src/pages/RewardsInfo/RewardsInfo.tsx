@@ -6,6 +6,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import MediaCarousel from '../../components/MediaCarousel/MediaCarousel';
 import AvailabilityNotice from '../../components/AvailabilityNotice/AvailabilityNotice';
 import BackButton from '../../components/BackButton/BackButton';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
 import { openWhatsApp, padUserId } from '../../services/whatsapp';
 import { formatDateRange } from '../../utils/format';
@@ -61,7 +62,7 @@ export default function RewardsInfo() {
         <MediaCarousel items={item.gallery.length > 0 ? item.gallery : item.media} />
 
         <div className="rewards-info-page__content">
-          <h1 className="rewards-info-page__title">{item.name}</h1>
+          <PageTitle className="rewards-info-page__title">{item.name}</PageTitle>
 
           
           <hr className="places-info-divider"  />

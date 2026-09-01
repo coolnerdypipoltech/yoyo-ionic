@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import FormField from '../../components/FormField/FormField';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import BackButton from '../../components/BackButton/BackButton';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import PhoneNumberField from '../../components/PhoneNumberField/PhoneNumberField';
@@ -155,7 +156,7 @@ export default function Register() {
       </IonHeader>
       <IonContent fullscreen className="register-page">
         <div className="register-page__content">
-          <h1 className="register-page__title">{t('register.title')}</h1>
+          <PageTitle className="register-page__title">{t('register.title')}</PageTitle>
 
           <FormField required label={t('register.email')} type="email" value={form.email} onChange={(v) => update('email', v)} />
 

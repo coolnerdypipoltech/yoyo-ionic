@@ -175,3 +175,45 @@
 .native-input.sc-ion-input-md {
   padding-left: 5px!important;
 }
+
+/* Entrance animations — page titles, the floating tab bar, and header
+   back buttons fade/slide in on mount instead of just appearing. Plain
+   @keyframes (not transitions) fire automatically the moment React
+   mounts the element, no JS wiring needed — every page title already
+   uses <h1>, so one rule here covers all of them instead of touching
+   every page's own CSS file. Wrapped in prefers-reduced-motion so
+   anyone who's asked their OS for less motion actually gets none. */
+@keyframes yoyo-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes yoyo-enter-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ion-content h1 {
+    animation: yoyo-enter-up 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .main-tabs__bar {
+    animation: yoyo-enter-up 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 150ms;
+  }
+
+  .yoyo-back-button {
+    animation: yoyo-enter-fade 650ms ease-out both;
+  }
+}

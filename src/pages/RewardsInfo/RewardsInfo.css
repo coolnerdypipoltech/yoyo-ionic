@@ -26,6 +26,14 @@
   margin: 18px 0px 64px 0px;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  /* Cascades in after the hero carousel above it (see
+     MediaCarousel.css) instead of both fading in at once. */
+  .rewards-info-page__title {
+    animation-delay: 220ms;
+  }
+}
+
 .rewards-info-page__redeem-button{
   position: sticky;
   bottom: 20px;

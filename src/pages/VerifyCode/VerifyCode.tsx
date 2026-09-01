@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import BackButton from '../../components/BackButton/BackButton';
 import PasswordField from '../../components/PasswordField/PasswordField';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import { isValidAccessCode } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
@@ -60,7 +61,7 @@ export default function VerifyCode() {
       </IonHeader>
       <IonContent fullscreen className="verify-code-page">
         <div className="verify-code-page__content">
-          <h1 className="verify-code-page__title">{t('verifyCode.title')}</h1>
+          <PageTitle className="verify-code-page__title">{t('verifyCode.title')}</PageTitle>
           <p className="verify-code-page__instructions">{t('verifyCode.instructions')}</p>
 
           <PasswordField
