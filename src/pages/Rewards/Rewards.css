@@ -12,10 +12,19 @@
 
 .rewards-page__header ion-toolbar {
   --background: transparent;
-  --padding-start: 16px;
-  --padding-end: clamp(16px, 5vw, 32px);
+    --padding-start: 5%;
+  --padding-end: 5%;
 }
 
+
+@media (max-width: 720px) {
+
+  .rewards-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
+}
 
 .rewards-page__logo {
   font-family: var(--yoyo-font-logo);

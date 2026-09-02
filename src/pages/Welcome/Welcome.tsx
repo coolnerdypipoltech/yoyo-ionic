@@ -1,4 +1,5 @@
 import { IonButton, IonContent, IonPage } from "@ionic/react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import logoPattern from "../../assets/Logo YOYO.png";
@@ -8,9 +9,26 @@ import "./Welcome.css";
 export default function Welcome() {
   const { t } = useTranslation("auth");
   const history = useHistory();
+  const pageRef = useRef<HTMLElement>(null);
+
+  // Ionic hides a freshly-mounted page behind the `ion-page-invisible`
+  // class (opacity: 0) until its router outlet marks it current. Welcome
+  // is the first page of a brand-new IonRouterOutlet every time someone
+  // logs out (the whole authenticated router tree unmounts and this one
+  // mounts in its place — see App.tsx), with no prior page to transition
+  // from, and that class has been observed stuck afterwards: the logo
+  // and content are fully rendered (opacity: 1 on inspection) but stay
+  // invisible because this ancestor never gets uncovered. Safety net:
+  // strip it shortly after mount if Ionic hasn't already.
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      pageRef.current?.classList.remove('ion-page-invisible');
+    }, 50);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
-    <IonPage>
+    <IonPage ref={pageRef}>
       <IonContent fullscreen className="welcome-page">
         <div className="welcome-page__glow" />
 

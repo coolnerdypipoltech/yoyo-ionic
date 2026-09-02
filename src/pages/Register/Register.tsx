@@ -215,9 +215,11 @@ export default function Register() {
 
           {error ? <p className="register-page__error">{error}</p> : null}
 
-          <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleSubmit}>
+          <div className="register-page__actions">
+            <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleSubmit}>
             {isSubmitting ? <IonSpinner name="dots" /> : t('register.submit')}
           </IonButton>
+          </div>
 
           <button type="button" className="register-page__login-link" onClick={() => history.replace('/login')}>
             {t('register.alreadyHaveAccount')} <a href="#login" onClick={() => history.replace('/login')}>

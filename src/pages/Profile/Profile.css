@@ -1,9 +1,12 @@
 .profile-page {
+  /* Was also display:flex + centering here, on ion-content's own host
+     element — ion-content is shadow DOM, and that made its internal
+     scroll wrapper shrink-to-fit and center itself instead of filling
+     the screen, which is what put the scrollbar in the middle of the
+     page instead of the real edge. The centering itself is redundant
+     anyway: .profile-page__content-container right below does the same
+     thing correctly, on a normal light-DOM div. */
   --background: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .profile-page__content-container {
@@ -38,6 +41,17 @@
 
 .profile-page__header ion-toolbar {
   --background: transparent;
+    --padding-start: 5%;
+  --padding-end: 5%;
+}
+
+@media (max-width: 720px) {
+
+  .profile-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
 }
 
 .profile-page__title {
@@ -73,6 +87,12 @@
   justify-content: center;
   font-size: 40px;
   color: var(--yoyo-muted);
+}
+
+.profile-page__delete-button-wrap{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .profile-page__avatar img {

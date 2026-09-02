@@ -12,8 +12,17 @@
 
 .places-page__header ion-toolbar {
   --background: transparent;
-  --padding-start: 16px;
-  --padding-end: 16px;
+  --padding-start: 5%;
+  --padding-end: 5%;
+}
+
+@media (max-width: 720px) {
+
+  .places-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
 }
 
 .places-page__logo {

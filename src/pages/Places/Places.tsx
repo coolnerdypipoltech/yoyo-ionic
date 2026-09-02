@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import LoyaltyCard from '../../components/LoyaltyCard/LoyaltyCard';
@@ -9,6 +9,7 @@ import HorizontalCarousel from '../../components/HorizontalCarousel/HorizontalCa
 import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard';
 import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import RabbitTransition from '../../components/RabbitTransition/RabbitTransition';
 import { useAuth } from '../../context/AuthContext';
 import { useInfiniteList } from '../../hooks/useInfiniteList';
 import * as placesService from '../../api/services/places.service';
@@ -24,6 +25,12 @@ export default function Places() {
   const history = useHistory();
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  // Places only ever mounts fresh once per authenticated session — Ionic
+  // keeps it cached (not remounted) across tab switches within MainTabs
+  // — so this state's *initial* value alone is a reliable "did the user
+  // just arrive here via login or an auto-restored session" signal,
+  // covering both cases at once with no extra flag-passing needed.
+  const [showRabbit, setShowRabbit] = useState(true);
 
   const fetchFirstPlaces = useCallback(() => placesService.getConsumptionCenters(PAGE_SIZE, 0), []);
   const fetchNextPlaces = useCallback((next: string) => placesService.getNextPlacesPage(next), []);
@@ -32,6 +39,46 @@ export default function Places() {
   const fetchFirstEvents = useCallback(() => placesService.getEvents(PAGE_SIZE, 0), []);
   const fetchNextEvents = useCallback((next: string) => placesService.getNextPlacesPage(next), []);
   const events = useInfiniteList<Place>({ fetchFirstPage: fetchFirstEvents, fetchNextPage: fetchNextEvents });
+
+  // Gate for the rabbit's idle loop: it keeps looping until the Places
+  // section's own thumbnail images have actually finished loading (not
+  // just the API response), so the transition never uncovers a carousel
+  // that's still showing spinners/blank thumbnails.
+  const [placesImagesReady, setPlacesImagesReady] = useState(false);
+  useEffect(() => {
+    if (placesImagesReady) return;
+    if (places.isLoading) return;
+    if (places.hasError) {
+      setPlacesImagesReady(true);
+      return;
+    }
+
+    const urls = places.results
+      .map((item) => item.thumbnail?.absolute_url)
+      .filter((url): url is string => Boolean(url));
+
+    if (urls.length === 0) {
+      setPlacesImagesReady(true);
+      return;
+    }
+
+    let cancelled = false;
+    let settledCount = 0;
+    urls.forEach((url) => {
+      const img = new Image();
+      const onSettle = () => {
+        settledCount += 1;
+        if (!cancelled && settledCount === urls.length) setPlacesImagesReady(true);
+      };
+      img.onload = onSettle;
+      img.onerror = onSettle;
+      img.src = url;
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [placesImagesReady, places.isLoading, places.hasError, places.results]);
 
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await Promise.all([places.refresh(), events.refresh(), refreshUser()]);
@@ -42,6 +89,10 @@ export default function Places() {
 
   return (
     <IonPage>
+      {showRabbit ? (
+        <RabbitTransition ready={placesImagesReady} onComplete={() => setShowRabbit(false)} />
+      ) : null}
+
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
           <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />

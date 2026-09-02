@@ -13,6 +13,17 @@
 
 .rewards-info-page__header ion-toolbar {
   --background: transparent;
+    --padding-start: 5%;
+  --padding-end: 5%;
+}
+
+@media (max-width: 720px) {
+
+  .rewards-info-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
 }
 
 .rewards-info-page__content {
@@ -38,6 +49,8 @@
   position: sticky;
   bottom: 20px;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .rewards-info-page__text {

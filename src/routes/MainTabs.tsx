@@ -10,7 +10,7 @@ import BackgroundVideo from '../components/BackgroundVideo/BackgroundVideo';
 import BackgroundGradient from '../components/BackgroundGradient/BackgroundGradient';
 
 import mainVideoDesktop from '../assets/videos/desktop/main-video.mp4';
-import gradient from '../assets/backgrounds/login.png';
+import gradient from '../assets/backgrounds/welcome.png';
 import './MainTabs.css';
 
 import { useViewport } from '../context/ViewportContext';

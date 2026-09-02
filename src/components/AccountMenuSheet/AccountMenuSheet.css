@@ -34,16 +34,24 @@
   top: 8px;
   border-radius: 32px;
   box-shadow: 0 0 10px var(--yoyo-teal);
+  left: 5px;
   position: absolute;
   z-index: 1;
   background-color: black;
-  width: calc(100%);
+  width: calc(100% - 10px);
   height: calc(100%);
   -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
   -ms-border-radius: 32px;
   -o-border-radius: 32px;
 
+}
+
+@media (max-width: 768px) {
+  .border-teal {
+    left: 0;
+    width: 100%;
+  }
 }
 
 

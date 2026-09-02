@@ -75,7 +75,8 @@ export default function VerifyCode() {
 
           {error ? <p className="verify-code-page__error">/{error}</p> : null}
 
-          <IonButton
+          <div className="verify-code-page__actions">
+                      <IonButton
             expand="block"
             size="large"
             className="yoyo-pill--white"
@@ -84,6 +85,7 @@ export default function VerifyCode() {
           >
             {isSubmitting ? <IonSpinner name="dots" /> : t('verifyCode.continue')}
           </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>

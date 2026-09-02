@@ -102,10 +102,12 @@ export default function Login() {
 
           {error ? <p className="login-page__error">{error}</p> : null}
 
-          <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleLogIn}>
+          <div className="login-page__actions">
+            <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleLogIn}>
             {isSubmitting ? <IonSpinner name="dots" /> : t('login.continue')}
           </IonButton>
 
+          </div>
         </div>
       </IonContent>
     </IonPage>

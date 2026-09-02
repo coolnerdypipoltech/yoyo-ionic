@@ -59,6 +59,12 @@
   --yoyo-subtitle-size: 16px;
   --yoyo-body-size: 14px;
 
+  /* Desktop layout: width of the centered content column (see
+     global.css's ion-content::part(scroll) rule) — everything past this
+     width shows as black letterbox bands instead of stretching. Headers
+     are deliberately excluded and stay full width. */
+  --yoyo-desktop-content-width: 1000px;
+
   --yoyo-font-display: 'InstrumentSerif-Regular', Georgia, serif;
   --yoyo-font-logo: 'InstrumentSerif-Regular', 'Arial Narrow', sans-serif;
   --yoyo-font-sans: 'InstrumentSerif-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

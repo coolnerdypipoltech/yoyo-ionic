@@ -73,9 +73,11 @@ export default function PasswordRecovery() {
             error={invalid ? t('passwordRecovery.invalidEmail') : undefined}
           />
 
-          <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleSend}>
-            {isSubmitting ? <IonSpinner name="dots" /> : t('passwordRecovery.send')}
-          </IonButton>
+          <div className="password-recovery-page__actions">
+            <IonButton expand="block" size="large" className="yoyo-pill--white" disabled={isSubmitting} onClick={handleSend}>
+              {isSubmitting ? <IonSpinner name="dots" /> : t('passwordRecovery.send')}
+            </IonButton>
+          </div>
         </div>
 
         {sent ? (

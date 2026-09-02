@@ -26,6 +26,44 @@
   display: none;
 }
 
+/* Desktop layout: center every page's content in a fixed-width column
+   with black letterbox bands on the sides, instead of stretching full
+   width. ion-content uses shadow DOM; its actual scrollable area is a
+   separate div (`.inner-scroll`, exposed as `part="scroll"`) that reads
+   --padding-start/--padding-end for its own inline padding — those are
+   real Ionic-documented custom properties, set from outside the shadow
+   root same as --padding-start on ion-input elsewhere in this app.
+   Using padding here (not max-width + margin) is deliberate: the
+   scrollable element itself stays the *full* viewport width, so the
+   mouse wheel keeps working anywhere on screen and the native scrollbar
+   renders at the real screen edge — an earlier version of this used
+   max-width + margin:auto instead, which shrank the scrollable box down
+   to the 1000px column itself, breaking both of those (scroll wheel did
+   nothing over the black bars, since that area no longer belonged to
+   the scrollable element at all, and the scrollbar floated at that
+   box's right edge instead of the screen's). Below 768px (phones) this
+   is a no-op — the calc() floors at 0 once the viewport is narrower
+   than --yoyo-desktop-content-width. */
+@media (min-width: 768px) {
+  ion-content {
+    --padding-start: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
+    --padding-end: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
+  }
+
+  /* Deliberately NOT setting position on ::part(scroll): Ionic pins it
+     with position:absolute + left/right/top/bottom insets, which is
+     what makes it stretch to exactly fill its host and correctly detect
+     overflow for scrolling. An earlier version added position:relative
+     here (reasoning: give position:absolute; inset:0; decorative
+     backgrounds, like a page's glow effect, a containing block) — that
+     overrode Ionic's own position, so the 4 insets stopped sizing it and
+     it fell back to shrinking to fit its content's height instead of
+     its host's, which broke scrolling entirely (no overflow was ever
+     detected). Turns out it was never needed anyway: `absolute` is
+     already a non-static position, so it already satisfies that same
+     containing-block requirement on its own. */
+}
+
 /* Shared design-system primitives, used across most auth/detail/modal
    pages per the reference screenshots — not page-specific content. */
 
@@ -101,6 +139,24 @@
   font-size: 20px;
 }
 
+.yoyo-pill-disabled {
+  opacity: 1 !important;
+  --background: #5a5a5a;
+  --color: var(--yoyo-muted);
+  --border-width: 0;
+
+  --border-radius: var(--yoyo-radius-pill);
+  font-weight: 700;
+  font-size: var(--yoyo-body-size);
+  min-height: 52px;
+  font-family: 'InstrumentSans-Bold' !important;
+  text-transform: uppercase;
+  --background-activated: var(--yoyo-teal);
+  --color-activated: #ffffff;
+  width: 100%;
+  max-width: 300px;
+}
+
 /* Pill buttons — white (primary), dark (secondary), teal (positive). */
 .yoyo-pill--white {
   --background: #ffffff;
@@ -113,7 +169,10 @@
   text-transform: uppercase;
   --background-activated: var(--yoyo-teal);
   --color-activated: #ffffff;
+width: 100%;
+max-width: 300px;
 }
+
 
 .yoyo-pill--dark {
   --background: rgb(0, 0, 0);
@@ -127,6 +186,9 @@
   min-height: 52px;
   font-family: 'InstrumentSans-Bold' !important;
   text-transform: uppercase;
+width: 100%;
+max-width: 300px;
+
 }
 
 .yoyo-pill--teal {
@@ -138,7 +200,30 @@
   min-height: 52px;
   font-family: 'InstrumentSans-Bold' !important;
   text-transform: uppercase;
+  width: 100%;
+  max-width: 300px;
+
 }
+
+@media (min-width: 768px) {
+  .yoyo-pill--teal, .yoyo-pill--white, .yoyo-pill--dark, .yoyo-pill-disabled {
+    max-width: 300px;
+    min-width: 250px;
+    align-self: center;
+  }
+}
+
+/* Disabled pill buttons — solid gray with white text instead of Ionic's
+   default (just fading the whole button to 50% opacity). Ionic sets
+   that dimming as a plain `opacity` on the button's own host element
+   (not through the --opacity custom property, which only affects the
+   inner native button), via `:host(.button-disabled)` — a rule with
+   higher specificity than a plain class here (same class of issue as
+   ion-input's --border-radius elsewhere in this app), so it needs
+   !important to actually win. [disabled] targets the real HTML
+   attribute IonButton reflects, not Ionic's internal state class, so
+   this doesn't depend on an undocumented implementation detail. */
+
 
 
 @font-face {

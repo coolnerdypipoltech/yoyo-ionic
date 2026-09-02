@@ -131,9 +131,11 @@ export default function Profile() {
           <p className="profile-page__danger-text">{t('profile.deleteWarning')}</p>
         </div>
 
-        <button type="button" className="profile-page__delete-button yoyo-pill--dark" onClick={() => history.push('/profile/delete')}>
+        <div className="profile-page__delete-button-wrap">
+                  <button type="button" className="profile-page__delete-button yoyo-pill--dark" onClick={() => history.push('/profile/delete')}>
           {t('profile.deleteAccount')}
         </button>
+        </div>
         </div>
         </div>
       </IonContent>

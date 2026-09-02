@@ -1,0 +1,24 @@
+.rabbit-transition {
+  /* Rendered via a portal straight into document.body (see
+     RabbitTransition.tsx), so `fixed` here is relative to the real
+     viewport — not trapped by ion-router-outlet's page-transition
+     transform, which is what kept this from covering IonTabBar before. */
+  position: fixed;
+  inset: 0;
+  z-index: 5000000;
+  pointer-events: none;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.rabbit-transition__sprite {
+  position: absolute;
+  /* `left` is set inline per-frame (the animated x position) — this
+     centers the sprite on that point instead of anchoring its left
+     edge there, so the configured x values in RabbitTransition.tsx map
+     directly to "where the rabbit is standing" regardless of sprite
+     size. */
+  transform: translateX(-50%);
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+}

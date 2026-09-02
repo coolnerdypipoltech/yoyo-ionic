@@ -14,6 +14,13 @@
   background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(90, 10, 12, 0.85) 0%, transparent 70%);
 }
 
+.verify-code-page__actions{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
 .verify-code-page__header {
   --background: transparent;
   position: relative;
@@ -22,6 +29,17 @@
 
 .verify-code-page__header ion-toolbar {
   --background: transparent;
+    --padding-start: 5%;
+  --padding-end: 5%;
+}
+
+@media (max-width: 720px) {
+
+  .verify-code-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
 }
 
 .verify-code-page__content {

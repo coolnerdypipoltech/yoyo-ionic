@@ -1,8 +1,7 @@
 .yoyo-back-button {
   --icon-font-size: 16px;
   --icon-padding-start: 2px;
-  margin-left: 20px;
-  margin-right: 20px;
+
   padding: 0px;
   min-width: 48px;
   min-height: 48px;

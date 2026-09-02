@@ -22,6 +22,23 @@
 
 .register-page__header ion-toolbar {
   --background: transparent;
+    --padding-start: 5%;
+  --padding-end: 5%;
+}
+
+@media (max-width: 720px) {
+
+  .register-page__header ion-toolbar {
+    --padding-start: 15px;
+    --padding-end: 15px;
+  }
+
+}
+
+.register-page__actions{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .register-page__content {

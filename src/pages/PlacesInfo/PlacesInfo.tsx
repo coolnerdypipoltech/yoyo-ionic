@@ -248,13 +248,15 @@ export default function PlacesInfo() {
           <div className="places-info-page__disclaimer">
             <p style={{ width: "80%" }}>{t("detail.paymentDisclaimer")}</p>
           </div>
-          <IonButton
+          <div className="places-info-reserve-button">
+            <IonButton
             expand="block"
-            className="yoyo-pill--white places-info-reserve-button"
+            className="yoyo-pill--white "
             onClick={handleReserve}
           >
             {isFromPlace ? t("detail.reserve") : t("detail.buyTicket")}
           </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>

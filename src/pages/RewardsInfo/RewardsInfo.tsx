@@ -121,9 +121,11 @@ export default function RewardsInfo() {
 
           {reason ? <div className="rewards-info-page__disclaimer"><img src={Danger} alt="Danger" />{t('detail.reviewDisclaimer')}</div> : null}
 
-          <IonButton expand="block" className="yoyo-pill--white rewards-info-page__redeem-button" disabled={reason !== null} onClick={handleRedeem}>
+          <div className="rewards-info-page__redeem-button">
+            <IonButton expand="block" className={reason !== null ? "yoyo-pill-disabled" : "yoyo-pill--white"} disabled={reason !== null} onClick={handleRedeem}>
             {t('detail.redeem')}
           </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>
