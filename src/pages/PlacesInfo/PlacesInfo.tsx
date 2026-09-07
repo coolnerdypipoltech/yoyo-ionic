@@ -21,7 +21,10 @@ import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/fo
 import type { Place } from "../../api/types";
 import "./PlacesInfo.css";
 import spark from "../../assets/icons/Spark.svg";
+import { useViewport } from '../../context/ViewportContext';
 
+import BackgroundGradient from '../../components/BackgroundGradient/BackgroundGradient';
+import gradient from "../../assets/backgrounds/desktop/Home_others.png";
 import locationIcon from "../../assets/icons/Icon_Location.svg";
 import dresscode from "../../assets/icons/Dresscode.svg";
 import card from "../../assets/icons/Icon_Credit.svg";
@@ -34,6 +37,7 @@ interface LocationState {
 }
 
 export default function PlacesInfo() {
+  const { isMobile } = useViewport();
   const { t } = useTranslation("main");
   const history = useHistory();
   const location = useLocation<LocationState | undefined>();
@@ -79,10 +83,10 @@ export default function PlacesInfo() {
       : null,
   ].filter(Boolean);
 
-  console.log(place);
-
+  
   return (
     <IonPage>
+      {!isMobile ? <BackgroundGradient src={gradient} /> : null}
       <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header">
         <IonToolbar>
           <IonButtons slot="start">
@@ -92,9 +96,10 @@ export default function PlacesInfo() {
       </IonHeader>
 
       <IonContent fullscreen className="places-info-page">
+        
         <div className="places-info-page__hero">
           <MediaCarousel
-            items={place.gallery.length > 0 ? place.gallery : place.media}
+            items={place.gallery}
           />
         </div>
 
@@ -109,8 +114,8 @@ export default function PlacesInfo() {
           <hr className="places-info-divider" />
 
           <h2
-            className="yoyo-section-header"
-            style={{ marginTop: "24px", fontSize: "16px" }}
+            className="yoyo-section-header places-info-page__headers"
+            style={{ marginTop: "24px" }}
           >
             <img
               src={spark}
@@ -138,8 +143,8 @@ export default function PlacesInfo() {
             <>
               <hr className="places-info-divider" />
               <h2
-                className="yoyo-section-header places-info-page__section-spacing"
-                style={{ fontSize: "16px" }}
+                className="yoyo-section-header places-info-page__section-spacing places-info-page__headers"
+
               >
                 <img
                   src={spark}
@@ -168,7 +173,7 @@ export default function PlacesInfo() {
             <>
               <hr className="places-info-divider"/>
 
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
+              <h2 className="yoyo-section-header places-info-page__headers" style={{ marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"
@@ -201,7 +206,7 @@ export default function PlacesInfo() {
             <>
               <hr className="places-info-divider" />
 
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
+              <h2 className="yoyo-section-header places-info-page__headers" style={{ marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"
@@ -220,7 +225,7 @@ export default function PlacesInfo() {
             <>
               <hr className="places-info-divider" />
  
-              <h2 className="yoyo-section-header" style={{ fontSize: "16px", marginTop: "24px" }}>
+              <h2 className="yoyo-section-header places-info-page__headers" style={{  marginTop: "24px" }}>
                 <img
                   src={spark}
                   alt="Spark"

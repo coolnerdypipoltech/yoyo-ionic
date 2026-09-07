@@ -87,6 +87,16 @@
   }
 }
 
+@media (min-height: 700px) and (min-width: 768px) {
+  :root {
+    --yoyo-super-header-size: 36px;
+    --yoyo-header-size: 32px;
+    --yoyo-title-size: 20px;
+    --yoyo-subtitle-size: 18px;
+    --yoyo-body-size: 16px;
+  }
+}
+
 .ion-color-secondary {
   --ion-color-base: var(--ion-color-secondary);
   --ion-color-base-rgb: var(--ion-color-secondary-rgb);

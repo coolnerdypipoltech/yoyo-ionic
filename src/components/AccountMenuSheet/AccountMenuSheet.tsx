@@ -1,9 +1,12 @@
-import { IonButton, IonContent, IonModal } from '@ionic/react';
+import { IonButton, IonContent, IonIcon, IonModal } from '@ionic/react';
+import { closeOutline } from 'ionicons/icons';
+import { createAnimation } from '@ionic/core';
 import {  useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { PRIVACY_POLICY_URL } from '../../api/config';
 import { useAuth } from '../../context/AuthContext';
+import { useViewport } from '../../context/ViewportContext';
 import './AccountMenuSheet.css';
 import spark from "../../assets/icons/SparkG.svg";
 interface AccountMenuSheetProps {
@@ -11,10 +14,43 @@ interface AccountMenuSheetProps {
   onClose: () => void;
 }
 
+// Desktop presents this as a right-anchored side panel instead of the
+// mobile bottom sheet (see the isMobile branch below), so it needs its
+// own slide-in-from-the-right transition — Ionic's built-in modal
+// animations only ever slide up (ios: from the bottom, md: as a sheet),
+// neither of which fits a side panel. Reaches into the modal's shadow
+// root for `.modal-wrapper`/`ion-backdrop` because that's how Ionic's
+// own custom-animation examples target them — there's no public
+// part()/CSS-var hook for the transform itself.
+const desktopEnterAnimation = (baseEl: HTMLElement) => {
+  const root = baseEl.shadowRoot;
+  const backdropAnimation = createAnimation()
+    .addElement(root?.querySelector('ion-backdrop') ?? [])
+    .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+  // Ionic pre-sets the wrapper to opacity: 0.01 before an enter
+  // animation runs (to avoid a flash of unstyled content) and expects
+  // the animation itself to bring it back to 1 — a transform-only
+  // keyframe list leaves it stuck there, fully positioned but invisible.
+  const wrapperAnimation = createAnimation()
+    .addElement(root?.querySelector('.modal-wrapper') ?? [])
+    .keyframes([
+      { offset: 0, opacity: '0', transform: 'translateX(100%)' },
+      { offset: 1, opacity: '1', transform: 'translateX(0)' },
+    ]);
+  return createAnimation()
+    .addElement(baseEl)
+    .easing('cubic-bezier(0.36, 0.66, 0.04, 1)')
+    .duration(280)
+    .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+
+const desktopLeaveAnimation = (baseEl: HTMLElement) => desktopEnterAnimation(baseEl).direction('reverse');
+
 export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetProps) {
   const { t } = useTranslation(['main', 'common']);
   const history = useHistory();
   const { logout } = useAuth();
+  const { isMobile } = useViewport();
   const [isLogoutConfirmOpen, setIsLogoutConfirmOpen] = useState(false);
 
   const goTo = (path: string) => {
@@ -38,10 +74,27 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
   return (
     <>
 
-      <IonModal isOpen={isOpen} onDidDismiss={() => {onClose();}}  initialBreakpoint={0.65} breakpoints={[0, 0.5]} className="account-round-top-borders">
-        <div  className="border-teal"></div>
+      <IonModal
+        isOpen={isOpen}
+        onDidDismiss={() => {onClose();}}
+        className={isMobile ? 'account-round-top-borders' : 'account-menu-sheet--desktop'}
+        {...(isMobile
+          ? { initialBreakpoint: 0.65 }
+          : { enterAnimation: desktopEnterAnimation, leaveAnimation: desktopLeaveAnimation })}
+      >
+        <div className="border-teal"></div>
         <IonContent className="account-menu-sheet">
-          
+          {/* Desktop-only: this panel now covers the header's own
+             "Open menu" toggle button (it's a full-height panel
+             anchored to the same right edge that button sits in), so
+             that button can no longer be clicked to close it back —
+             this is the panel's own reachable close affordance. */}
+          {!isMobile ? (
+            <button type="button" className="account-menu-sheet__close" onClick={onClose} aria-label="Close">
+              <IonIcon icon={closeOutline} />
+            </button>
+          ) : null}
+
           <img src={spark} alt="Spark" className="account-menu-sheet__spark" />
 
           <div className="account-menu-sheet__list">
@@ -83,7 +136,8 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
           <div className="account-menu-sheet__logout-popup">
             <h2 className="account-menu-sheet__logout-popup-title">{t('menu.logOutConfirm')}</h2>
             <p className="account-menu-sheet__logout-popup-text">{t('menu.logOutConfirmMessage')}</p>
-            <IonButton
+<div className='centered-content' style={{ flexDirection: 'column' }}>
+              <IonButton
               expand="block"
               fill="clear"
               className="yoyo-pill--white account-menu-sheet__logout-popup-button"
@@ -99,6 +153,7 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
             >
               {t('common:buttons.cancel')}
             </IonButton>
+</div>
           </div>
         </div>
       ) : null}

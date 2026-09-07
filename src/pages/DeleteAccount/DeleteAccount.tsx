@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import { useAuth } from '../../context/AuthContext';
-import tombstoneIcon from '../../assets/ACCS_Icon_DeleteAcount.png';
+import tombstoneIcon from '../../assets/RIP.svg';
 import './DeleteAccount.css';
 
 export default function DeleteAccount() {

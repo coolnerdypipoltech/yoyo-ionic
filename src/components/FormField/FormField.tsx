@@ -47,7 +47,7 @@ export default function FormField({
           aria-label={label}
           type={type}
           value={value}
-
+          style={{paddingLeft: "0px"}}
           id={id}
           fill="outline"
           

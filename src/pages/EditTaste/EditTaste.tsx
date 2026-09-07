@@ -14,7 +14,7 @@ import FormField from "../../components/FormField/FormField";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useAuth } from "../../context/AuthContext";
 import "./EditTaste.css";
-import closeIcon from "../../assets/icons/Icon_cerrar.svg";
+
 
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/taste.png";
@@ -91,7 +91,8 @@ export default function EditTaste() {
             />
           </div>
 
-          <IonButton
+<div className="centered-content">
+            <IonButton
             expand="block"
             size="large"
             className="yoyo-pill--white"
@@ -100,6 +101,7 @@ export default function EditTaste() {
           >
             {isSaving ? <IonSpinner name="dots" /> : t("editTaste.save")}
           </IonButton>
+</div>
         </div>
       </IonContent>
     </IonPage>

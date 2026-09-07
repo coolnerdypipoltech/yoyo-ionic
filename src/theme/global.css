@@ -3,8 +3,9 @@
 
 .ion-page {
   --yoyo-page-padding: 0px;
-  
+
 }
+
 
 
 .yoyo-safe-top {
@@ -18,12 +19,47 @@
 .yoyo-scroll-x {
   display: flex;
   overflow-x: auto;
-  
+  justify-content: center;
   -webkit-overflow-scrolling: touch;
+}
+
+.yoyo-scroll-x img{
+  width: 100%;
 }
 
 .yoyo-scroll-x::-webkit-scrollbar {
   display: none;
+}
+
+/* Loading placeholder for an image/video that's still fetching — a
+   left-to-right gradient sweep instead of blank space, until the asset
+   settles (loaded or errored) and covers it. Used by CarouselItemCard
+   and MediaCarousel. Deliberately only the background-image/-size/
+   -position longhands, never the `background` shorthand — a consumer's
+   own `background: <color>` (also shorthand) would otherwise reset
+   background-image back to none, and whichever rule happened to come
+   later in the stylesheet cascade would silently win regardless of
+   which one this class was combined with. */
+.yoyo-skeleton {
+  background-image: linear-gradient(100deg, var(--yoyo-card-bg) 30%, var(--yoyo-card-bg-2) 50%, var(--yoyo-card-bg) 70%);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .yoyo-skeleton {
+    animation: yoyo-shimmer 1.5s ease-in-out infinite;
+    -webkit-animation: yoyo-shimmer 1.5s ease-in-out infinite;
+}
+}
+
+@keyframes yoyo-shimmer {
+  0% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
 }
 
 /* Desktop layout: center every page's content in a fixed-width column
@@ -46,8 +82,8 @@
    than --yoyo-desktop-content-width. */
 @media (min-width: 768px) {
   ion-content {
-    --padding-start: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
-    --padding-end: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
+    --padding-start: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 1.6));
+    --padding-end: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 1.6));
   }
 
   /* Deliberately NOT setting position on ::part(scroll): Ionic pins it
@@ -94,12 +130,18 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: var(--yoyo-body-size);
 
   letter-spacing: 0.03em;
   text-transform: uppercase;
   margin: 0 0 8px;
   font-family: 'InstrumentSans-Bold' !important;
+}
+
+@media (min-width: 768px) {
+  .yoyo-section-header {
+    font-size: var(--yoyo-subtitle-size);
+  }
 }
 
 .yoyo-section-header__spark {
@@ -207,8 +249,8 @@ max-width: 300px;
 
 @media (min-width: 768px) {
   .yoyo-pill--teal, .yoyo-pill--white, .yoyo-pill--dark, .yoyo-pill-disabled {
-    max-width: 300px;
-    min-width: 250px;
+    max-width: 432px;
+    min-width: 432px;
     align-self: center;
   }
 }
@@ -257,8 +299,12 @@ max-width: 300px;
 
 }
 
-.native-input.sc-ion-input-md {
-  padding-left: 5px!important;
+.centered-content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 /* Entrance animations — page titles, the floating tab bar, and header

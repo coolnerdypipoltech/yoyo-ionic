@@ -1,8 +1,14 @@
 .rewards-page {
   /* Transparent so the "main" background video (rendered behind MainTabs)
      shows through. */
-  --background: black;
+  --background: transparent;
   --padding-bottom: 100px;
+}
+
+@media (max-width: 720px) {
+  .rewards-page {
+    background: black;
+  }
 }
 
 .rewards-page__header {
@@ -53,6 +59,9 @@
   margin: 0;
 }
 
+
+
+
 .rewards-page__heading-line {
   display: block;
   font-size: var(--yoyo-header-size);
@@ -91,4 +100,16 @@
   margin: 0px 20px 0px;
   gap: 6px;
   flex-direction: row;
+}
+
+
+@media (min-width: 768px) {
+
+  .rewards-page__heading {
+    padding-left: 200px;
+  }
+
+  .rewards-page__credits-container{
+    margin: 0px 200px 0px;
+  }
 }

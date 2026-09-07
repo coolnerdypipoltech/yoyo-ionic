@@ -21,6 +21,8 @@ import PasswordField from '../../components/PasswordField/PasswordField';
 import PhoneNumberField from '../../components/PhoneNumberField/PhoneNumberField';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/create_account.png";
+import gradientD from "../../assets/backgrounds/desktop/create_account.png";
+
 import { ApiError } from '../../api/errors';
 import * as authService from '../../api/services/auth.service';
 import { dialCodeFor, DEFAULT_COUNTRY_ISO2 } from '../../utils/countries';
@@ -35,6 +37,7 @@ import {
   type Gender,
 } from '../../utils/validation';
 import './Register.css';
+import { useViewport } from '../../context/ViewportContext';
 
 interface LocationState {
   accessCode?: string;
@@ -58,7 +61,7 @@ export default function Register() {
   const { t } = useTranslation(['auth', 'common', 'errors']);
   const history = useHistory();
   const location = useLocation<LocationState | undefined>();
-
+  const { isMobile } = useViewport(); 
   const [form, setForm] = useState<FormState>({
     name: '',
     email: '',
@@ -146,7 +149,7 @@ export default function Register() {
   return (
     <IonPage>
       
-      <BackgroundGradient src={gradient} />
+      <BackgroundGradient src={isMobile ? gradient : gradientD} />
       <IonHeader className="ion-no-border yoyo-header-offset register-page__header">
         <IonToolbar>
           <IonButtons slot="start">

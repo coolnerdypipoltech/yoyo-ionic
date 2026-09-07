@@ -131,6 +131,8 @@
   font-size: var(--yoyo-font-text);
   font-family: 'InstrumentSans-Bold';
   letter-spacing: 0.08em;
+
+  pointer-events: none;
 }
 
 .loyalty-card__name {

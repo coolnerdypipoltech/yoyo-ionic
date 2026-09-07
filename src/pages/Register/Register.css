@@ -116,6 +116,22 @@
   --border-color-checked: var(--ion-color-primary);
   --background-checked: var(--ion-color-primary);
   --checkmark-color: #ffffff;
+
+}
+
+
+
+/* --checkmark-width only controls the checkmark's stroke thickness, not
+   its overall scale — the mark is a fixed SVG path (part="mark") that
+   otherwise always fills the same proportion of the box. Scaling that
+   part directly shrinks just the checkmark glyph, leaving --size (the
+   actual box/hit target) untouched. Desktop-only, since the checkmark
+   read fine at this box size on mobile already. */
+@media (min-width: 768px) {
+  .register-page__checkbox::part(mark) {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
 }
 
 .register-page__error {
@@ -149,8 +165,46 @@
   --color: #ffffff;
   --button-color: var(--ion-color-primary);
   --backdrop-opacity: 0.6;
+
+  
+}
+
+
+.action-sheet-button.sc-ion-action-sheet-ios{
+  font-size: 14px !important;
+  background: #1b1b1b;
+  color: var(--yoyo-muted)
+  
+}
+
+.action-sheet-cancel{
+  color: var(--yoyo-muted) !important;
+  background-color: #222222 !important;
+  --button-background-selected: #222222 !important;
 }
 
 .register-page__gender-sheet .action-sheet-title {
   color: #ffffff;
+  font-size: 18px;
+  background: #1b1b1b;
+  
+}
+
+/* MD-mode action sheets (this app's mode — see the md class on
+   ion-action-sheet at runtime) render as a flat, square-cornered card
+   flush against the screen's bottom edge, full-width on mobile. Ionic
+   already centers it horizontally on wide viewports (auto margins on
+   .action-sheet-wrapper, combined with its capped --max-width), but it's
+   still glued to the bottom edge itself with 0 breathing room and 0
+   rounding — fine as a mobile sheet, but reads as an unstyled rectangle
+   stuck to the edge of the page on desktop. Lifting it off the bottom
+   and rounding it doesn't fight the enter/exit slide animation (a
+   `transform: translateY()` applied on top of this `bottom` offset),
+   since they're independent properties. */
+@media (min-width: 768px) {
+  .register-page__gender-sheet .action-sheet-wrapper {
+    bottom: 48px;
+    border-radius: var(--yoyo-radius-lg);
+    overflow: hidden;
+  }
 }

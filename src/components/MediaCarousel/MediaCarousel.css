@@ -1,7 +1,13 @@
 .media-carousel {
   position: relative;
-  max-width: 480px;
+  
   margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+  .media-carousel {
+    max-width: 300px;
+  }
 }
 
 /* Used on PlacesInfo/RewardsInfo as the hero above the title — fades/
@@ -91,6 +97,15 @@
 .media-carousel__nav:disabled {
   opacity: 0.35;
   pointer-events: none;
+}
+
+/* Signals the slide itself is clickable (advances to the next image) on
+   pointer devices, where a hover cursor makes sense — irrelevant on
+   touch, which already scrolls/taps without one. */
+@media (hover: hover) and (pointer: fine) {
+  .media-carousel__scroller {
+    cursor: pointer;
+  }
 }
 
 /* Tablet/desktop: a fixed 320px-tall full-bleed slide reads fine on a

@@ -1,5 +1,12 @@
 .rewards-info-page {
-  --background: #000000;
+  --background: transparent;
+}
+
+@media (max-width: 720px) {
+  .rewards-info-page {
+  --background: black;
+  
+}
 }
 
 .rewards-info-page__header {
@@ -17,11 +24,19 @@
   --padding-end: 5%;
 }
 
+  .rewards-info-page__carousel{
+    margin-top: 30px;
+  }
+
 @media (max-width: 720px) {
 
   .rewards-info-page__header ion-toolbar {
     --padding-start: 15px;
     --padding-end: 15px;
+  }
+
+  .rewards-info-page__carousel{
+    margin-top: 0px;
   }
 
 }
@@ -34,7 +49,7 @@
   font-size: var(--yoyo-header-size);
 
   text-align: center;
-  margin: 18px 0px 64px 0px;
+  margin: 18px 0px 32px 0px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -81,9 +96,9 @@
   gap: 10px;
   font-family: var(--yoyo-font-text);
   font-size: var(--yoyo-body-size);
-
+  height: 32px;
   color: #ffffff;
-  margin: 0 0 8px;
+  margin: 0 0 0px;
 }
 
 .rewards-info-page__row ion-icon {

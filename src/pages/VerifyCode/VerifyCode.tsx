@@ -17,12 +17,13 @@ import { isValidAccessCode } from '../../utils/validation';
 import * as authService from '../../api/services/auth.service';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/verify_code.png";
+import gradientD from "../../assets/backgrounds/desktop/verify_code.png";
 import './VerifyCode.css';
-
+import { useViewport } from '../../context/ViewportContext';
 export default function VerifyCode() {
   const { t } = useTranslation('auth');
   const history = useHistory();
-
+  const { isMobile } = useViewport();
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,7 +52,7 @@ export default function VerifyCode() {
   return (
     <IonPage>
       
-      <BackgroundGradient src={gradient} />
+      <BackgroundGradient src={isMobile ? gradient : gradientD} />
       <IonHeader className="ion-no-border yoyo-header-offset verify-code-page__header">
         <IonToolbar>
           <IonButtons slot="start">

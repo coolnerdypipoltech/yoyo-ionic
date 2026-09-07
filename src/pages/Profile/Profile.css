@@ -19,6 +19,7 @@
 .profile-page__content {
   max-width: 720px;
   align-self: center;
+  width: 100%;
 }
 
 .profile-page__glow {
@@ -132,6 +133,7 @@
 
 .profile-page__section-spacing {
   margin-top: 36px;
+  margin-bottom: 16px;
 }
 
 .profile-page__info-icon {
@@ -148,8 +150,16 @@
   border-radius: var(--yoyo-radius-pill);
   padding: 16px 20px;
   font-size: var(--yoyo-body-size);
-
+  background: url(../../assets/account-button.png);
+  background-size: cover;
   color: #ffffff;
+}
+
+@media (min-width:768px) {
+  .profile-page__points-box {
+    background: url(../../assets/account-button-desktop.png);
+    background-size: cover;
+  }
 }
 
 .profile-page__taste-row {
@@ -201,10 +211,12 @@
 }
 
 .profile-page__info-card {
+  background-image: url(../../assets/account-modal-bckg.png);
+  background-size: cover;
   position: relative;
   z-index: 1;
   margin: 0 16px;
-  background: transparent;
+
   border-radius: 22px;
 
   padding: 16px 18px;
@@ -215,6 +227,22 @@
   -moz-border-radius: 22px;
   -ms-border-radius: 22px;
   -o-border-radius: 22px;
+}
+
+
+
+
+@media (min-width:768px) {
+  .profile-page__info-card {
+    background-image: url(../../assets/account-modal-bckg-desktop.png);
+  background-size: 100% 100%;
+  border-radius: 36px !important;
+  padding: 22px;
+  -webkit-border-radius: 36px !important;
+  -moz-border-radius: 36px !important;
+  -ms-border-radius: 36px !important;
+  -o-border-radius: 36px !important;
+}
 }
 
 .profile-page__info-row {
@@ -241,6 +269,12 @@
   margin: 24px 16px;
 }
 
+.profile-page__danger-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .profile-page__danger-card {
   position: relative;
   z-index: 1;
@@ -249,12 +283,14 @@
   border-radius: var(--yoyo-radius-lg);
   padding: 20px;
   text-align: center;
+  max-width: 400px;
+  
 }
 
 .profile-page__danger-title {
   color: var(--yoyo-teal);
   font-size: var(--yoyo-body-size);
-  font-weight: 700;
+  font-family: 'InstrumentSans-Bold' !important;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0 0 12px;
@@ -268,9 +304,10 @@
 
 .profile-page__danger-text {
   font-size: var(--yoyo-body-size);
-  color: var(--yoyo-muted);
+  color: white;
   line-height: 1.5;
   margin: 0;
+  font-family: 'InstrumentSans-Regular' !important;
 }
 
 .profile-page__delete-button {

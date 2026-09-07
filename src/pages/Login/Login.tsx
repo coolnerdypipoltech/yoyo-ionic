@@ -21,6 +21,8 @@ import './Login.css';
 import yoyoLogo from '../../assets/icons/YoyoLetters.png';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/login.png";
+import gradientD from "../../assets/backgrounds/desktop/login.png";
+import { useViewport } from '../../context/ViewportContext';
 interface LocationState {
   justRegistered?: boolean;
 }
@@ -32,7 +34,7 @@ export default function Login() {
   const { login } = useAuth();
 
   const [email, setEmail] = useState('');
-
+const { isMobile } = useViewport();
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,7 +69,7 @@ export default function Login() {
 
   return (
     <IonPage>
-      <BackgroundGradient src={gradient} />
+      <BackgroundGradient src={isMobile ? gradient : gradientD} />
       <IonHeader className="ion-no-border yoyo-header-offset login-page__header">
         <IonToolbar>
           <IonButtons slot="start">

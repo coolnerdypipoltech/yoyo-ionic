@@ -1,7 +1,7 @@
-import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar, useIonViewWillEnter } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import LoyaltyCard from '../../components/LoyaltyCard/LoyaltyCard';
@@ -19,18 +19,25 @@ import spark from "../../assets/icons/Spark.svg";
 import spark2 from "../../assets/icons/SparkG.svg";
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
+import gradient from "../../assets/backgrounds/desktop/Home_background.png";
+import { useViewport } from '../../context/ViewportContext';
+
+import BackgroundGradient from '../../components/BackgroundGradient/BackgroundGradient';
 
 export default function Places() {
   const { t } = useTranslation('main');
   const history = useHistory();
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-  // Places only ever mounts fresh once per authenticated session — Ionic
-  // keeps it cached (not remounted) across tab switches within MainTabs
-  // — so this state's *initial* value alone is a reliable "did the user
-  // just arrive here via login or an auto-restored session" signal,
-  // covering both cases at once with no extra flag-passing needed.
+  const { isMobile } = useViewport();
+
   const [showRabbit, setShowRabbit] = useState(true);
+  const contentRef = useRef<HTMLIonContentElement>(null);
+  const noLoading = useRef(false);
+
+  useIonViewWillEnter(() => {
+    contentRef.current?.scrollToTop(0);
+  });
 
   const fetchFirstPlaces = useCallback(() => placesService.getConsumptionCenters(PAGE_SIZE, 0), []);
   const fetchNextPlaces = useCallback((next: string) => placesService.getNextPlacesPage(next), []);
@@ -80,18 +87,28 @@ export default function Places() {
     };
   }, [placesImagesReady, places.isLoading, places.hasError, places.results]);
 
+
+
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await Promise.all([places.refresh(), events.refresh(), refreshUser()]);
     event.detail.complete();
   };
 
-  console.log(places);
+  useEffect(() => {
+    if(showRabbit) setTimeout(() => {if(showRabbit) setShowRabbit(false); noLoading.current = true;}, 3000);
+  }, []);
+
 
   return (
     <IonPage>
-      {showRabbit ? (
-        <RabbitTransition ready={placesImagesReady} onComplete={() => setShowRabbit(false)} />
-      ) : null}
+      {noLoading.current == false && (
+        <>
+          {!isMobile ? <BackgroundGradient src={gradient} /> : null}
+          {showRabbit ? (
+            <RabbitTransition ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} />
+          ) : null}
+        </>
+      )}
 
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
@@ -101,14 +118,14 @@ export default function Places() {
             slot="end"
             className={`places-page__menu-button ${menuOpen ? 'places-page__menu-button--rotated' : ''}`}
             aria-label="Open menu"
-            onClick={() => setMenuOpen(true)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             <img src={spark2} alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="places-page">
+      <IonContent fullscreen className="places-page" ref={contentRef}>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent />
         </IonRefresher>
@@ -142,7 +159,7 @@ export default function Places() {
           />
         </section>
 
-        <section className="places-page__section">
+        <section className="places-page__section" style={{width: "100%"}}>
           <h2 className="yoyo-section-header places-page__section-header">
             <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('places.eventsSection')}

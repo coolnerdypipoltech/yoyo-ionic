@@ -10,6 +10,7 @@
      always the real viewport-sized box. */
   position: absolute;
   inset: 0;
+  background: transparent;
 }
 
 .main-tabs__bar {
@@ -18,18 +19,36 @@
   right: 20px;
   bottom: calc(16px + env(safe-area-inset-bottom));
   margin: 0 auto;
-  max-width: 420px;
+  max-width: 600px;
   height: 60px;
   border-radius: 999px;
   overflow: hidden;
+  /* ion-tab-bar adds this internally by default (var(--ion-safe-area-bottom))
+     to keep a *flush-docked* bar clear of the home indicator. This bar isn't
+     docked — it's a floating pill already lifted clear of the safe area by
+     the `bottom` offset above — so that default padding just adds dead
+     space under this bar's own fixed height, growing the box and pushing
+     the (flex-centered) icons up inside it. On desktop/browser the inset is
+     0 so this never showed up in testing; on an Android device with gesture
+     navigation it's real, which is what pushed the icons up and made the
+     bar look taller there. */
+  padding-bottom: 0;
 
   --background: transparent;
   background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   z-index: 10;
+  /* This bar (and its blur) rides along on every page-transition animation
+     of the /main page underneath it — WebKit in particular tends to
+     recompute a backdrop-filter per frame rather than caching it, which
+     competes with the transition's own transform for GPU time and can make
+     the whole outgoing page (this bar included) visibly lag behind rather
+     than sliding away promptly. Promoting it to its own layer up front lets
+     the browser treat the blur as a static bitmap during the animation
+     instead of resampling it every frame. */
+  will-change: transform;
   /* ion-tab-bar is already centered by default, but each ion-tab-button
      has its own `flex: 1` (grow to fill equal share of the bar) — with
      only two of them in a bar up to 420px wide, that alone pushed the
@@ -51,12 +70,15 @@
   width: auto;
   margin-left: 20px;
   margin-right: 20px;
+  height: 100%;
 }
 
 .main-tabs__rabbit {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+
 }
 
 .main-tabs__crown {

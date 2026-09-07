@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './RabbitTransition.css';
-import gradient from '../../assets/backgrounds/welcome.png';
+import gradient from '../../assets/backgrounds/Animarion verify.png';
+import gradientD from '../../assets/backgrounds/desktop/Animarion verify.png';
+import { useViewport } from '../../context/ViewportContext';
 // ---- Frame sequences (src/assets/animation/*) ----
 const idleFrames = Array.from(
   { length: 16 },
@@ -16,27 +18,31 @@ const jumpFrames = Array.from(
   (_, i) => new URL(`../../assets/animation/Salto/jump_rabbit_${String(i + 3).padStart(2, '0')}.png`, import.meta.url).href,
 );
 
-let hasPreloaded = false;
+const ALL_ASSETS = [...idleFrames, ...runFrames, ...jumpFrames, gradient, gradientD];
 
-// Warms the browser's cache for every asset this component needs (all
-// sprite frames plus its backdrop image) so the very first play-through
-// — right after login — doesn't stutter waiting on first fetches.
-// Exported so the unauthenticated flow (Welcome/Login/etc., which is
-// exactly the "idle time" before a login can complete) can trigger this
-// well ahead of Places ever mounting, instead of relying on it only
-// once RabbitTransition itself is first rendered.
-export function preloadRabbitTransitionAssets() {
-  if (hasPreloaded) return;
-  hasPreloaded = true;
-  [...idleFrames, ...runFrames, ...jumpFrames, gradient].forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
+// Mounted once at the app root (see App.tsx), for the app's entire
+// lifetime, regardless of auth state or which page is active. A `new
+// Image()` prefetch only warms the HTTP cache — the decoded bitmap can
+// still be dropped from the renderer's own memory between the moment
+// that fetch resolves and whenever RabbitTransition itself eventually
+// mounts (right after login, minutes later), so the very first
+// play-through could still stutter decoding frames on demand. Keeping
+// every frame (plus both background variants) as real, permanently
+// rendered <img> elements — just clipped to nothing here — means the
+// browser has no reason to ever let them go, so RabbitTransition's own
+// <img> can reuse an already-decoded bitmap for every frame, every time.
+export function RabbitTransitionPreloader() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{ position: 'fixed', top: 0, left: 0, width: 0, height: 0, overflow: 'hidden', pointerEvents: 'none' }}
+    >
+      {ALL_ASSETS.map((src) => (
+        <img key={src} src={src} alt="" />
+      ))}
+    </div>
+  );
 }
-
-// Also run once as soon as this module itself loads, in case something
-// imports it without going through the explicit call above.
-preloadRabbitTransitionAssets();
 
 interface MovingPhase {
   frames: string[];
@@ -63,7 +69,7 @@ interface StillPhase {
 // listed below; each one's `toX`/`x` should match the next one's
 // `fromX`/`x` so the rabbit doesn't visibly jump between phases.
 export const RABBIT_TRANSITION_CONFIG = {
-  jumpIn: { frames: jumpFrames, fps: 36, fromX: -20, toX: 50, duration: 450, jumpHeight: 70 } satisfies MovingPhase,
+  jumpIn: { frames: jumpFrames, fps: 36, fromX: 0, toX: 50, duration: 450, jumpHeight: 70 } satisfies MovingPhase,
   idle: { frames: idleFrames, fps: 20, x: 50 } satisfies StillPhase,
   run: { frames: runFrames, fps: 32, fromX: 50, toX: 88, duration: 425, jumpHeight: 0 } satisfies MovingPhase,
   jumpOut: { frames: jumpFrames, fps: 36, fromX: 88, toX: 130, duration: 400, jumpHeight: 70 } satisfies MovingPhase,
@@ -78,6 +84,21 @@ const PHASE_ORDER = Object.keys(RABBIT_TRANSITION_CONFIG) as (keyof typeof RABBI
 
 function isMovingPhase(phase: MovingPhase | StillPhase): phase is MovingPhase {
   return 'fromX' in phase;
+}
+
+// `x` is authored as a percentage of the app's own screen width (0-100,
+// center at 50). On mobile that IS the browser viewport, so `vw` maps
+// directly. On desktop the app is letterboxed into a centered column
+// (--yoyo-desktop-content-width, 1000px) that's usually much narrower
+// than the real browser window — mapping `x` to `vw` there stretched
+// the whole run across the full monitor width, covering far more actual
+// pixels in the same fixed duration and making it read as sped up.
+// Rescaling against the column width instead keeps the run's on-screen
+// pace consistent between mobile and desktop.
+function xToLeft(x: number, isMobile: boolean): string {
+  if (isMobile) return `${x}vw`;
+  const factor = (x - 50) / 100;
+  return `calc(50vw + ${factor} * min(100vw, var(--yoyo-desktop-content-width)))`;
 }
 
 // Ease-in-out — the horizontal move ramps up and settles instead of
@@ -107,12 +128,14 @@ interface RabbitTransitionProps {
 export default function RabbitTransition({ ready = true, onComplete }: RabbitTransitionProps) {
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [frameIndex, setFrameIndex] = useState(0);
+  const { isMobile } = useViewport();
   const [x, setX] = useState(RABBIT_TRANSITION_CONFIG.jumpIn.fromX);
   const [y, setY] = useState(0);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
   const readyRef = useRef(ready);
   readyRef.current = ready;
+  
 
   useEffect(() => {
     const phase = RABBIT_TRANSITION_CONFIG[PHASE_ORDER[phaseIndex]];
@@ -164,7 +187,7 @@ export default function RabbitTransition({ ready = true, onComplete }: RabbitTra
   return createPortal(
     <div
       className="rabbit-transition"
-      style={{ backgroundImage: `url(${gradient})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      style={{ backgroundImage: `url(${isMobile ? gradient : gradientD})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       aria-hidden="true"
     >
       <img
@@ -172,7 +195,7 @@ export default function RabbitTransition({ ready = true, onComplete }: RabbitTra
         src={src}
         alt=""
         style={{
-          left: `${x}vw`,
+          left: xToLeft(x, isMobile),
           bottom: `calc(${RABBIT_GROUND_OFFSET} + ${y}px)`,
           width: RABBIT_SPRITE_SIZE,
           height: RABBIT_SPRITE_SIZE,

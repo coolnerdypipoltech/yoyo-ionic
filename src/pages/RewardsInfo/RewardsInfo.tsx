@@ -18,6 +18,10 @@ import spark from "../../assets/icons/SparkG.svg";
 import Points from "../../assets/icons/Points.svg";
 import Quantity from "../../assets/icons/Quantity.svg";
 import Danger from "../../assets/icons/Danger.svg";
+import { useViewport } from '../../context/ViewportContext';
+
+import BackgroundGradient from '../../components/BackgroundGradient/BackgroundGradient';
+import gradient from "../../assets/backgrounds/desktop/Home_others.png";
 interface LocationState {
   item?: ResultObject;
   isFromRewards?: boolean;
@@ -28,7 +32,7 @@ export default function RewardsInfo() {
   const history = useHistory();
   const location = useLocation<LocationState | undefined>();
   const { user } = useAuth();
-
+  const { isMobile } = useViewport();
   const item = location.state?.item;
   const isFromRewards = location.state?.isFromRewards ?? true;
 
@@ -57,9 +61,12 @@ export default function RewardsInfo() {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-
+    {!isMobile ? <BackgroundGradient src={gradient} /> : null}
       <IonContent fullscreen className="rewards-info-page">
-        <MediaCarousel items={item.gallery.length > 0 ? item.gallery : item.media} />
+        
+        <div className="rewards-info-page__carousel">
+          <MediaCarousel items={item.gallery} />
+        </div>
 
         <div className="rewards-info-page__content">
           <PageTitle className="rewards-info-page__title">{item.name}</PageTitle>
@@ -94,6 +101,7 @@ export default function RewardsInfo() {
                 {t('detail.conditions')}
               </h2>
               <p className="rewards-info-page__text">{item.conditions}</p>
+              <hr className="places-info-divider"  />
             </>
           ) : null}
 
@@ -107,7 +115,7 @@ export default function RewardsInfo() {
             <img src={Points} alt="Points" />
             {`${item.cost} points`}
           </p>
-
+          <hr className="places-info-divider"  />
           <h2 className="yoyo-section-header rewards-info-page__section-spacing" style={{fontSize: "16px", marginTop: "24px"}}>
             <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
             {t('detail.availableQuantity')}
@@ -116,7 +124,7 @@ export default function RewardsInfo() {
             <img src={Quantity} alt="Quantity" />
             {item.stock}
           </p>
-
+          <hr className="places-info-divider"  />
           <AvailabilityNotice reason={reason} isFromRewards={isFromRewards} />
 
           {reason ? <div className="rewards-info-page__disclaimer"><img src={Danger} alt="Danger" />{t('detail.reviewDisclaimer')}</div> : null}

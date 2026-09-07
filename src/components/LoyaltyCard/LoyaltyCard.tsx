@@ -15,6 +15,17 @@ const frames = Array.from(
   (_, i) => new URL(`../../assets/card/animation/CardFX_${String(i).padStart(2, '0')}.png`, import.meta.url).href
 );
 
+// Warm the browser's cache for every frame as soon as this module loads.
+// Without this, each frame's <img src> (set below, cycling at ~30fps)
+// only starts fetching the first time the animation reaches it — visible
+// as that frame popping in/loading live instead of already being ready,
+// repeating every time the 72-frame loop comes back around to one that
+// hadn't finished loading yet.
+frames.forEach((src) => {
+  const img = new Image();
+  img.src = src;
+});
+
 interface LoyaltyCardProps {
   user: User;
 }
@@ -83,17 +94,23 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
         // result is always within 90° of the live position — otherwise
         // the two roundings could disagree near their boundaries and send
         // the card spinning an extra half-turn to reach the target.
-        const liveRotation = rotation + ev.deltaX * DRAG_SENSITIVITY;
-        setRotation(Math.round(liveRotation / 180) * 180);
+        setRotation((r) => Math.round((r + ev.deltaX * DRAG_SENSITIVITY) / 180) * 180);
       },
     });
     gesture.enable();
     return () => gesture.destroy();
-    // `rotation` is read inside the gesture's onEnd closure — re-create the
-    // gesture whenever it changes so that closure always sees the latest
-    // settled value instead of a stale one captured at mount time.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rotation]);
+    // Deliberately mount-once (empty deps, using the functional setRotation
+    // form above instead of reading `rotation` directly) — recreating the
+    // gesture on every flip used to reset Ionic's own touch/mouse
+    // ghost-click guard (createPointerEvents' `lastTouchEvent`, scoped to
+    // one gesture instance), which is what deduplicates a tap's real touch
+    // event against the synthetic compatibility mousedown/mouseup every
+    // touchscreen fires ~afterward. With a fresh gesture instance for every
+    // tap, that guard never got the chance to see the touch that just
+    // happened, so the synthetic mouse pair was treated as a second,
+    // independent tap — flipping the card twice and landing back on the
+    // same face.
+  }, []);
 
   // Animate the holographic frame sequence while the user is dragging the card.
   useEffect(() => {
@@ -174,8 +191,22 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           </IonButton>
         </div>
 
-        <div className="loyalty-card__face_anim" style={{ zIndex: 10 }}>
-          {!isDragging && <img src={frames[frameIndex]} alt="" />}
+        {/* All 72 frames are mounted once, up front, and stay mounted for
+           the component's whole lifetime — each <img> only ever gets one
+           `src`, so the browser fetches/decodes it exactly once, ever.
+           Advancing the animation just toggles which one has `display:
+           block`; a single <img> whose `src` kept changing every ~33ms
+           (the old approach) made the browser re-request that URL on
+           every pass through the loop, since a changed src attribute is
+           a brand-new load as far as the browser's resource pipeline is
+           concerned, even when the response itself came back from cache.
+           Hidden via `visibility` (not unmounted) while dragging, so
+           dragging repeatedly can't trigger a remount → refetch cycle
+           either. */}
+        <div className="loyalty-card__face_anim" style={{ zIndex: 10, visibility: isDragging ? 'hidden' : 'visible' }}>
+          {frames.map((src, i) => (
+            <img key={src} src={src} alt="" style={{ display: i === frameIndex ? 'block' : 'none' }} />
+          ))}
         </div>
 
       </div>

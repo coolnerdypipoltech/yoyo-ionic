@@ -1,25 +1,33 @@
-.ad-banner {
-  gap: 12px;
-  padding: 16px;
-  scroll-snap-type: x mandatory;
-  margin-bottom: 38px;
+/* AdBanner now renders through MediaCarousel (see AdBanner.tsx) — this
+   just restores the wide banner aspect ratio in place of MediaCarousel's
+   own default (a tall photo-gallery slide on mobile, square on desktop),
+   at every breakpoint, and keeps the spacing this section always had
+   below it. Selector specificity (two classes) beats MediaCarousel.css's
+   own single-class rules regardless of media-query/source order. */
+.media-carousel.ad-banner {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  max-width: 400px;
+      
 }
 
-.ad-banner__slide {
+.media-carousel.ad-banner .media-carousel__scroller {
+  height: auto;
+}
 
-  max-width: 400px;
-  scroll-snap-align: center;
-  border: none;
-  padding: 0;
-  border-radius: var(--yoyo-radius-lg);
-  overflow: hidden;
-    width: 100%;
+.media-carousel.ad-banner .media-carousel__slide {
+  height: auto;
   aspect-ratio: 1.65 / 1;
 }
 
-.ad-banner__slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+/* border-radius alone doesn't round anything visible here — the slide's
+   img/video fills this box edge-to-edge with square corners of its own,
+   so the corners only actually round once this container clips them. */
+.ad-banner{
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.ad-banner-container{
+  padding: 12px;
 }

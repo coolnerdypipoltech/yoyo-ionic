@@ -1,7 +1,7 @@
-import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar, useIonViewWillEnter } from '@ionic/react';
 import type { RefresherEventDetail } from '@ionic/core';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import AdBanner from '../../components/AdBanner/AdBanner';
@@ -17,6 +17,8 @@ import './Rewards.css';
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 
 
+
+
 import spark from "../../assets/icons/SparkG.svg";
 const PAGE_SIZE = 10;
 
@@ -25,6 +27,17 @@ export default function Rewards() {
   const history = useHistory();
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const contentRef = useRef<HTMLIonContentElement>(null);
+
+
+  // Ionic keeps this page's scroll position across tab switches (it
+  // hides rather than unmounts), so returning to Rewards from Places can
+  // otherwise land wherever the user last scrolled to instead of the
+  // top. useIonViewWillEnter is a real Ionic lifecycle hook that fires
+  // every time this becomes the active view, first time included.
+  useIonViewWillEnter(() => {
+    contentRef.current?.scrollToTop(0);
+  });
 
   const fetchFirstRewards = useCallback(() => rewardsService.getRewards(PAGE_SIZE, 0), []);
   const fetchNextRewards = useCallback((next: string) => rewardsService.getNextRewardsPage(next), []);
@@ -49,14 +62,15 @@ export default function Rewards() {
             slot="end"
             className={`places-page__menu-button ${menuOpen ? 'places-page__menu-button--rotated' : ''}`}
             aria-label="Open menu"
-            onClick={() => setMenuOpen(true)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             <img src={spark} alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="rewards-page">
+      <IonContent fullscreen className="rewards-page" ref={contentRef}>
+        
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent />
         </IonRefresher>

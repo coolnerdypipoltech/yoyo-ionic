@@ -3,15 +3,15 @@
   "title2": "Asked Questions",
   "placeholderAnswer": "We're still writing this answer — check back soon.",
   "items": [
-    { "q": "What is YoYo, really?", "a": "Let's just say it's where your nights start paying back. YOYO is a nightlife rewards app that connects you with curated bars, events, and exclusive experiences across Mexico City. Every visit earns you perks." },
-    { "q": "How do I earn points", "a": "" },
-    { "q": "What can I unlock with my points?", "a": "" },
-    { "q": "Why the rabbit?", "a": "" },
-    { "q": "Where can I use YoYo?", "a": "" },
-    { "q": "What happens if I lose my password", "a": "" },
-    { "q": "Can I invite friends?", "a": "" },
-    { "q": "Who's behind YoYo?", "a": "" },
-    { "q": "Do I need an invitation?", "a": "" },
-    { "q": "Can I lose my points?", "a": "" }
+    { "q": "How do I join YoYo?", "a": "YoYo is invite-only. You can enter the hidden loop only with a personal invitation code shared by a member or a founder." },
+    { "q": "My invitation code isn't working. What should I do?", "a": "Make sure the code is typed exactly as received. If it still doesn't unlock access, contact us at yoyoclub.hello@gmail.com." },
+    { "q": "How do I earn YoYo Credits?", "a": "Make reservations through the app, visit partner venues, and submit your receipt via WhatsApp using Add Points on the back of your card. Every experience returns something back to you." },
+    { "q": "How do I redeem rewards?", "a": "Open the Rewards Vault, choose your perk, and tap Redeem. We'll guide you through the next steps directly on WhatsApp." },
+    { "q": "Can I update my name, email, or phone number?", "a": "Yes. Email yoyoclub.hello@gmail.com and our team will securely update your details." },
+    { "q": "What happens if I delete my account?", "a": "All your data and YoYo Credits will be permanently removed. If you choose to return later, you'll need a new invitation code to re-enter." },
+    { "q": "How do I make a reservation?", "a": "Select a partner venue, choose your date and time, and we'll confirm your booking via WhatsApp. Doors open fast — and availability is limited." },
+    { "q": "I didn't receive my verification email.", "a": "Check your spam or promotions folder. If it's not there, email yoyoclub.hello@gmail.com." },
+    { "q": "Why do I need to send my receipt through WhatsApp to earn credits?", "a": "During our MVP phase, receipts help us manually verify your visit and assign YoYo Credits accurately. This ensures every credit you earn is real." },
+    { "q": "How can I invite someone to join YoYo?", "a": "Invitation codes are granted based on your activity and level. If you receive one, we'll send it to you directly via WhatsApp." }
   ]
 }

@@ -16,7 +16,10 @@
   width: 148px;
   height: 148px;
   border-radius: var(--yoyo-radius-md);
-  background: var(--yoyo-card-bg);
+  /* background-color, not the `background` shorthand — this can also
+     carry .yoyo-skeleton (see global.css), whose gradient sets
+     background-image; the shorthand would silently reset that. */
+  background-color: var(--yoyo-card-bg);
   overflow: hidden;
 
 }
@@ -38,4 +41,12 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 34px;
+}
+
+
+@media (min-width: 768px) {
+  .carousel-item-card__title {
+    font-size: 14px;
+  }
 }

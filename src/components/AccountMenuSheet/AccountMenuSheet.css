@@ -10,7 +10,7 @@
     --border-top-left-radius: 32px;
   --border-top-right-radius: 32px;
   border-radius: 32px 32px 0 0;
-
+  
 }
 
 /* Matches IonModal's own md-mode sheet enter animation exactly (same
@@ -31,26 +31,38 @@
 }
 
 .border-teal{
-  top: 8px;
-  border-radius: 32px;
-  box-shadow: 0 0 10px var(--yoyo-teal);
-  left: 5px;
+  top: 0px;
+  border-radius: 32px ;
+  box-shadow: -2px 0px 10px var(--yoyo-teal);
+  left: 15px;
   position: absolute;
   z-index: 1;
   background-color: black;
-  width: calc(100% - 10px);
+  width: calc(100%);
   height: calc(100%);
-  -webkit-border-radius: 32px;
-  -moz-border-radius: 32px;
-  -ms-border-radius: 32px;
-  -o-border-radius: 32px;
-
+  -webkit-border-radius: 32px  0px 0px 32px;
+  -moz-border-radius: 32px ;
+  -ms-border-radius: 32px ;
+  -o-border-radius: 32px ;
 }
 
 @media (max-width: 768px) {
   .border-teal {
     left: 0;
     width: 100%;
+    top: 8px;
+  border-radius: 32px;
+  box-shadow: 0 0 10px var(--yoyo-teal);
+
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+
+  height: calc(100%);
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
   }
 }
 
@@ -85,6 +97,7 @@
   text-align: left;
   position: relative;
   z-index: 10;
+  overflow: hidden;
 }
 
 .account-menu-sheet__item {
@@ -120,12 +133,15 @@
 
 .account-menu-sheet__logout-popup {
   width: 100%;
-  max-width: 320px;
+  max-width: 480px;
   background: var(--yoyo-card-bg);
   border-radius: var(--yoyo-radius-lg);
-  padding: 22px 20px 12px;
+  padding: 32px 20px 32px;
   text-align: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .account-menu-sheet__logout-popup-title {
@@ -152,7 +168,13 @@
 
 }
 
+/* Desktop-panel-only (see the isMobile check in AccountMenuSheet.tsx) —
+   the panel sits directly over the header's own menu toggle, so this is
+   its own reachable close affordance, pinned to its top-right corner. */
 .account-menu-sheet__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -163,7 +185,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 24px auto;
+  z-index: 10;
 }
 
 /* ion-modal uses real shadow DOM (unlike ion-input/ion-action-sheet
@@ -175,4 +197,31 @@
    so it doesn't affect other IonModals (e.g. the country picker). */
 ion-modal.account-round-top-borders::part(handle) {
   top: 10px !important;
+}
+
+/* Desktop: a right-anchored side panel instead of the mobile bottom
+   sheet (see the isMobile branch in AccountMenuSheet.tsx, which also
+   swaps in a translateX enter/leave animation and drops the sheet-only
+   drag handle and .border-teal glow). ion-modal centers its wrapper via
+   flex on its own host by default — align-items/justify-content here
+   override that same host-level flex instead of fighting it. Only the
+   left corners (the edge facing into the page content) are rounded. */
+ion-modal.account-menu-sheet--desktop {
+  --width: 40%;
+  --height: 100%;
+  --border-radius: 32px 0 0 32px;
+  --box-shadow: none;
+  align-items: stretch;
+  justify-content: flex-end;
+  --background: transparent;
+}
+
+/* Ionic always renders the sheet drag handle in the modal's shadow DOM,
+   regardless of whether `breakpoints` is set — it's just usually
+   invisible because sheet-specific layout keeps it off-screen. Without
+   `breakpoints` (see the isMobile branch in AccountMenuSheet.tsx) it's
+   left sitting at the top of this panel instead, so it needs hiding
+   explicitly. */
+ion-modal.account-menu-sheet--desktop::part(handle) {
+  display: none;
 }

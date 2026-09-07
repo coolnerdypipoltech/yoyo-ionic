@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import './Faqs.css';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/faqs.png";
+import { useViewport } from '../../context/ViewportContext';
+import gradientDesktop from "../../assets/backgrounds/desktop/faqs.png";
 
 interface FaqItem {
   q: string;
@@ -13,11 +15,13 @@ interface FaqItem {
 
 export default function Faqs() {
   const { t } = useTranslation('faqs');
+  const { isMobile } = useViewport();
   const items = t('items', { returnObjects: true }) as FaqItem[];
 
   return (
     <IonPage>
-      <BackgroundGradient src={gradient}   />
+      <BackgroundGradient src={isMobile ? gradient : gradientDesktop}   />
+
             <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
         <IonToolbar>
           <IonButtons  slot="start">
