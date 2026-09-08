@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonIcon, IonModal } from '@ionic/react';
+import { IonButton, IonIcon, IonModal } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 import { createAnimation } from '@ionic/core';
 import {  useState } from 'react';
@@ -71,6 +71,27 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
     void logout();
   };
 
+  let breakpoint = 0.65;
+
+  if(window.innerHeight > 600 && window.innerHeight < 650) {
+    breakpoint = 0.7;
+  }
+  if(window.innerHeight > 650 && window.innerHeight < 700) {
+    breakpoint = 0.65;
+  }
+
+  if(window.innerHeight > 700 && window.innerHeight < 800) {
+    breakpoint = 0.6;
+  }
+
+  if(window.innerHeight > 800 && window.innerHeight < 900) {
+    breakpoint = 0.5;
+  }
+    if(window.innerHeight > 900 && window.innerHeight < 1000) {
+    breakpoint = 0.45;
+  }
+  
+
   return (
     <>
 
@@ -79,11 +100,11 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
         onDidDismiss={() => {onClose();}}
         className={isMobile ? 'account-round-top-borders' : 'account-menu-sheet--desktop'}
         {...(isMobile
-          ? { initialBreakpoint: 0.65 }
+          ? { initialBreakpoint: breakpoint }
           : { enterAnimation: desktopEnterAnimation, leaveAnimation: desktopLeaveAnimation })}
       >
         <div className="border-teal"></div>
-        <IonContent className="account-menu-sheet">
+        <div className="account-menu-sheet">
           {/* Desktop-only: this panel now covers the header's own
              "Open menu" toggle button (it's a full-height panel
              anchored to the same right edge that button sits in), so
@@ -95,7 +116,8 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
             </button>
           ) : null}
 
-          <img src={spark} alt="Spark" className="account-menu-sheet__spark" />
+          <div className="account-menu-sheet__content-wrapper">
+                      <img src={spark} alt="Spark" className="account-menu-sheet__spark" />
 
           <div className="account-menu-sheet__list">
             <button type="button" className="account-menu-sheet__item" onClick={() => goTo('/profile')}>
@@ -120,8 +142,17 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
             >
               {t('menu.logOut')}
             </button>
+
+            {isMobile ? (
+            <div className="centered-content">
+              <button type="button" className="account-menu-sheet__close--mobile" onClick={onClose} aria-label="Close">
+              <IonIcon icon={closeOutline} />
+            </button>
+            </div>
+          ) : null}
           </div>
-        </IonContent>
+          </div>
+        </div>
       </IonModal>
 
       {/* Same custom popup format as PasswordRecovery's success dialog

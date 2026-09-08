@@ -36,7 +36,7 @@
     "buyTicket": "Buy Ticket",
     "viewEvent": "View Event",
     "redeem": "Redeem",
-    "cost": "Cost",
+    "cost": "/Cost",
     "stock": "{{count}} left",
     "description": "/Description",
     "musicLineup": "/Music Lineup",

@@ -14,7 +14,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import MediaCarousel from "../../components/MediaCarousel/MediaCarousel";
 import SocialRow from "../../components/SocialRow/SocialRow";
 import BackButton from "../../components/BackButton/BackButton";
-import PageTitle from "../../components/PageTitle/PageTitle";
+
 import { useAuth } from "../../context/AuthContext";
 import { openWhatsApp, padUserId } from "../../services/whatsapp";
 import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/format";
@@ -104,7 +104,7 @@ export default function PlacesInfo() {
         </div>
 
         <div className="places-info-page__content">
-          <PageTitle className="places-info-page__title">{place.name}</PageTitle>
+          <div className="places-info-page__title">{place.name}</div>
           <SocialRow
             websiteUrl={place.website_url}
             facebookUrl={place.facebook_url}
@@ -158,10 +158,10 @@ export default function PlacesInfo() {
           ) : null}
 
           {place.schedule_list.length > 0 ? (
-            place.schedule_list.map((schedule) => (
+            place.schedule_list.map((schedule, index) => (
               <>
               <span className="places-info-page__row" style={{ marginBottom: "6px" }}>
-                    <img src={time} alt="Time" />
+                    <img src={time} alt="Time" style={{scale: index === 0 ? 1 : 0}} />
                     {schedule}
                   </span>
                   

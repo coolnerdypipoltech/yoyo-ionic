@@ -62,6 +62,9 @@
 
 
 
+
+
+
 .rewards-page__heading-line {
   display: block;
   font-size: var(--yoyo-header-size);
@@ -110,6 +113,27 @@
   }
 
   .rewards-page__credits-container{
-    margin: 0px 200px 0px;
+    margin: 0px 205px 0px;
   }
+}
+
+
+
+@media (min-width: 1500px) {
+
+  .rewards-page__heading {
+    padding-left: 100px;
+  }
+  .rewards-page__credits-container{
+    margin: 0px 105px 0px;
+  }
+
+}
+
+@media (min-width: 2000px) {
+
+  .rewards-page__heading {
+    padding-left: 50px;
+  }
+
 }

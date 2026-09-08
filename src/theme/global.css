@@ -19,7 +19,7 @@
 .yoyo-scroll-x {
   display: flex;
   overflow-x: auto;
-  justify-content: center;
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -317,8 +317,12 @@ max-width: 300px;
 @keyframes yoyo-enter-up {
   from {
     opacity: 0;
-    transform: translateY(14px);
-  }
+    transform: translateY(24px);
+    -webkit-transform: translateY(24px);
+    -moz-transform: translateY(24px);
+    -ms-transform: translateY(24px);
+    -o-transform: translateY(24px);
+}
   to {
     opacity: 1;
     transform: translateY(0);
@@ -336,8 +340,9 @@ max-width: 300px;
 
 @media (prefers-reduced-motion: no-preference) {
   ion-content h1 {
-    animation: yoyo-enter-up 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+    animation: yoyo-enter-up 450ms ease-out both;
+    -webkit-animation: yoyo-enter-up 450ms ease-out both;
+}
 
   .main-tabs__bar {
     animation: yoyo-enter-up 800ms cubic-bezier(0.16, 1, 0.3, 1) both;

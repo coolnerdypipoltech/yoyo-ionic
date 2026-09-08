@@ -8,6 +8,8 @@ import { RabbitTransitionPreloader } from './components/RabbitTransition/RabbitT
 
 setupIonicReact();
 
+
+
 // Two separate IonReactRouter trees, swapped based on auth state. Each one
 // only ever mounts once the URL has already been aligned to a path valid
 // for it (see AuthContext's syncUrl calls in login/logout/boot) — that's

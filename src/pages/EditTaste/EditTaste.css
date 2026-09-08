@@ -37,6 +37,15 @@
   padding-bottom: 10vh;
 }
 
+@media (max-height: 768px) {
+
+.edit-taste-page__content {
+  padding-bottom: 0vh;
+  height: 95vh;
+}
+
+}
+
 .edit-taste-page__title {
   font-size: var(--yoyo-header-size);
 

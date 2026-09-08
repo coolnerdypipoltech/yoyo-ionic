@@ -57,9 +57,11 @@ export default function DeleteAccount() {
 
           {error ? <p className="delete-account-page__error">{error}</p> : null}
 
-          <IonButton expand="block" className="yoyo-pill--dark" disabled={isSubmitting} onClick={handleConfirm}>
+          <div className="delete-account-page__actions">
+                      <IonButton expand="block" className="yoyo-pill--dark" disabled={isSubmitting} onClick={handleConfirm}>
             {isSubmitting ? <IonSpinner name="dots" /> : t('deleteAccount.confirm')}
           </IonButton>
+          </div>
         </div>
       </IonContent>
     </IonPage>

@@ -57,6 +57,13 @@
   gap: 32px;
 }
 
+.main-tabs__bar--hidden {
+  /* display:none (not just opacity) — this needs to be gone from hit
+     testing and painting immediately, with no fade of its own, the instant
+     navigation away from /main starts (see the comment in MainTabs.tsx). */
+  display: none;
+}
+
 .main-tabs__button {
   --background: transparent;
   /* Ionic defaults --color-selected (and the tap ripple, which reads

@@ -188,6 +188,20 @@
   z-index: 10;
 }
 
+.account-menu-sheet__close--mobile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
 /* ion-modal uses real shadow DOM (unlike ion-input/ion-action-sheet
    elsewhere in this app), and .modal-handle's `top: 5px` is a plain
    hardcoded value, not a CSS custom property — a `--top` var (or any
@@ -224,4 +238,11 @@ ion-modal.account-menu-sheet--desktop {
    explicitly. */
 ion-modal.account-menu-sheet--desktop::part(handle) {
   display: none;
+}
+
+.account-menu-sheet__content-wrapper{
+  touch-action: none;
+  height: 100%;
+  width: 100%;
+  overflow: visible;
 }

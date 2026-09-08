@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import './RabbitTransition.css';
 import gradient from '../../assets/backgrounds/Animarion verify.png';
 import gradientD from '../../assets/backgrounds/desktop/Animarion verify.png';
+
 import { useViewport } from '../../context/ViewportContext';
 // ---- Frame sequences (src/assets/animation/*) ----
 const idleFrames = Array.from(

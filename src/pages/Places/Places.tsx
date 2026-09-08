@@ -113,6 +113,7 @@ export default function Places() {
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
           <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
+          
           <button
             type="button"
             slot="end"

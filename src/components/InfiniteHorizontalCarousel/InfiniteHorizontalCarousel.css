@@ -1,6 +1,6 @@
 .horizontal-carousel-wrapper {
   position: relative;
-  
+
 }
 
 .horizontal-carousel {
@@ -36,6 +36,11 @@
 .horizontal-carousel__sentinel {
   flex: 0 0 1px;
   width: 1px;
+}
+
+.horizontal-carousel__spacer {
+
+  min-width: 0px;
 }
 
 .horizontal-carousel__nav {
@@ -79,11 +84,6 @@
 @media (min-width: 768px) {
   .horizontal-carousel {
   gap: 15px;
-  
-}
-}
 
-.horizontal-carousel-spacer{
-  height: 100%;
-  min-width: 0px;
+}
 }

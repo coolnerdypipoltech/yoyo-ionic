@@ -1,5 +1,6 @@
 import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import MainTabs from './MainTabs';
 import PlacesInfo from '../pages/PlacesInfo/PlacesInfo';
@@ -10,7 +11,22 @@ import EditProfile from '../pages/EditProfile/EditProfile';
 import EditTaste from '../pages/EditTaste/EditTaste';
 import DeleteAccount from '../pages/DeleteAccount/DeleteAccount';
 
+
 export default function AuthenticatedApp() {
+  // Initialize the blocker
+  useEffect(() => {
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        const touch = e.touches[0];
+
+        // Check if the touch starts within 20px of the left or right edges
+        if (touch.clientX < 20 || touch.clientX > window.innerWidth - 20) {
+          e.preventDefault(); // Blocks the browser's swipe-to-navigate behavior
+        }
+      }
+    }, { passive: false }); // Crucial for Safari to allow preventDefault()
+  }, []);
+
   return (
     <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <IonRouterOutlet>

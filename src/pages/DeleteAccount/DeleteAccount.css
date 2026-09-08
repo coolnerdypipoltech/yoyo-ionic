@@ -55,3 +55,9 @@
   font-size: var(--yoyo-body-size);
   margin: 0 0 14px;
 }
+
+.delete-account-page__actions{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
