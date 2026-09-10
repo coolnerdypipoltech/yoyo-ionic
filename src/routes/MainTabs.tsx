@@ -4,7 +4,7 @@ import { Redirect, Route, useLocation } from 'react-router-dom';
 import Places from '../pages/Places/Places';
 import Rewards from '../pages/Rewards/Rewards';
 import rabbitOn from '../assets/icons/Rabbit_icon_ON.svg';
-import rabbitOff from '../assets/icons/Rabbit_Icon_Off.svg';
+import rabbitOff from '../assets/icons/Rabbit_icon_OFF.svg';
 import crownOn from "../assets/icons/Perks_icon_ON.svg";
 import crownOff from "../assets/icons/Perks_icon_OFF.svg";
 
