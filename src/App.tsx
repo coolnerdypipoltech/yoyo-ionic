@@ -10,7 +10,7 @@ import { RabbitTransitionPreloaderDesktop } from './components/RabbitTransitionD
 
 
 
-setupIonicReact({ scrollAssist: isPlatform('android') });
+
 
 
 
