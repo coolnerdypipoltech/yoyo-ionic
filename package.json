@@ -2,7 +2,7 @@
   "name": "yoyo-ionic",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://coolnerdypipoltech.github.io/yoyo-ionic/",
+  "homepage": "https://app.yoyotheclub.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
