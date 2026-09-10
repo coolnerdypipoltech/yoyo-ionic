@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './RabbitTransitionDesktop.css';
 import video from '../../assets/LoaderVideo.mp4';
-
+import videoM from '../../assets/LoaderVideoM.mp4';
+import { useViewport } from '../../context/ViewportContext';
 // Mounted once at the app root (see App.tsx), for the app's entire
 // lifetime, regardless of auth state or which page is active — so the
 // browser has already fetched and buffered the video by the time
@@ -13,13 +14,14 @@ import video from '../../assets/LoaderVideo.mp4';
 // gap — the element doesn't exist yet to start buffering until the
 // transition actually mounts.
 export function RabbitTransitionPreloaderDesktop() {
+  console.log("preload")
   return (
     <video
       aria-hidden="true"
       preload="auto"
       muted
       playsInline
-      src={video}
+      src={useViewport().isMobile ? videoM : video}
       style={{ position: 'fixed', top: 0, left: 0, width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
     />
   );
@@ -51,12 +53,14 @@ export default function RabbitTransitionDesktop({ ready = true, onComplete }: Ra
     if (el) el.loop = !ready;
   }, [ready]);
 
+
+
   return createPortal(
-    <div className="rabbit-transition" aria-hidden="true">
+    <div className="rabbit-transition-desktop" aria-hidden="true">
       <video
         ref={videoRef}
         className="rabbit-transition__video"
-        src={video}
+        src={useViewport().isMobile ? videoM : video}
         autoPlay
         muted
         playsInline

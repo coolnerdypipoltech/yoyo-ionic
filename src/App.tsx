@@ -1,10 +1,10 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ViewportProvider, useViewport } from './context/ViewportContext';
+import { ViewportProvider } from './context/ViewportContext';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import UnauthenticatedApp from './routes/UnauthenticatedApp';
 import AuthenticatedApp from './routes/AuthenticatedApp';
-import { RabbitTransitionPreloader } from './components/RabbitTransition/RabbitTransition';
+
 import { RabbitTransitionPreloaderDesktop } from './components/RabbitTransitionDesktop/RabbitTransitionDesktop';
 // scrollAssist off: its iOS "Passwords bar" heuristic adds a flat 50px
 // to the scroll-into-view amount for any password input (see
@@ -34,7 +34,7 @@ function AppShell() {
       {/* Mounted unconditionally — outside the auth swap below — so it
           survives login/logout and every page change, keeping the rabbit
           transition's frames decoded and ready for the entire session. */}
-      {useViewport().isMobile ? <RabbitTransitionPreloader /> : <RabbitTransitionPreloaderDesktop />}
+     <RabbitTransitionPreloaderDesktop />
       {isBooting ? null : isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </IonApp>
   );

@@ -9,7 +9,7 @@ import HorizontalCarousel from '../../components/HorizontalCarousel/HorizontalCa
 import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard';
 import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import RabbitTransition from '../../components/RabbitTransition/RabbitTransition';
+
 import RabbitTransitionDesktop from '../../components/RabbitTransitionDesktop/RabbitTransitionDesktop';
 import { useAuth } from '../../context/AuthContext';
 import { useInfiniteList } from '../../hooks/useInfiniteList';
@@ -22,15 +22,12 @@ import spark2 from "../../assets/icons/SparkG.svg";
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
 
-import { useViewport } from '../../context/ViewportContext';
-
-
 export default function Places() {
   const { t } = useTranslation('main');
   const history = useHistory();
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isMobile } = useViewport();
+
 
   const [showRabbit, setShowRabbit] = useState(true);
   const contentRef = useRef<HTMLIonContentElement>(null);
@@ -108,8 +105,7 @@ export default function Places() {
         
           {showRabbit ? (
             <>
-            {isMobile ? (<><RabbitTransition ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} /></>) : (<RabbitTransitionDesktop ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} />)}
-            
+<RabbitTransitionDesktop ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} />
             
             </>
           ) : null}
