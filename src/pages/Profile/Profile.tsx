@@ -52,7 +52,7 @@ export default function Profile() {
 
           </button>
                       <span className="profile-page__avatar-edit">
-              <img src={editPhoto} alt="edit photo" />
+              <img src={editPhoto} alt="edit photo" onClick={() => history.push('/profile/edit-photo')} />
             </span>
           <span className="profile-page__id ">
             {t('profile.idLabel')}: <span style={{fontFamily: "InstrumentSans-Bold"}}>{padUserId(user.id)}</span>
