@@ -1,5 +1,4 @@
-import { IonApp, setupIonicReact } from '@ionic/react';
-import { Capacitor } from '@capacitor/core';
+import { IonApp, isPlatform, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ViewportProvider, useViewport } from './context/ViewportContext';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
@@ -11,7 +10,7 @@ import { RabbitTransitionPreloaderDesktop } from './components/RabbitTransitionD
 
 
 
-setupIonicReact({ scrollAssist: Capacitor.getPlatform() === 'android' });
+setupIonicReact({ scrollAssist: isPlatform('android') });
 
 
 
