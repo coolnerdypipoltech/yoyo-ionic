@@ -110,11 +110,7 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
              anchored to the same right edge that button sits in), so
              that button can no longer be clicked to close it back —
              this is the panel's own reachable close affordance. */}
-          {!isMobile ? (
-            <button type="button" className="account-menu-sheet__close" onClick={onClose} aria-label="Close">
-              <IonIcon icon={closeOutline} />
-            </button>
-          ) : null}
+
 
           <div className="account-menu-sheet__content-wrapper">
                       <img src={spark} alt="Spark" className="account-menu-sheet__spark" />
@@ -143,13 +139,11 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
               {t('menu.logOut')}
             </button>
 
-            {isMobile ? (
-            <div className="centered-content">
+                        <div className="centered-content">
               <button type="button" className="account-menu-sheet__close--mobile" onClick={onClose} aria-label="Close">
               <IonIcon icon={closeOutline} />
             </button>
             </div>
-          ) : null}
           </div>
           </div>
         </div>

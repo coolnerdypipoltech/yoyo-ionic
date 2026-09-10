@@ -1,11 +1,11 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { ViewportProvider } from './context/ViewportContext';
+import { ViewportProvider, useViewport } from './context/ViewportContext';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import UnauthenticatedApp from './routes/UnauthenticatedApp';
 import AuthenticatedApp from './routes/AuthenticatedApp';
 import { RabbitTransitionPreloader } from './components/RabbitTransition/RabbitTransition';
-
+import { RabbitTransitionPreloaderDesktop } from './components/RabbitTransitionDesktop/RabbitTransitionDesktop';
 setupIonicReact();
 
 
@@ -23,7 +23,7 @@ function AppShell() {
       {/* Mounted unconditionally — outside the auth swap below — so it
           survives login/logout and every page change, keeping the rabbit
           transition's frames decoded and ready for the entire session. */}
-      <RabbitTransitionPreloader />
+      {useViewport().isMobile ? <RabbitTransitionPreloader /> : <RabbitTransitionPreloaderDesktop />}
       {isBooting ? null : isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </IonApp>
   );

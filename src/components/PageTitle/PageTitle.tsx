@@ -1,5 +1,5 @@
-import { useIonViewWillEnter } from '@ionic/react';
-import { useEffect, useRef, useState } from 'react';
+
+import {  useRef } from 'react';
 import type { ReactNode } from 'react';
 
 interface PageTitleProps {
@@ -29,43 +29,13 @@ interface PageTitleProps {
 // actually bumping the key means only the *settled* entrance ever
 // triggers a real remount.
 export default function PageTitle({ className, children }: PageTitleProps) {
-  const [enterKey, setEnterKey] = useState(0);
-  const timeoutRef = useRef<number | null>(null);
+
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  useIonViewWillEnter(() => {
-    if (timeoutRef.current !== null) window.clearTimeout(timeoutRef.current);
-    timeoutRef.current = window.setTimeout(() => {
-      timeoutRef.current = null;
-      setEnterKey((k) => k + 1);
-    }, 400);
-  });
 
-  // Belt-and-suspenders for the animation itself: rapid remounts have
-  // been observed to occasionally leave the new <h1>'s entrance animation
-  // (global.css's `ion-content h1`, 850ms) paused/interrupted partway
-  // through and never resuming on its own — the DOM is otherwise fine,
-  // but the title stays visually stuck at whatever opacity it was
-  // interrupted at instead of settling on fully visible. Rather than
-  // chase down *why* a given browser's animation timeline stalls there,
-  // just guarantee the end state directly a beat after the animation
-  // should have finished, regardless of what actually happened to it.
-  useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      const el = headingRef.current;
-      if (!el) return;
-      // A still-running (even if stalled) CSS animation keeps winning the
-      // cascade over these two inline properties for as long as it's
-      // applied, no matter what they're set to — has to actually go first.
-      el.style.animation = 'none';
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    }, 950);
-    return () => window.clearTimeout(timeout);
-  }, [enterKey]);
 
   return (
-    <h1 key={enterKey} ref={headingRef} className={className}>
+    <h1  ref={headingRef} className={className}>
       {children}
     </h1>
   );

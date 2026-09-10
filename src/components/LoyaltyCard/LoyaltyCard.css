@@ -4,6 +4,14 @@
   display: flex;
   justify-content: center;
   margin-bottom: 38px;
+  min-width: 300px;
+}
+
+@media (min-width: 720px) {
+  .loyalty-card__scene {
+    margin-bottom: 0px;
+    min-width: 400px;
+  }
 }
 
 .loyalty-card__flipper {
@@ -63,12 +71,13 @@
 }
 
 .loyalty-card__face_anim img {
-  min-width: calc(100% * 1.17);
+  min-width: calc(100% * 1.14);
   
-  height: calc(100% * 1.17);
+  height: calc(100% * 1.14);
   object-fit: cover;
   position: relative;
-  top: -8%;
+  top: -7%;
+  left: 0.5%;
 }
 
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
@@ -174,6 +183,12 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-family: 'InstrumentSans-Bold';
+}
+
+@media (min-width: 720px) {
+  .loyalty-card__points-label {
+    font-size: var(--yoyo-text-size);
+  }
 }
 
 .loyalty-card__points-value {

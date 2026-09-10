@@ -10,8 +10,10 @@ import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard
 import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import RabbitTransition from '../../components/RabbitTransition/RabbitTransition';
+import RabbitTransitionDesktop from '../../components/RabbitTransitionDesktop/RabbitTransitionDesktop';
 import { useAuth } from '../../context/AuthContext';
 import { useInfiniteList } from '../../hooks/useInfiniteList';
+import { useScrollFadeVisibility } from '../../hooks/useScrollFadeVisibility';
 import * as placesService from '../../api/services/places.service';
 import type { Place } from '../../api/types';
 import './Places.css';
@@ -19,10 +21,9 @@ import spark from "../../assets/icons/Spark.svg";
 import spark2 from "../../assets/icons/SparkG.svg";
 import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
 const PAGE_SIZE = 10;
-import gradient from "../../assets/backgrounds/desktop/Home_background.png";
+
 import { useViewport } from '../../context/ViewportContext';
 
-import BackgroundGradient from '../../components/BackgroundGradient/BackgroundGradient';
 
 export default function Places() {
   const { t } = useTranslation('main');
@@ -34,6 +35,7 @@ export default function Places() {
   const [showRabbit, setShowRabbit] = useState(true);
   const contentRef = useRef<HTMLIonContentElement>(null);
   const noLoading = useRef(false);
+  const logoVisible = useScrollFadeVisibility(contentRef);
 
   useIonViewWillEnter(() => {
     contentRef.current?.scrollToTop(0);
@@ -103,16 +105,25 @@ export default function Places() {
     <IonPage>
       {noLoading.current == false && (
         <>
-          {!isMobile ? <BackgroundGradient src={gradient} /> : null}
+        
           {showRabbit ? (
-            <RabbitTransition ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} />
+            <>
+            {isMobile ? (<><RabbitTransition ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} /></>) : (<RabbitTransitionDesktop ready={placesImagesReady} onComplete={() => {setShowRabbit(false); noLoading.current = true;}} />)}
+            
+            
+            </>
           ) : null}
         </>
       )}
 
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
+        
         <IonToolbar>
-          <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
+          <img
+            src={yoyoLetterLogo}
+            alt="YOYO Logo"
+            className={`places-page__logo ${logoVisible ? '' : 'places-page__logo--hidden'}`}
+          />
           
           <button
             type="button"
@@ -121,7 +132,7 @@ export default function Places() {
             aria-label="Open menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <img src={spark2} alt="Spark" />
+            <img src={spark2} className='spark-places' alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>
@@ -131,12 +142,14 @@ export default function Places() {
           <IonRefresherContent />
         </IonRefresher>
 
-        <PageTitle className="places-page__heading">
+        <div className="places-page__header-content">
+          <PageTitle className="places-page__heading">
           <span className="places-page__heading-line">{t('places.headingLine1')}</span>
           <span className="places-page__heading-display">{t('places.headingLine2')}</span>
         </PageTitle>
 
         {user ? <LoyaltyCard user={user} /> : null}
+        </div>
 
         <section className="places-page__section">
           <h2 className="yoyo-section-header places-page__section-header">

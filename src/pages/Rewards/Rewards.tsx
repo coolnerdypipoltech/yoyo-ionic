@@ -1,34 +1,40 @@
-import { IonContent, IonHeader, IonPage, IonRefresher, IonRefresherContent, IonToolbar, useIonViewWillEnter } from '@ionic/react';
-import type { RefresherEventDetail } from '@ionic/core';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonRefresher,
+  IonRefresherContent,
+  IonToolbar,
+  useIonViewWillEnter,
+} from "@ionic/react";
+import type { RefresherEventDetail } from "@ionic/core";
 
-import { useCallback, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-import AdBanner from '../../components/AdBanner/AdBanner';
-import HorizontalCarousel from '../../components/HorizontalCarousel/HorizontalCarousel';
-import CarouselItemCard from '../../components/CarouselItemCard/CarouselItemCard';
-import AccountMenuSheet from '../../components/AccountMenuSheet/AccountMenuSheet';
-import PageTitle from '../../components/PageTitle/PageTitle';
-import { useAuth } from '../../context/AuthContext';
-import { useInfiniteList } from '../../hooks/useInfiniteList';
-import * as rewardsService from '../../api/services/rewards.service';
-import type { ResultObject } from '../../api/types';
-import './Rewards.css';
-import yoyoLetterLogo from '../../assets/icons/YoyoLetters.png';
-
-
-
+import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+import AdBanner from "../../components/AdBanner/AdBanner";
+import HorizontalCarousel from "../../components/HorizontalCarousel/HorizontalCarousel";
+import CarouselItemCard from "../../components/CarouselItemCard/CarouselItemCard";
+import AccountMenuSheet from "../../components/AccountMenuSheet/AccountMenuSheet";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import { useAuth } from "../../context/AuthContext";
+import { useInfiniteList } from "../../hooks/useInfiniteList";
+import { useScrollFadeVisibility } from "../../hooks/useScrollFadeVisibility";
+import * as rewardsService from "../../api/services/rewards.service";
+import type { ResultObject } from "../../api/types";
+import "./Rewards.css";
+import yoyoLetterLogo from "../../assets/icons/YoyoLetters.png";
 
 import spark from "../../assets/icons/SparkG.svg";
 const PAGE_SIZE = 10;
 
 export default function Rewards() {
-  const { t } = useTranslation('main');
+  const { t } = useTranslation("main");
   const history = useHistory();
   const { user, refreshUser } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const contentRef = useRef<HTMLIonContentElement>(null);
-
+  const logoVisible = useScrollFadeVisibility(contentRef);
 
   // Ionic keeps this page's scroll position across tab switches (it
   // hides rather than unmounts), so returning to Rewards from Places can
@@ -39,13 +45,31 @@ export default function Rewards() {
     contentRef.current?.scrollToTop(0);
   });
 
-  const fetchFirstRewards = useCallback(() => rewardsService.getRewards(PAGE_SIZE, 0), []);
-  const fetchNextRewards = useCallback((next: string) => rewardsService.getNextRewardsPage(next), []);
-  const rewards = useInfiniteList<ResultObject>({ fetchFirstPage: fetchFirstRewards, fetchNextPage: fetchNextRewards });
+  const fetchFirstRewards = useCallback(
+    () => rewardsService.getRewards(PAGE_SIZE, 0),
+    [],
+  );
+  const fetchNextRewards = useCallback(
+    (next: string) => rewardsService.getNextRewardsPage(next),
+    [],
+  );
+  const rewards = useInfiniteList<ResultObject>({
+    fetchFirstPage: fetchFirstRewards,
+    fetchNextPage: fetchNextRewards,
+  });
 
-  const fetchFirstPartners = useCallback(() => rewardsService.getPartners(PAGE_SIZE, 0), []);
-  const fetchNextPartners = useCallback((next: string) => rewardsService.getNextRewardsPage(next), []);
-  const partners = useInfiniteList<ResultObject>({ fetchFirstPage: fetchFirstPartners, fetchNextPage: fetchNextPartners });
+  const fetchFirstPartners = useCallback(
+    () => rewardsService.getPartners(PAGE_SIZE, 0),
+    [],
+  );
+  const fetchNextPartners = useCallback(
+    (next: string) => rewardsService.getNextRewardsPage(next),
+    [],
+  );
+  const partners = useInfiniteList<ResultObject>({
+    fetchFirstPage: fetchFirstPartners,
+    fetchNextPage: fetchNextPartners,
+  });
 
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await Promise.all([rewards.refresh(), partners.refresh(), refreshUser()]);
@@ -56,59 +80,80 @@ export default function Rewards() {
     <IonPage>
       <IonHeader className="ion-no-border yoyo-header-offset places-page__header">
         <IonToolbar>
-          <img src={yoyoLetterLogo} alt="YOYO Logo" className="places-page__logo" />
+          <img
+            src={yoyoLetterLogo}
+            alt="YOYO Logo"
+            className={`places-page__logo ${logoVisible ? "" : "places-page__logo--hidden"}`}
+          />
           <button
             type="button"
             slot="end"
-            className={`places-page__menu-button ${menuOpen ? 'places-page__menu-button--rotated' : ''}`}
+            className={`places-page__menu-button ${menuOpen ? "places-page__menu-button--rotated" : ""}`}
             aria-label="Open menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <img src={spark} alt="Spark" />
+            <img src={spark} className="spark-places" alt="Spark" />
           </button>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen className="rewards-page" ref={contentRef}>
-        
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent />
         </IonRefresher>
+        <div className="places-page__header-content">
+<div className="rewards-page__header-content-inner">
+            <PageTitle className="rewards-page__heading">
+            <span className="rewards-page__heading-line">
+              {t("rewards.headingLine1")}
+            </span>
+            <span className="rewards-page__heading-display">
+              {t("rewards.headingLine2")}
+            </span>
+          </PageTitle>
 
-        <PageTitle className="rewards-page__heading">
-          <span className="rewards-page__heading-line">{t('rewards.headingLine1')}</span>
-          <span className="rewards-page__heading-display">{t('rewards.headingLine2')}</span>
-        </PageTitle>
+          {user ? (
+            <div className="rewards-page__credits-container">
+              <p className="rewards-page__credits">
+                {t("rewards.availableCredits")}
+              </p>
+              <p
+                className="rewards-page__credits"
+                style={{ color: "white" }}
+              >{`${user.related.points}`}</p>
+            </div>
+          ) : null}
+</div>
 
-        {user ? (
-          <div className="rewards-page__credits-container">
-            <p className="rewards-page__credits">
-            {t('rewards.availableCredits' )}
-            
-          </p>
-          <p className="rewards-page__credits" style={{color: "white"}}>{`${user.related.points}`}</p>
-          </div>
-        ) : null}
-
-        <AdBanner />
+          <AdBanner />
+        </div>
 
         <section className="rewards-page__section">
           <h2 className="yoyo-section-header rewards-page__section-header">
-            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-            {t('rewards.rewardsSection')}
+            <img
+              src={spark}
+              alt="Spark"
+              className="yoyo-section-header__spark"
+            />
+            {t("rewards.rewardsSection")}
           </h2>
           <HorizontalCarousel
             items={rewards.results}
             isLoading={rewards.isLoading}
             hasMore={rewards.hasMore}
             onLoadMore={rewards.loadMore}
-            emptyText={t('rewards.noRewards')}
+            emptyText={t("rewards.noRewards")}
             getKey={(item) => item.id}
             renderItem={(item) => (
               <CarouselItemCard
                 title={item.name}
                 imageUrl={item.thumbnail?.absolute_url}
-                onClick={() => history.push(`/rewards/${item.id}`, { item, isFromRewards: true })}
+                onClick={() =>
+                  history.push(`/rewards/${item.id}`, {
+                    item,
+                    isFromRewards: true,
+                  })
+                }
               />
             )}
           />
@@ -116,21 +161,30 @@ export default function Rewards() {
 
         <section className="rewards-page__section">
           <h2 className="yoyo-section-header rewards-page__section-header">
-            <img src={spark} alt="Spark" className="yoyo-section-header__spark" />
-            {t('rewards.partnersSection')}
+            <img
+              src={spark}
+              alt="Spark"
+              className="yoyo-section-header__spark"
+            />
+            {t("rewards.partnersSection")}
           </h2>
           <HorizontalCarousel
             items={partners.results}
             isLoading={partners.isLoading}
             hasMore={partners.hasMore}
             onLoadMore={partners.loadMore}
-            emptyText={t('rewards.noPartners')}
+            emptyText={t("rewards.noPartners")}
             getKey={(item) => item.id}
             renderItem={(item) => (
               <CarouselItemCard
                 title={item.name}
                 imageUrl={item.thumbnail?.absolute_url}
-                onClick={() => history.push(`/rewards/${item.id}`, { item, isFromRewards: false })}
+                onClick={() =>
+                  history.push(`/rewards/${item.id}`, {
+                    item,
+                    isFromRewards: false,
+                  })
+                }
               />
             )}
           />

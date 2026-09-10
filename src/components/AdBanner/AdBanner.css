@@ -8,8 +8,12 @@
   margin-bottom: 20px;
   margin-top: 20px;
   max-width: 400px;
-      
+  min-width: 300px;
+  width: 100%;
+  height: auto;
 }
+
+
 
 .media-carousel.ad-banner .media-carousel__scroller {
   height: auto;
@@ -31,4 +35,15 @@
 .ad-banner-container{
   padding: 12px;
   width: 100%;
+}
+
+@media (min-width: 720px) {
+  .media-carousel.ad-banner {
+    margin: 0px;
+  }
+
+  .ad-banner-container{
+    display: flex;
+    justify-content: flex-end;
+  }
 }

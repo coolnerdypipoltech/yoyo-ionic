@@ -100,6 +100,15 @@
      containing-block requirement on its own. */
 }
 
+@media (min-width: 1500px) {
+  ion-content {
+    --padding-start: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
+    --padding-end: max(0px, calc((100% - var(--yoyo-desktop-content-width)) / 2));
+  }
+
+
+}
+
 /* Shared design-system primitives, used across most auth/detail/modal
    pages per the reference screenshots — not page-specific content. */
 

@@ -1,0 +1,25 @@
+.rabbit-transition-desktop {
+  /* Rendered via a portal straight into document.body (see
+     RabbitTransition.tsx), so `fixed` here is relative to the real
+     viewport — not trapped by ion-router-outlet's page-transition
+     transform, which is what kept this from covering IonTabBar before. */
+  position: fixed;
+  inset: 0;
+  z-index: 5000000;
+  pointer-events: none;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.rabbit-transition__video {
+   width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+}

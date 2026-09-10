@@ -25,7 +25,7 @@ export default function BackButton({ defaultHref, closeHref }: BackButtonProps) 
   return (
     <div className="yoyo-back-button-wrapper">
       <IonBackButton className="yoyo-back-button" defaultHref={defaultHref} text="" icon={icon} />
-      <img src={icon} alt="" className="yoyo-back-button__icon" />
+      <img src={icon} alt="" className="yoyo-back-button__icon" style={{left: closeHref ? "50%" : "45%"}} />
     </div>
   );
 }

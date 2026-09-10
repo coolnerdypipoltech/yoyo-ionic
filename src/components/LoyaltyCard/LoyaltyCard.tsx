@@ -191,18 +191,6 @@ export default function LoyaltyCard({ user }: LoyaltyCardProps) {
           </IonButton>
         </div>
 
-        {/* All 72 frames are mounted once, up front, and stay mounted for
-           the component's whole lifetime — each <img> only ever gets one
-           `src`, so the browser fetches/decodes it exactly once, ever.
-           Advancing the animation just toggles which one has `display:
-           block`; a single <img> whose `src` kept changing every ~33ms
-           (the old approach) made the browser re-request that URL on
-           every pass through the loop, since a changed src attribute is
-           a brand-new load as far as the browser's resource pipeline is
-           concerned, even when the response itself came back from cache.
-           Hidden via `visibility` (not unmounted) while dragging, so
-           dragging repeatedly can't trigger a remount → refetch cycle
-           either. */}
         <div className="loyalty-card__face_anim" style={{ zIndex: 10, visibility: isDragging ? 'hidden' : 'visible' }}>
           {frames.map((src, i) => (
             <img key={src} src={src} alt="" style={{ display: i === frameIndex ? 'block' : 'none' }} />
