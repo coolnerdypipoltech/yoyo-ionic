@@ -12,12 +12,12 @@ export interface MediaItem {
 
 interface MediaCarouselProps {
   items: MediaItem[];
-  /** Extra class on the root — lets a caller (e.g. AdBanner) override
+  /** Extra class on the root — lets a caller (e.g. FeaturedCarousel) override
    * sizing/aspect-ratio without changing this component's own defaults. */
   className?: string;
   /** When given, a click on the active slide calls this instead of
-   * advancing to the next one — e.g. AdBanner uses it to open the ad's
-   * link, since "click to advance" wouldn't make sense for ads. */
+   * advancing to the next one — e.g. FeaturedCarousel uses it to open the
+   * item's link, since "click to advance" wouldn't make sense there. */
   onItemClick?: (item: MediaItem, index: number) => void;
 }
 

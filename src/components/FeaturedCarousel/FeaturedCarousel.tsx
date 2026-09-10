@@ -3,38 +3,38 @@ import * as advertisementsService from '../../api/services/advertisements.servic
 import MediaCarousel from '../MediaCarousel/MediaCarousel';
 import type { MediaItem } from '../MediaCarousel/MediaCarousel';
 import type { AdResult } from '../../api/types';
-import './AdBanner.css';
+import './FeaturedCarousel.css';
 
-export default function AdBanner() {
-  const [ads, setAds] = useState<AdResult[]>([]);
+export default function FeaturedCarousel() {
+  const [items, setItems] = useState<AdResult[]>([]);
 
   useEffect(() => {
     let cancelled = false;
     advertisementsService
       .getAdvertisements()
       .then((results) => {
-        if (!cancelled) setAds(results);
+        if (!cancelled) setItems(results);
       })
       .catch(() => {
-        if (!cancelled) setAds([]);
+        if (!cancelled) setItems([]);
       });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (ads.length === 0) return null;
+  if (items.length === 0) return null;
 
   const handleItemClick = (_item: MediaItem, index: number) => {
-    const ad = ads[index];
-    if (ad.url) window.open(ad.url, '_blank', 'noopener,noreferrer');
+    const item = items[index];
+    if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <div className="ad-banner-container">
+    <div className="featured-carousel-container">
     <MediaCarousel
-      className="ad-banner"
-      items={ads.map((ad) => ad.main)}
+      className="featured-carousel"
+      items={items.map((item) => item.main)}
       onItemClick={handleItemClick}
     /></div>
   );

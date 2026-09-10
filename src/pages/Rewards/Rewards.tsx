@@ -12,7 +12,7 @@ import type { RefresherEventDetail } from "@ionic/core";
 import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import AdBanner from "../../components/AdBanner/AdBanner";
+import FeaturedCarousel from "../../components/FeaturedCarousel/FeaturedCarousel";
 import HorizontalCarousel from "../../components/HorizontalCarousel/HorizontalCarousel";
 import CarouselItemCard from "../../components/CarouselItemCard/CarouselItemCard";
 import AccountMenuSheet from "../../components/AccountMenuSheet/AccountMenuSheet";
@@ -125,7 +125,7 @@ export default function Rewards() {
           ) : null}
 </div>
 
-          <AdBanner />
+          <FeaturedCarousel />
         </div>
 
         <section className="rewards-page__section">
