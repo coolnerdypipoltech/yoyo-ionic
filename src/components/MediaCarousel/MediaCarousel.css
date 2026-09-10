@@ -6,7 +6,8 @@
 
 @media (min-width: 500px) {
   .media-carousel {
-    max-width: 300px;
+    max-width: 375px;
+    max-height: 320px;
   }
 }
 
@@ -45,6 +46,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  max-height: 320px;
 }
 
 .media-carousel__dots {
