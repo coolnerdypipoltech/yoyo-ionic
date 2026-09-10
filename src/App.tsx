@@ -6,7 +6,18 @@ import UnauthenticatedApp from './routes/UnauthenticatedApp';
 import AuthenticatedApp from './routes/AuthenticatedApp';
 import { RabbitTransitionPreloader } from './components/RabbitTransition/RabbitTransition';
 import { RabbitTransitionPreloaderDesktop } from './components/RabbitTransitionDesktop/RabbitTransitionDesktop';
-setupIonicReact();
+// scrollAssist off: its iOS "Passwords bar" heuristic adds a flat 50px
+// to the scroll-into-view amount for any password input (see
+// @ionic/core's scroll-assist.js), assuming iOS will show a Keychain
+// suggestions bar above the keyboard. That bar doesn't always appear
+// (depends on the user's own Keychain/Safari settings), so the app has
+// no reliable way to know in advance whether those extra 50px are
+// warranted — when they aren't, the page overshoots and scrolls up
+// more than the keyboard actually requires. Mobile Safari already
+// scrolls a focused input into view on its own, so disabling Ionic's
+// own layer here just removes that unreliable extra correction instead
+// of replacing it with anything.
+setupIonicReact({ scrollAssist: false });
 
 
 

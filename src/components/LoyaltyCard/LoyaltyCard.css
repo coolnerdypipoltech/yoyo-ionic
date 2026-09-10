@@ -72,12 +72,22 @@
 
 .loyalty-card__face_anim img {
   min-width: calc(100% * 1.14);
-  
+
   height: calc(100% * 1.14);
   object-fit: cover;
-  position: relative;
-  top: -7%;
-  left: 0.5%;
+  /* The offset below reproduces the same -7%/+0.5% shift (relative to
+     this box's own un-scaled 100% size) that used to be expressed as
+     `position: relative; top: -7%; left: 0.5%`. That version resolved
+     its percentages against the *container*, at layout time — subject to
+     the same sub-pixel rounding of this box's `aspect-ratio`-derived
+     size that differs slightly across browser engines/devices, which is
+     what let the glow drift out of alignment with the card art on some
+     screens. `transform` percentages resolve against this element's own
+     (already-enlarged) box instead, purely at composite time, without
+     that extra layout-rounding step — hence dividing by 1.14 here, to
+     convert the old container-relative percentages into this element's
+     own frame of reference. */
+  transform: translate(0.439%, -6.14%);
 }
 
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
