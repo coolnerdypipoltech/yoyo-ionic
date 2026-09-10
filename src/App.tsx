@@ -1,4 +1,4 @@
-import { IonApp} from '@ionic/react';
+import { IonApp, isPlatform, setupIonicReact } from '@ionic/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ViewportProvider, useViewport } from './context/ViewportContext';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
