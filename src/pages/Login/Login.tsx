@@ -15,7 +15,7 @@ import PasswordField from '../../components/PasswordField/PasswordField';
 import BackButton from '../../components/BackButton/BackButton';
 import PageTitle from '../../components/PageTitle/PageTitle';
 
-import { useAuth } from '../../context/AuthContext';
+import { useAuth, ACCOUNT_DELETED_KEY } from '../../context/AuthContext';
 import { ApiError } from '../../api/errors';
 import './Login.css';
 import yoyoLogo from '../../assets/icons/YoyoLetters.png';
@@ -39,10 +39,19 @@ const { isMobile } = useViewport();
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showVerifyBanner] = useState(Boolean(location.state?.justRegistered));
+  // Set by AuthContext's deleteAccount right before it lands here — a
+  // sessionStorage flag rather than location.state because deletion also
+  // swaps the mounted router tree (AuthenticatedApp -> Unauthenticated
+  // App), which a fresh location.state can't survive the way it does for
+  // an in-tree push like Register's justRegistered above.
+  const [showAccountDeletedBanner] = useState(() => Boolean(sessionStorage.getItem(ACCOUNT_DELETED_KEY)));
 
   useEffect(() => {
     if (location.state?.justRegistered) {
       history.replace(location.pathname);
+    }
+    if (showAccountDeletedBanner) {
+      sessionStorage.removeItem(ACCOUNT_DELETED_KEY);
     }
     // Intentionally run once on mount — clears the one-time banner state.
   }, []);
@@ -89,6 +98,10 @@ const { isMobile } = useViewport();
 
           {showVerifyBanner ? (
             <div className="login-page__banner">{t('login.verifyEmailBanner')}</div>
+          ) : null}
+
+          {showAccountDeletedBanner ? (
+            <div className="login-page__banner">{t('login.accountDeletedBanner')}</div>
           ) : null}
 
           <FormField label={t('login.email')} type="email" value={email} onChange={setEmail} />
