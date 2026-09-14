@@ -79,7 +79,7 @@ export default function MediaCarousel({ items, className, onItemClick }: MediaCa
   // Ignored on a video's own controls so play/pause isn't hijacked.
   // When the caller wants clicks to mean something else entirely (see
   // onItemClick above), that takes over instead of advancing.
-  const handleSlideClick = (e: ReactMouseEvent<HTMLDivElement>) => {
+  const handleSlideClick = () => {
     
     if (onItemClick) {
       onItemClick(items[activeIndex], activeIndex);
