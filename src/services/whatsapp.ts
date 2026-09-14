@@ -24,7 +24,7 @@ export function openWhatsApp(message: string, phone?: string): void {
 }
 
 interface ContactSource {
-  pr_id: PRs | null;
+  pr: PRs | null;
   contact_link: string | null;
 }
 
@@ -34,8 +34,8 @@ interface ContactSource {
 // as-is, no WhatsApp message involved), falling back to this app's own
 // default WhatsApp number when neither is set.
 export function contactFor(source: ContactSource, message: string): void {
-  if (source.pr_id?.phone) {
-    openWhatsApp(message, source.pr_id.phone);
+  if (source.pr?.phone) {
+    openWhatsApp(message, source.pr.phone);
   } else if (source.contact_link) {
     window.open(source.contact_link, '_blank', 'noopener,noreferrer');
   } else {

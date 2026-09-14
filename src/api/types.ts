@@ -73,7 +73,8 @@ export interface Place {
   schedule_list: string[];
   media: MediaRef[];
   gallery: Gallery[];
-  pr_id: PRs | null;
+  pr: PRs | null;
+  pr_id: number | null;
   contact_link: string | null;
   thumbnail: Thumbnail | null;
 }
@@ -93,7 +94,8 @@ export interface ResultObject {
   thumbnail: Thumbnail | null;
   gallery: Gallery[];
   media: Medium[];
-  pr_id: PRs | null;
+  pr_id: number | null;
+  pr: PRs | null;
   contact_link: string | null;
 }
 

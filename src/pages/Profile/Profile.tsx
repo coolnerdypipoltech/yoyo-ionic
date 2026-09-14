@@ -30,7 +30,6 @@ export default function Profile() {
   if (!user) return null;
   const avatarUrl = user.related.image?.absolute_url;
 
-  console.log(user.related.gender)
 
   return (
     <IonPage>

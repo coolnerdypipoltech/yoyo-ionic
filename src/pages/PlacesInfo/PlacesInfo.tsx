@@ -60,7 +60,7 @@ export default function PlacesInfo() {
       isFromPlace ? "common:whatsapp.reservePlace" : "common:whatsapp.reserveEvent",
       { title: place.name, id: padUserId(user.id) },
     );
-    contactFor(place, message);
+    contactFor({pr: place.pr, contact_link: place.contact_link}, message);
   };
 
   const dresscodeLabel = dresscodeMatches(place.dresscode, "formal")
@@ -78,7 +78,7 @@ export default function PlacesInfo() {
       : null,
   ].filter(Boolean);
 
-  
+
   return (
     <IonPage>
       {!isMobile ? <BackgroundGradient src={gradient} /> : null}

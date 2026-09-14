@@ -14,7 +14,7 @@ import { useViewport } from '../../context/ViewportContext';
 // gap — the element doesn't exist yet to start buffering until the
 // transition actually mounts.
 export function RabbitTransitionPreloaderDesktop() {
-  console.log("preload")
+
   return (
     <video
       aria-hidden="true"

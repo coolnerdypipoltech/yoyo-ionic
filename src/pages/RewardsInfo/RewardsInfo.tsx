@@ -49,8 +49,9 @@ export default function RewardsInfo() {
 
   const handleRedeem = () => {
     const key = isFromRewards ? 'common:whatsapp.redeemReward' : 'common:whatsapp.contactPartner';
-    contactFor(item, t(key, { title: item.name, id: padUserId(user.id) }));
+    contactFor({pr: item.pr, contact_link: item.contact_link}, t(key, { title: item.name, id: padUserId(user.id) }));
   };
+
 
   return (
     <IonPage>
