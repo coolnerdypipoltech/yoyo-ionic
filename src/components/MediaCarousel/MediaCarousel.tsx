@@ -1,7 +1,7 @@
 import { IonIcon } from '@ionic/react';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { useRef, useState } from 'react';
-import type { MouseEvent as ReactMouseEvent, SyntheticEvent, UIEvent } from 'react';
+import type { SyntheticEvent, UIEvent } from 'react';
 import placeholder from '../../assets/Placeholder.png';
 import './MediaCarousel.css';
 
