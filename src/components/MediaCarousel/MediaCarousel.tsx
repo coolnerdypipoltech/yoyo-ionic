@@ -80,7 +80,7 @@ export default function MediaCarousel({ items, className, onItemClick }: MediaCa
   // When the caller wants clicks to mean something else entirely (see
   // onItemClick above), that takes over instead of advancing.
   const handleSlideClick = (e: ReactMouseEvent<HTMLDivElement>) => {
-    if ((e.target as HTMLElement).tagName === 'VIDEO') return;
+    
     if (onItemClick) {
       onItemClick(items[activeIndex], activeIndex);
       return;

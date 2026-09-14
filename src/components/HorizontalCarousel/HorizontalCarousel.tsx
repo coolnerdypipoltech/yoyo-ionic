@@ -30,7 +30,7 @@ export default function HorizontalCarousel<T>({
   const { isMobile } = useViewport();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-
+  console.log(items)
   useHorizontalScrollDrag(scrollRef, !isMobile);
 
   // Nav buttons fade out via :disabled once there's nothing left in that

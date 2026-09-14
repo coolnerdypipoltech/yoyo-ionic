@@ -1,7 +1,7 @@
 import { IonButton, IonIcon, IonModal } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 import { createAnimation } from '@ionic/core';
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { PRIVACY_POLICY_URL } from '../../api/config';
@@ -52,13 +52,18 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
   const { logout } = useAuth();
   const { isMobile } = useViewport();
   const [isLogoutConfirmOpen, setIsLogoutConfirmOpen] = useState(false);
+  const [number, setNumber] = useState(0);
 
   const goTo = (path: string) => {
     onClose();
     history.push(path);
   };
 
+  useEffect(() => {
+    setNumber(number + 1);
+  }, [isMobile]);
 
+  console.log(isMobile);  
 
   const handlePrivacyPolicy = () => {
     onClose();
@@ -93,7 +98,7 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
   
 
   return (
-    <>
+    <div key={number}>
 
       <IonModal
         isOpen={isOpen}
@@ -182,6 +187,6 @@ export default function AccountMenuSheet({ isOpen, onClose }: AccountMenuSheetPr
           </div>
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

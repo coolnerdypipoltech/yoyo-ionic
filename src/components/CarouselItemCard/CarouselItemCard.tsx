@@ -6,10 +6,11 @@ import './CarouselItemCard.css';
 interface CarouselItemCardProps {
   imageUrl?: string;
   title: string;
+  expired?: boolean;
   onClick: () => void;
 }
 
-export default function CarouselItemCard({ imageUrl, title, onClick }: CarouselItemCardProps) {
+export default function CarouselItemCard({ imageUrl, title, expired, onClick }: CarouselItemCardProps) {
   // No imageUrl means we show the (already-bundled) placeholder right
   // away — nothing is being fetched, so there's nothing to show a
   // skeleton for.
@@ -27,11 +28,12 @@ export default function CarouselItemCard({ imageUrl, title, onClick }: CarouselI
           src={imageUrl || placeholder}
           alt=""
           loading="lazy"
+          style={{ opacity: expired ? 0.5 : 1 }}
           onLoad={() => setIsLoaded(true)}
           onError={handleError}
         />
       </div>
-      <span className="carousel-item-card__title">{title}</span>
+      <span className="carousel-item-card__title" style={{ opacity: expired ? 0.5 : 1 }}>{title}</span>
     </button>
   );
 }

@@ -17,7 +17,7 @@ export default function Faqs() {
   const { t } = useTranslation('faqs');
   const { isMobile } = useViewport();
   const items = t('items', { returnObjects: true }) as FaqItem[];
-
+console.log(items);
   return (
     <IonPage>
       <BackgroundGradient src={isMobile ? gradient : gradientDesktop}   />
