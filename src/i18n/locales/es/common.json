@@ -14,6 +14,7 @@
   "whatsapp": {
     "addPoints": "Hola YoYo \nMe gustaría añadir puntos a mi cuenta. \nMi ID es {{id}}",
     "reservePlace": "Hola YoYo \nMe gustaría reservar en {{title}}. \nMi ID es {{id}}",
+    "reserveEvent": "Hola YoYo \nMe gustaría más información sobre el evento: {{title}}. \nMi ID es {{id}}",
     "redeemReward": "Hola YoYo \nMe gustaría redimir la siguiente recompensa: {{title}}. \nMi ID es {{id}}",
     "contactPartner": "Hola YoYo \nMe gustaría contactar a este partner: {{title}}. \nMi ID es {{id}}"
   },

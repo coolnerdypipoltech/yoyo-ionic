@@ -8,7 +8,7 @@ import AvailabilityNotice from '../../components/AvailabilityNotice/Availability
 import BackButton from '../../components/BackButton/BackButton';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { useAuth } from '../../context/AuthContext';
-import { openWhatsApp, padUserId } from '../../services/whatsapp';
+import { contactFor, padUserId } from '../../services/whatsapp';
 import { formatDateRange } from '../../utils/format';
 import { getUnavailabilityReason } from '../../utils/availability';
 import type { ResultObject } from '../../api/types';
@@ -49,7 +49,7 @@ export default function RewardsInfo() {
 
   const handleRedeem = () => {
     const key = isFromRewards ? 'common:whatsapp.redeemReward' : 'common:whatsapp.contactPartner';
-    openWhatsApp(t(key, { title: item.name, id: padUserId(user.id) }));
+    contactFor(item, t(key, { title: item.name, id: padUserId(user.id) }));
   };
 
   return (

@@ -73,6 +73,8 @@ export interface Place {
   schedule_list: string[];
   media: MediaRef[];
   gallery: Gallery[];
+  pr_id: PRs | null;
+  contact_link: string | null;
   thumbnail: Thumbnail | null;
 }
 
@@ -91,6 +93,8 @@ export interface ResultObject {
   thumbnail: Thumbnail | null;
   gallery: Gallery[];
   media: Medium[];
+  pr_id: PRs | null;
+  contact_link: string | null;
 }
 
 export interface AdResult {
@@ -136,4 +140,10 @@ export interface UpdateTastesRequest {
   taste_drink: string;
   taste_music: string;
   taste_food: string;
+}
+
+export interface PRs {
+  id: number;
+  phone: string;
+  email: string;
 }

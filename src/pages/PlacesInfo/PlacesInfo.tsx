@@ -16,7 +16,7 @@ import SocialRow from "../../components/SocialRow/SocialRow";
 import BackButton from "../../components/BackButton/BackButton";
 
 import { useAuth } from "../../context/AuthContext";
-import { openWhatsApp, padUserId } from "../../services/whatsapp";
+import { contactFor, padUserId } from "../../services/whatsapp";
 import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/format";
 import type { Place } from "../../api/types";
 import "./PlacesInfo.css";
@@ -56,16 +56,11 @@ export default function PlacesInfo() {
   if (!place || !user) return null;
 
   const handleReserve = () => {
-    if (isFromPlace) {
-      openWhatsApp(
-        t("common:whatsapp.reservePlace", {
-          title: place.name,
-          id: padUserId(user.id),
-        }),
-      );
-    } else if (place.url) {
-      window.open(place.url, "_blank", "noopener,noreferrer");
-    }
+    const message = t(
+      isFromPlace ? "common:whatsapp.reservePlace" : "common:whatsapp.reserveEvent",
+      { title: place.name, id: padUserId(user.id) },
+    );
+    contactFor(place, message);
   };
 
   const dresscodeLabel = dresscodeMatches(place.dresscode, "formal")
