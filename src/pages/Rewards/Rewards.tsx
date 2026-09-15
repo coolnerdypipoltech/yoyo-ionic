@@ -147,7 +147,9 @@ export default function Rewards() {
             renderItem={(item) => (
               <CarouselItemCard
                 title={item.name}
-                expired={item.ends_on ? new Date(item.ends_on) < new Date() : item.stock ? item.stock === 0 : false}
+                stock={item.stock}
+                starts={item.starts_on ? item.starts_on : undefined}
+                expired={item.ends_on ? item.ends_on : undefined}
                 imageUrl={item.thumbnail?.absolute_url}
                 onClick={() =>
                   history.push(`/rewards/${item.id}`, {
@@ -180,7 +182,9 @@ export default function Rewards() {
               <CarouselItemCard
                 title={item.name}
                 imageUrl={item.thumbnail?.absolute_url}
-                expired={item.ends_on ? new Date(item.ends_on) < new Date() : item.stock ? item.stock === 0 : false}
+                starts={item.starts_on ? item.starts_on : undefined}
+                stock={item.stock}
+                expired={item.ends_on ? item.ends_on : undefined}
                 onClick={() =>
                   history.push(`/rewards/${item.id}`, {
                     item,

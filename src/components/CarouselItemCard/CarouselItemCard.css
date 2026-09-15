@@ -47,17 +47,28 @@
 .carousel-item-card__image-tag{
   position: relative;
   border-radius: var(--yoyo-radius-md);
-  background-color: var(--yoyo-teal);
-  width: 80px;
-  font-size: 12px;
+  background-color: var(--ion-color-primary);
+  width: 70px;
+  font-size: 10px;
   height: 20px;
-  bottom: 140px;
-  left: 60px;
+  bottom: calc(100% + 140px);
+  left: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color:black;
+  color:rgb(255, 255, 255);
+  text-align: center;
   font-family: 'InstrumentSans-Bold' !important;
+}
+
+.carousel-item-card__image-overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  top: -50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 768px) {

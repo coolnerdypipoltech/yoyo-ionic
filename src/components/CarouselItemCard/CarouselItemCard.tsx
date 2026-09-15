@@ -6,11 +6,13 @@ import './CarouselItemCard.css';
 interface CarouselItemCardProps {
   imageUrl?: string;
   title: string;
-  expired?: boolean;
+  expired?: string;
   onClick: () => void;
+  stock?: number;
+  starts?: string;
 }
 
-export default function CarouselItemCard({ imageUrl, title, expired, onClick }: CarouselItemCardProps) {
+export default function CarouselItemCard({ imageUrl, title, expired, onClick, stock, starts }: CarouselItemCardProps) {
   // No imageUrl means we show the (already-bundled) placeholder right
   // away — nothing is being fetched, so there's nothing to show a
   // skeleton for.
@@ -21,9 +23,47 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick }: 
     setIsLoaded(true);
   };
 
-  let isExpired = expired || false;
+  let isExpired = true;
+  let isStocked = true;
+  let hasStarted = true;
 
-  isExpired = false;
+  if(stock !== undefined) {
+    
+    if(stock == 0) {
+      isStocked = false;
+    }else{
+      isStocked = true;
+    }
+  }
+
+
+  if(starts){
+    console.log(title, starts);
+      if(new Date().getTime() < (starts ? new Date(starts).getTime() : 0)) {
+      hasStarted = false;
+    } else {
+      hasStarted = true;
+    }
+  }
+
+
+  if(expired){
+    
+      if(new Date().getTime() > (expired ? new Date(expired).getTime() : 0)) {
+      isExpired = false;
+    } else {
+      isExpired = true;
+      
+    }
+  }
+
+  if(!isStocked && !isExpired){
+    isStocked = true;
+  }
+
+  if(!isStocked && !hasStarted){
+    isStocked = true;
+  }
 
   return (
     <button type="button" className="carousel-item-card" onClick={onClick}>
@@ -35,7 +75,10 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick }: 
           onLoad={() => setIsLoaded(true)}
           onError={handleError}
         />
-        {false && <><div className="carousel-item-card__image-tag"><p>{isExpired ? 'Expired' : 'Active'}</p></div></>}
+        {(!isStocked || !isExpired || !hasStarted) && (<div className="carousel-item-card__image-overlay"></div>)}
+        {!isStocked && <><div className="carousel-item-card__image-tag"><p>SOLD OUT</p></div></>}
+        {!isExpired && <><div className="carousel-item-card__image-tag"><p>EXPIRED</p></div></>}
+        {!hasStarted && <><div className="carousel-item-card__image-tag" style={{width: "90px", left: "50px"}}><p>COMING SOON</p></div></>}
       </div>
       <span className="carousel-item-card__title" >{title}</span>
     </button>
