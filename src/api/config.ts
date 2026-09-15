@@ -11,6 +11,3 @@ export const PRIVACY_POLICY_URL = 'https://example.com/privacy-policy';
 // TODO: replace with the real Terms & Conditions URL before shipping.
 export const TERMS_URL = 'https://example.com/terms';
 
-// WhatsApp Business number used for reservations/redemptions (Mexico).
-export const WHATSAPP_COUNTRY_CODE = '52';
-export const WHATSAPP_NUMBER = '8331021023';

@@ -208,6 +208,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+  top: 10px;
+  right: 20px;
 }
 
 .profile-page__info-card {
@@ -322,5 +325,14 @@
   border-radius: var(--yoyo-radius-pill);
   padding: 16px;
   font-size: var(--yoyo-body-size);
+
+}
+
+
+.profile-page__your-taste {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
 }

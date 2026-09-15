@@ -1,4 +1,4 @@
-import { WHATSAPP_COUNTRY_CODE, WHATSAPP_NUMBER } from '../api/config';
+
 import type { PRs } from '../api/types';
 
 // Zero-pads a user id to 6 digits, e.g. 123 -> "000123" — matches the
@@ -7,15 +7,9 @@ export function padUserId(id: number): string {
   return String(id).padStart(6, '0');
 }
 
-// Message text is translated and interpolated by the caller (via i18next's
-// `common:whatsapp.*` keys) — this module only knows how to turn a finished
-// message string into a WhatsApp deep link. `phone` overrides the app's own
-// default number (e.g. a place/reward's dedicated PR) — stripped down to
-// digits since it comes from the backend already formatted for display
-// (e.g. "+52 6667777777"), not as the bare digit string the wa.me-style
-// `phone` query param needs.
+
 export function buildWhatsAppUrl(message: string, phone?: string): string {
-  const digits = phone ? phone.replace(/\D/g, '') : `${WHATSAPP_COUNTRY_CODE}${WHATSAPP_NUMBER}`;
+  const digits = phone ? phone.replace(/\D/g, '') : '';
   return `https://api.whatsapp.com/send?phone=${digits}&text=${encodeURIComponent(message)}`;
 }
 

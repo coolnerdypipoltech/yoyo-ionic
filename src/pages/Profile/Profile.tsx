@@ -1,13 +1,19 @@
-import { IonContent, IonHeader, IonPage, IonToolbar, IonButtons } from '@ionic/react';
-import BackButton from '../../components/BackButton/BackButton';
-import PageTitle from '../../components/PageTitle/PageTitle';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonToolbar,
+  IonButtons,
+} from "@ionic/react";
+import BackButton from "../../components/BackButton/BackButton";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
-import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { padUserId } from '../../services/whatsapp';
-import tombstoneIcon from '../../assets/RIP.svg';
-import './Profile.css';
+import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { padUserId } from "../../services/whatsapp";
+import tombstoneIcon from "../../assets/RIP.svg";
+import "./Profile.css";
 
 import editPhoto from "../../assets/icons/Editar_foto.svg";
 import editTaste from "../../assets/icons/Editar.svg";
@@ -19,125 +25,184 @@ import profile_m from "../../assets/profile/profile_m.png";
 
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/account_settings.png";
-import { useViewport } from '../../context/ViewportContext';
+import { useViewport } from "../../context/ViewportContext";
 import gradientDesktop from "../../assets/backgrounds/desktop/account.png";
 
 export default function Profile() {
-  const { t } = useTranslation('profile');
+  const { t } = useTranslation("profile");
   const history = useHistory();
   const { user } = useAuth();
   const { isMobile } = useViewport();
   if (!user) return null;
   const avatarUrl = user.related.image?.absolute_url;
 
-
   return (
     <IonPage>
       <BackgroundGradient src={isMobile ? gradient : gradientDesktop} />
-      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header" >
+      <IonHeader className="ion-no-border yoyo-header-offset places-info-page__header">
         <IonToolbar>
-          <IonButtons  slot="start">
+          <IonButtons slot="start">
             <BackButton defaultHref="/main/places" closeHref={true} />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen className="profile-page">
-        <PageTitle className="profile-page__title">{t('profile.title')}</PageTitle>
+        <PageTitle className="profile-page__title">
+          {t("profile.title")}
+        </PageTitle>
 
         <div className="profile-page__avatar-block">
-          <button type="button" className="profile-page__avatar" onClick={() => history.push('/profile/edit-photo')}>
-            {avatarUrl ? <img src={avatarUrl} alt="" /> : (user.related.gender?.toLowerCase() === 'women' ? <img src={profile_f} alt="" /> : <img src={profile_m} alt="" />)}
-
+          <button
+            type="button"
+            className="profile-page__avatar"
+            onClick={() => history.push("/profile/edit-photo")}
+          >
+            {avatarUrl ? (
+              <img src={avatarUrl} alt="" />
+            ) : user.related.gender?.toLowerCase() === "women" ? (
+              <img src={profile_f} alt="" />
+            ) : (
+              <img src={profile_m} alt="" />
+            )}
           </button>
-                      <span className="profile-page__avatar-edit">
-              <img src={editPhoto} alt="edit photo" onClick={() => history.push('/profile/edit-photo')} />
-            </span>
+          <span className="profile-page__avatar-edit">
+            <img
+              src={editPhoto}
+              alt="edit photo"
+              onClick={() => history.push("/profile/edit-photo")}
+            />
+          </span>
           <span className="profile-page__id ">
-            {t('profile.idLabel')}: <span style={{fontFamily: "InstrumentSans-Bold"}}>{padUserId(user.id)}</span>
+            {t("profile.idLabel")}:{" "}
+            <span style={{ fontFamily: "InstrumentSans-Bold" }}>
+              {padUserId(user.id)}
+            </span>
           </span>
         </div>
-      
+
         <div className="profile-page__content-container">
           <div className="profile-page__content">
-                  <h2 className="yoyo-section-header profile-page__section-header">
-          <img src={spark} alt="spark" />
-          {t('profile.totalPoints')}
-          <Tooltip text={t('profile.totalPointsTooltip')} />
-        </h2>
-        <div className="profile-page__points-box" >{t('profile.points', { points: user.related.points })}</div>
+            <h2 className="yoyo-section-header profile-page__section-header">
+              <img src={spark} alt="spark" />
+              {t("profile.totalPoints")}
+              <Tooltip text={t("profile.totalPointsTooltip")} />
+            </h2>
+            <div className="profile-page__points-box">
+              {t("profile.points", { points: user.related.points })}
+            </div>
 
-        <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
-          <img src={spark} alt="spark" />
-          {t('profile.yourTaste')}
-          <Tooltip text={t('profile.yourTasteTooltip')} />
-        </h2>
+            <div className="profile-page__your-taste">
+              
+            <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
+              <img src={spark} alt="spark" />
+              {t("profile.yourTaste")}
+              <Tooltip text={t("profile.yourTasteTooltip")} />
+              
+            </h2>
+              <button
+                type="button"
+                className="profile-page__edit-button"
+                onClick={() => history.push("/profile/edit-taste")}
+              >
+                <img src={editTaste} alt="edit taste" />
+              </button>
+            </div>
 
-        <div className="profile-page__taste-row">
-          <div>
-            <span className="profile-page__taste-label">{t('profile.drinkTaste')}</span>
-            <span className="profile-page__taste-value">{user.related.taste_drink || t('profile.tastePlaceholder')}</span>
+            <div className="profile-page__taste-row">
+              <div>
+                <span className="profile-page__taste-label">
+                  {t("profile.drinkTaste")}
+                </span>
+                <span className="profile-page__taste-value">
+                  {user.related.taste_drink || t("profile.tastePlaceholder")}
+                </span>
+              </div>
+
+            </div>
+            <div className="profile-page__taste-row">
+              <div>
+                <span className="profile-page__taste-label">
+                  {t("profile.musicTaste")}
+                </span>
+                <span className="profile-page__taste-value">
+                  {user.related.taste_music || t("profile.tastePlaceholder")}
+                </span>
+              </div>
+
+            </div>
+            <div className="profile-page__taste-row">
+              <div>
+                <span className="profile-page__taste-label">
+                  {t("profile.foodTaste")}
+                </span>
+                <span className="profile-page__taste-value">
+                  {user.related.taste_food || t("profile.tastePlaceholder")}
+                </span>
+              </div>
+
+            </div>
+
+            <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
+              <img src={spark} alt="spark" />
+              {t("profile.yourProfile")}
+              <Tooltip text={t("profile.yourProfileTooltip")} />
+            </h2>
+
+            <div className="profile-page__info-card">
+              <div className="profile-page__info-row">
+                <span className="profile-page__info-label">
+                  {t("profile.name")}
+                </span>
+                <span className="profile-page__info-value">{user.name}</span>
+              </div>
+              <div className="profile-page__info-row">
+                <span className="profile-page__info-label">
+                  {t("profile.email")}
+                </span>
+                <span className="profile-page__info-value">{user.email}</span>
+              </div>
+              <div className="profile-page__info-row">
+                <span className="profile-page__info-label">
+                  {t("profile.phone")}
+                </span>
+                <span className="profile-page__info-value">
+                  {user.related.phone ?? "—"}
+                </span>
+              </div>
+            </div>
+
+            <hr
+              className="yoyo-divider"
+              style={{ borderTop: "0.5px solid rgba(255, 255, 255, 0.699)" }}
+            />
+
+            <div className="profile-page__danger-wrapper">
+              <div className="profile-page__danger-card">
+                <h2 className="profile-page__danger-title">
+                  {t("profile.dangerousHole")}
+                </h2>
+                <img
+                  className="profile-page__tombstone"
+                  src={tombstoneIcon}
+                  alt=""
+                />
+                <p className="profile-page__danger-text">
+                  {t("profile.deleteWarning")}
+                </p>
+              </div>
+            </div>
+
+            <div className="profile-page__delete-button-wrap">
+              <button
+                type="button"
+                className="profile-page__delete-button yoyo-pill--dark"
+                onClick={() => history.push("/profile/delete")}
+              >
+                {t("profile.deleteAccount")}
+              </button>
+            </div>
           </div>
-          <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <img src={editTaste} alt="edit taste" />
-          </button>
-        </div>
-        <div className="profile-page__taste-row">
-          <div>
-            <span className="profile-page__taste-label">{t('profile.musicTaste')}</span>
-            <span className="profile-page__taste-value">{user.related.taste_music || t('profile.tastePlaceholder')}</span>
-          </div>
-          <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <img src={editTaste} alt="edit taste" />
-          </button>
-        </div>
-        <div className="profile-page__taste-row">
-          <div>
-            <span className="profile-page__taste-label">{t('profile.foodTaste')}</span>
-            <span className="profile-page__taste-value">{user.related.taste_food || t('profile.tastePlaceholder')}</span>
-          </div>
-          <button type="button" className="profile-page__edit-button" onClick={() => history.push('/profile/edit-taste')}>
-            <img src={editTaste} alt="edit taste" />
-          </button>
-        </div>
-
-        <h2 className="yoyo-section-header profile-page__section-header profile-page__section-spacing">
-          <img src={spark} alt="spark" />
-          {t('profile.yourProfile')}
-          <Tooltip text={t('profile.yourProfileTooltip')} />
-        </h2>
-
-        <div className="profile-page__info-card" >
-          <div className="profile-page__info-row">
-            <span className="profile-page__info-label">{t('profile.name')}</span>
-            <span className="profile-page__info-value">{user.name}</span>
-          </div>
-          <div className="profile-page__info-row">
-            <span className="profile-page__info-label">{t('profile.email')}</span>
-            <span className="profile-page__info-value">{user.email}</span>
-          </div>
-          <div className="profile-page__info-row">
-            <span className="profile-page__info-label">{t('profile.phone')}</span>
-            <span className="profile-page__info-value">{user.related.phone ?? '—'}</span>
-          </div>
-        </div>
-
-        <hr className="yoyo-divider" style={{ borderTop: '0.5px solid rgba(255, 255, 255, 0.699)' }} />
-
-        <div className="profile-page__danger-wrapper">
-          <div className="profile-page__danger-card">
-          <h2 className="profile-page__danger-title">{t('profile.dangerousHole')}</h2>
-          <img className="profile-page__tombstone" src={tombstoneIcon} alt="" />
-          <p className="profile-page__danger-text">{t('profile.deleteWarning')}</p>
-        </div>
-        </div>
-
-        <div className="profile-page__delete-button-wrap">
-                  <button type="button" className="profile-page__delete-button yoyo-pill--dark" onClick={() => history.push('/profile/delete')}>
-          {t('profile.deleteAccount')}
-        </button>
-        </div>
-        </div>
         </div>
       </IonContent>
     </IonPage>

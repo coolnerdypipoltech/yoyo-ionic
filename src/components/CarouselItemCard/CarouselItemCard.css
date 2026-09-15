@@ -44,6 +44,21 @@
   min-height: 34px;
 }
 
+.carousel-item-card__image-tag{
+  position: relative;
+  border-radius: var(--yoyo-radius-md);
+  background-color: var(--yoyo-teal);
+  width: 80px;
+  font-size: 12px;
+  height: 20px;
+  bottom: 140px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:black;
+  font-family: 'InstrumentSans-Bold' !important;
+}
 
 @media (min-width: 768px) {
   .carousel-item-card__title {

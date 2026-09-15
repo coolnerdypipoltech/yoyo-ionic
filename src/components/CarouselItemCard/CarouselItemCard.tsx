@@ -21,6 +21,10 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick }: 
     setIsLoaded(true);
   };
 
+  let isExpired = expired || false;
+
+  isExpired = false;
+
   return (
     <button type="button" className="carousel-item-card" onClick={onClick}>
       <div className={`carousel-item-card__image${isLoaded ? '' : ' yoyo-skeleton'}`}>
@@ -28,12 +32,12 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick }: 
           src={imageUrl || placeholder}
           alt=""
           loading="lazy"
-          style={{ opacity: expired ? 0.5 : 1 }}
           onLoad={() => setIsLoaded(true)}
           onError={handleError}
         />
+        {false && <><div className="carousel-item-card__image-tag"><p>{isExpired ? 'Expired' : 'Active'}</p></div></>}
       </div>
-      <span className="carousel-item-card__title" style={{ opacity: expired ? 0.5 : 1 }}>{title}</span>
+      <span className="carousel-item-card__title" >{title}</span>
     </button>
   );
 }
