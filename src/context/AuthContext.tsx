@@ -49,8 +49,8 @@ function syncUrl(path: string) {
 // while its own always-on chrome (MainTabs' floating bar, or the
 // unauthenticated background) stays put — the "stuck in limbo" look. These
 // mirror the <Route> paths declared in UnauthenticatedApp/AuthenticatedApp.
-// sessionStorage key Login checks on mount to show the "account deleted"
-// banner — see deleteAccount below for why this (rather than
+// sessionStorage key Welcome checks on mount to show the "account
+// deleted" banner — see deleteAccount below for why this (rather than
 // react-router state) is what carries the flag across the auth-tree
 // remount.
 export const ACCOUNT_DELETED_KEY = 'yoyo_account_deleted';
@@ -158,13 +158,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // PlayerPrefs that could attempt to auto-login post-deletion.
     await storage.clearSession();
     setUserState(null);
-    // Read by Login on its next mount to show the "account deleted"
+    // Read by Welcome on its next mount to show the "account deleted"
     // banner (see ACCOUNT_DELETED_KEY below) — sessionStorage survives
     // the UnauthenticatedApp remount below since, unlike react-router's
     // location.state, it isn't tied to any particular history/router
     // instance.
     sessionStorage.setItem(ACCOUNT_DELETED_KEY, 'true');
-    syncUrl('/login');
+    syncUrl('/welcome');
     setIsAuthenticated(false);
   }, []);
 

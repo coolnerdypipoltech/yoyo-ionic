@@ -1,7 +1,8 @@
 import { IonButton, IonContent, IonPage } from "@ionic/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import { ACCOUNT_DELETED_KEY } from "../../context/AuthContext";
 import logoPattern from "../../assets/Logo YOYO.png";
 import rabbit from "../../assets/icons/Icon_rabbit.svg";
 import "./Welcome.css";
@@ -10,6 +11,18 @@ export default function Welcome() {
   const { t } = useTranslation("auth");
   const history = useHistory();
   const pageRef = useRef<HTMLElement>(null);
+  // Set by AuthContext's deleteAccount right before it lands here — a
+  // sessionStorage flag rather than router state, since deletion swaps
+  // the whole mounted router tree (AuthenticatedApp -> Unauthenticated
+  // App) on its way to this page.
+  const [showAccountDeletedBanner] = useState(() => Boolean(sessionStorage.getItem(ACCOUNT_DELETED_KEY)));
+
+  useEffect(() => {
+    if (showAccountDeletedBanner) {
+      sessionStorage.removeItem(ACCOUNT_DELETED_KEY);
+    }
+    // Intentionally run once on mount — clears the one-time banner flag.
+  }, []);
 
   // Ionic hides a freshly-mounted page behind the `ion-page-invisible`
   // class (opacity: 0) until its router outlet marks it current. Welcome
@@ -48,6 +61,11 @@ export default function Welcome() {
             <img src={rabbit} className="welcome-page__rabbit" alt="Rabbit" />
             <p className="welcome-page__tagline">{t("welcome.tagline")}</p>
           </div>
+
+          {showAccountDeletedBanner ? (
+            <div className="welcome-page__banner">{t("welcome.accountDeletedBanner")}</div>
+          ) : null}
+
           <div className="welcome-page__actions">
             <IonButton
               expand="block"

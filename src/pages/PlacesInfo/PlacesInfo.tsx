@@ -17,7 +17,7 @@ import BackButton from "../../components/BackButton/BackButton";
 
 import { useAuth } from "../../context/AuthContext";
 import { contactFor, padUserId } from "../../services/whatsapp";
-import { dresscodeMatches, paymentOptionMatches, truncate } from "../../utils/format";
+import { paymentOptionMatches, truncate } from "../../utils/format";
 import type { Place } from "../../api/types";
 import "./PlacesInfo.css";
 import spark from "../../assets/icons/Spark.svg";
@@ -63,11 +63,7 @@ export default function PlacesInfo() {
     contactFor({pr: place.pr, contact_link: place.contact_link}, message);
   };
 
-  const dresscodeLabel = dresscodeMatches(place.dresscode, "formal")
-    ? "Formal"
-    : dresscodeMatches(place.dresscode, "casual")
-      ? "Casual"
-      : place.dresscode;
+
 
   const paymentLabels = [
     paymentOptionMatches(place.payment_options, "card")
@@ -197,7 +193,7 @@ export default function PlacesInfo() {
             </>
           ) : null}
 
-          {dresscodeLabel ? (
+          {place.dresscode ? (
             <>
               <hr className="places-info-divider" />
 
@@ -211,7 +207,7 @@ export default function PlacesInfo() {
               </h2>
               <p className="places-info-page__row">
                 <img src={dresscode} alt="Dresscode" />
-                {dresscodeLabel}
+                <div style={{ textTransform: "capitalize" }}>{place.dresscode}</div>
               </p>
             </>
           ) : null}

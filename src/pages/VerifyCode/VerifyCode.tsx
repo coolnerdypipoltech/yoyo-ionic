@@ -14,6 +14,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import PasswordField from '../../components/PasswordField/PasswordField';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import { isValidAccessCode } from '../../utils/validation';
+import { resolveErrorI18nKey } from '../../api/errors';
 import * as authService from '../../api/services/auth.service';
 import BackgroundGradient from "../../components/BackgroundGradient/BackgroundGradient";
 import gradient from "../../assets/backgrounds/verify_code.png";
@@ -39,11 +40,13 @@ export default function VerifyCode() {
       // moved past it (see Register's own push->replace to Login).
       history.replace('/register', { accessCode: code });
       
-    } catch {
+    } catch (err) {
       // The backend distinguishes "not found" (404) from "already redeemed"
-      // (400), but the old client never surfaced that distinction to the
-      // user either — every failure shows the same generic message here.
-      setError(t('verifyCode.error'));
+      // (400) via ApiError.code — resolveErrorI18nKey maps each business
+      // code to its own `errors:*` message (falling back to the generic
+      // one for anything else), so a redeemed code now says so instead of
+      // the same catch-all "wrong code" text.
+      setError(t(resolveErrorI18nKey(err)));
     } finally {
       setIsSubmitting(false);
     }

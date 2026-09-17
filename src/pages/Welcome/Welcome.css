@@ -65,6 +65,17 @@
   margin-top: 40px;
 }
 
+.welcome-page__banner {
+  background: rgba(62, 207, 178, 0.12);
+  color: var(--yoyo-teal);
+  border-radius: var(--yoyo-radius-sm);
+  padding: 12px 14px;
+  font-size: var(--yoyo-body-size);
+  margin: 24px auto 0;
+  max-width: 320px;
+  text-align: center;
+}
+
 .welcome-page__actions {
   width: 100%;
   display: flex;
