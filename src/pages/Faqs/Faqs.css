@@ -54,7 +54,7 @@
   white-space: normal;
   --background: transparent;
   margin: 0px ;
-
+  max-width: 256px;
 }
 
 .faqs-page__answer {
