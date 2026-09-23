@@ -3,6 +3,12 @@ import type { SyntheticEvent } from 'react';
 import placeholder from '../../assets/Placeholder.png';
 import './CarouselItemCard.css';
 
+import sparkAvailable from '../../assets/icons/Spark.svg';
+import sparkExpired from '../../assets/icons/SparkGrey.svg';
+import sparkComingSoon from '../../assets/icons/SparkG.svg';
+import sparkSold from '../../assets/icons/SparkW.svg';
+
+
 interface CarouselItemCardProps {
   imageUrl?: string;
   title: string;
@@ -38,7 +44,6 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick, st
 
 
   if(starts){
-    console.log(title, starts);
       if(new Date().getTime() < (starts ? new Date(starts).getTime() : 0)) {
       hasStarted = false;
     } else {
@@ -65,6 +70,15 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick, st
     isStocked = true;
   }
 
+  let sparkHolder = sparkAvailable;
+  if(!isStocked){
+    sparkHolder = sparkSold;
+  } else if(!isExpired){
+    sparkHolder = sparkExpired;
+  } else if(!hasStarted){
+    sparkHolder = sparkComingSoon;
+  }
+
   return (
     <button type="button" className="carousel-item-card" onClick={onClick}>
       <div className={`carousel-item-card__image${isLoaded ? '' : ' yoyo-skeleton'}`}>
@@ -75,10 +89,8 @@ export default function CarouselItemCard({ imageUrl, title, expired, onClick, st
           onLoad={() => setIsLoaded(true)}
           onError={handleError}
         />
-        {(!isStocked || !isExpired || !hasStarted) && (<div className="carousel-item-card__image-overlay"></div>)}
-        {!isStocked && <><div className="carousel-item-card__image-tag"><p>SOLD OUT</p></div></>}
-        {!isExpired && <><div className="carousel-item-card__image-tag"><p>EXPIRED</p></div></>}
-        {!hasStarted && <><div className="carousel-item-card__image-tag" style={{width: "90px", left: "50px"}}><p>COMING SOON</p></div></>}
+        {stock != undefined && (<><div className="carousel-item-card__image-overlay"></div>
+        <><div className="carousel-item-card__image-tag"><img src={sparkHolder} alt="status"/></div></></>)}
       </div>
       <span className="carousel-item-card__title" >{title}</span>
     </button>

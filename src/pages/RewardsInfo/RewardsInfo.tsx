@@ -20,6 +20,13 @@ import Quantity from "../../assets/icons/Quantity.svg";
 import Danger from "../../assets/icons/Danger.svg";
 import { useViewport } from '../../context/ViewportContext';
 
+import sparkAvailable from '../../assets/icons/Spark.svg';
+import sparkExpired from '../../assets/icons/SparkGrey.svg';
+import sparkComingSoon from '../../assets/icons/SparkG.svg';
+import sparkSold from '../../assets/icons/SparkW.svg';
+
+
+
 import BackgroundGradient from '../../components/BackgroundGradient/BackgroundGradient';
 import gradient from "../../assets/backgrounds/desktop/Home_others.png";
 interface LocationState {
@@ -52,6 +59,58 @@ export default function RewardsInfo() {
     contactFor({pr: item.pr, contact_link: item.contact_link}, t(key, { title: item.name, id: padUserId(user.id) }));
   };
 
+  const stock = item.stock;
+  const starts = item.starts_on;
+  const expired = item.ends_on;
+
+  let isStocked = true;
+  let hasStarted = true;
+  let isExpired = true;
+
+  if(stock !== undefined) {
+    
+    if(stock == 0) {
+      isStocked = false;
+    }else{
+      isStocked = true;
+    }
+  }
+
+  if(starts){
+      if(new Date().getTime() < (starts ? new Date(starts).getTime() : 0)) {
+      hasStarted = false;
+    } else {
+      hasStarted = true;
+    }
+  }
+
+  if(expired){
+    
+      if(new Date().getTime() > (expired ? new Date(expired).getTime() : 0)) {
+      isExpired = false;
+    } else {
+      isExpired = true;
+      
+    }
+  }
+
+  if(!isStocked && !isExpired){
+    isStocked = true;
+  }
+
+  if(!isStocked && !hasStarted){
+    isStocked = true;
+  }
+
+  let sparkHolder = sparkAvailable;
+  if(!isStocked){
+    sparkHolder = sparkSold;
+  } else if(!isExpired){
+    sparkHolder = sparkExpired;
+  } else if(!hasStarted){
+    sparkHolder = sparkComingSoon;
+  }
+
 
   return (
     <IonPage>
@@ -72,6 +131,14 @@ export default function RewardsInfo() {
         <div className="rewards-info-page__content">
           <PageTitle className="rewards-info-page__title">{item.name}</PageTitle>
 
+          <div className="rewards-info-page__status-container">
+            
+              <div className="rewards-info-page__status-tag">
+                <img src={sparkHolder} alt="status" />
+                <p>{isStocked ? (isExpired ? (hasStarted ? "Available" : "Coming Soon") : "Expired") : "Sold Out"}</p>
+              </div>
+            
+          </div>
           
           <hr className="places-info-divider"  />
           <h2 className="yoyo-section-header" style={{fontSize: "16px", marginTop: "24px"}}>
