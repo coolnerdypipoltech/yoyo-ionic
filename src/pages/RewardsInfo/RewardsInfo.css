@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
+  
   width: fit-content;
   justify-content: center;
   border: 1px solid rgb(201, 201, 201);
@@ -93,15 +93,16 @@
 }
 
 .rewards-info-page__status-tag img{
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   position: relative;
   
 }
 
 .rewards-info-page__status-tag p{
   margin: 5px;
-  text-transform: uppercase;
+  
+  font-size: var(--yoyo-body-size);
 }
 
 .rewards-info-page__text {
