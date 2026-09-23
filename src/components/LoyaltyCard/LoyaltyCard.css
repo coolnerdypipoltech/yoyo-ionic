@@ -90,6 +90,16 @@
   transform: translate(0.439%, -6.14%);
 }
 
+/* Firefox-only: the composited holographic frames sit ~1 card-thickness
+   lower in Gecko, so they peek past the bottom rounded corner. Nudge the
+   whole overlay up just enough to hide the seam without affecting other
+   engines. */
+@supports (-moz-appearance: none) {
+  .loyalty-card__face_anim {
+    top: 12px;
+  }
+}
+
 /* Pushing the two faces apart along Z (instead of stacking them exactly on
    top of each other) is what gives the card real thickness — the edge
    strips below fill in the gap between them so it reads as a solid slab
