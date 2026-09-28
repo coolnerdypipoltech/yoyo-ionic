@@ -3,10 +3,10 @@ import type { SyntheticEvent } from 'react';
 import placeholder from '../../assets/Placeholder.png';
 import './CarouselItemCard.css';
 
-import sparkAvailable from '../../assets/icons/Spark.svg';
-import sparkExpired from '../../assets/icons/SparkGrey.svg';
-import sparkComingSoon from '../../assets/icons/SparkG.svg';
-import sparkSold from '../../assets/icons/SparkW.svg';
+import sparkAvailable from '../../assets/icons/SparkG.svg';
+import sparkExpired from '../../assets/icons/Spark.svg';
+import sparkComingSoon from '../../assets/icons/SparkW.svg';
+import sparkSold from '../../assets/icons/Spark.svg';
 
 
 interface CarouselItemCardProps {

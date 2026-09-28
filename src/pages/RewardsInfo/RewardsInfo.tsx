@@ -20,10 +20,10 @@ import Quantity from "../../assets/icons/Quantity.svg";
 import Danger from "../../assets/icons/Danger.svg";
 import { useViewport } from '../../context/ViewportContext';
 
-import sparkAvailable from '../../assets/icons/Spark.svg';
-import sparkExpired from '../../assets/icons/SparkGrey.svg';
-import sparkComingSoon from '../../assets/icons/SparkG.svg';
-import sparkSold from '../../assets/icons/SparkW.svg';
+import sparkAvailable from '../../assets/icons/SparkG.svg';
+import sparkExpired from '../../assets/icons/Spark.svg';
+import sparkComingSoon from '../../assets/icons/SparkW.svg';
+import sparkSold from '../../assets/icons/Spark.svg';
 
 
 
@@ -103,13 +103,18 @@ export default function RewardsInfo() {
   }
 
   let sparkHolder = sparkAvailable;
+  let textHolder = t('redeem.available');
   if(!isStocked){
     sparkHolder = sparkSold;
+    textHolder = t('redeem.soldout');
   } else if(!isExpired){
     sparkHolder = sparkExpired;
+    textHolder = t('redeem.expired');
   } else if(!hasStarted){
     sparkHolder = sparkComingSoon;
+    textHolder = t('redeem.comingsoon');
   }
+
 
 
   return (
@@ -199,7 +204,7 @@ export default function RewardsInfo() {
 
           <div className="rewards-info-page__redeem-button">
             <IonButton expand="block" className={reason !== null ? "yoyo-pill-disabled" : "yoyo-pill--white"} disabled={reason !== null} onClick={handleRedeem}>
-            {t('detail.redeem')}
+            {textHolder}
           </IonButton>
           </div>
         </div>

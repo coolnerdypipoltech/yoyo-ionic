@@ -30,6 +30,12 @@
     "noPartners": "No partners available right now.",
     "availableCredits": "Available Points:"
   },
+  "redeem": {
+    "soldout": "Sold Out",
+    "expired": "Expired",
+    "comingsoon": "Coming Soon",
+    "available": "Redeem"
+  },
   "detail": {
     "getDirections": "Maps Location",
     "reserve": "Reserve",
